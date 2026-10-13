@@ -1,0 +1,186 @@
+---
+import { announcement, site } from '../data/site';
+import { LANGS, LANG_NAMES, NAV_I18N, type Lang } from '../data/i18n';
+
+interface Props {
+	lang?: Lang;
+}
+
+const { lang = 'es' } = Astro.props;
+const i18n = NAV_I18N[lang];
+
+const FLAG_SVGS: Record<string, string> = {
+	es: '<svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#aa151b"/><rect y="6.7" width="30" height="6.6" fill="#f1bf00"/></svg>',
+	en: '<svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#012169"/><path d="M0 0 30 20M30 0 0 20" stroke="#fff" stroke-width="5"/><path d="M0 0 30 20M30 0 0 20" stroke="#c8102e" stroke-width="2.5"/><rect y="8.4" width="30" height="3.2" fill="#fff"/><rect x="13.4" width="3.2" height="20" fill="#fff"/><rect y="9.25" width="30" height="1.5" fill="#c8102e"/><rect x="14.25" width="1.5" height="20" fill="#c8102e"/></svg>',
+	fr: '<svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="10" height="20" fill="#0055a4"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ef4135"/></svg>',
+	it: '<svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="10" height="20" fill="#009246"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ce2b37"/></svg>',
+	pt: '<svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#046a38"/><rect x="18" width="12" height="20" fill="#da291c"/><circle cx="16.5" cy="10" r="4.6" fill="#ffe900"/><circle cx="16.5" cy="10" r="3" fill="#da291c"/></svg>',
+};
+
+const menuLinks = [
+	{ href: '/carta', label: i18n.carta, key: 'carta' },
+	{ href: '/carta#veggie', label: i18n['carta.veggie'], key: 'carta.veggie' },
+	{ href: '/carta#sin-gluten', label: i18n['carta.sin-gluten'], key: 'carta.sin-gluten' },
+	{ href: '/menudeldia/', label: i18n.menudeldia, key: 'menudeldia' },
+];
+---
+<header class="sticky top-0 z-50">
+	<div class="bg-ink text-paper">
+		<p class="mx-auto flex max-w-6xl items-center justify-center gap-x-4 gap-y-1 px-4 py-2 text-center text-[0.72rem] tracking-[0.14em] uppercase sm:text-xs">
+			<span class="block truncate font-medium">{announcement.text}</span>
+			<span class="hidden text-gold md:inline" aria-hidden="true">·</span>
+			<span class="hidden whitespace-nowrap text-paper/70 md:block">{announcement.hours}</span>
+		</p>
+	</div>
+	<div class="border-b border-line bg-paper/90 backdrop-blur-md">
+		<nav aria-label={i18n.carta} class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3 sm:px-6">
+			<a href="/" class="flex items-center gap-3" aria-label="Restaurante Pasapán — Inicio">
+				<img src="/img/logo/header-logo.png" alt="Restaurante Pasapán" class="h-9 w-auto sm:h-10" loading="eager" />
+			</a>
+
+			<ul class="hidden items-center gap-7 text-[0.82rem] font-medium tracking-wide text-ink-soft lg:flex">
+				<li>
+					<a href="/" data-i18n="inicio" class="transition-colors hover:text-burdeos">{i18n.inicio}</a>
+				</li>
+				<li class="group relative">
+					<a href="/carta/" data-i18n="carta" class="flex items-center gap-1 transition-colors hover:text-burdeos">
+						{i18n.carta}
+						<span aria-hidden="true" class="text-[0.6rem] transition-transform group-hover:rotate-180">▼</span>
+					</a>
+					<ul
+						class="invisible absolute left-1/2 top-full z-50 w-60 -translate-x-1/2 translate-y-2 rounded-lg border border-line bg-cream p-2 opacity-0 shadow-xl shadow-ink/10 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100"
+					>
+						{menuLinks.map((link) => (
+							<li>
+								<a href={link.href} data-i18n={link.key} class="block rounded-md px-3 py-2 text-sm text-ink-soft transition-colors hover:bg-paper-deep hover:text-burdeos">
+									{link.label}
+								</a>
+							</li>
+						))}
+					</ul>
+				</li>
+				<li>
+					<a href={site.ordersUrl} target="_blank" rel="noopener noreferrer" data-i18n="pedidos" class="transition-colors hover:text-burdeos">
+						{i18n.pedidos}
+					</a>
+				</li>
+				<li>
+					<a href={site.reservationsUrl} target="_blank" rel="noopener noreferrer" data-i18n="reservas" class="transition-colors hover:text-burdeos">
+						{i18n.reservas}
+					</a>
+				</li>
+				<li>
+					<a href="/contacto/" data-i18n="contacto" class="transition-colors hover:text-burdeos">{i18n.contacto}</a>
+				</li>
+			</ul>
+
+			<div class="flex items-center gap-3">
+				<div role="group" aria-label={i18n.languageAria} class="flex items-center gap-1 rounded-full border border-line bg-paper p-1">
+					{LANGS.map((code) => (
+						<button
+							type="button"
+							data-lang-btn={code}
+							lang={code}
+							aria-pressed="false"
+							title={LANG_NAMES[code]}
+							class="flex h-8 w-8 items-center justify-center rounded-full opacity-60 transition-all hover:opacity-100 focus-visible:ring-0"
+						>
+							<span aria-hidden="true" class="block h-5 w-7 overflow-hidden rounded-[4px] shadow-sm" set:html={FLAG_SVGS[code]} />
+							<span class="sr-only">{LANG_NAMES[code]}</span>
+						</button>
+					))}
+				</div>
+				<a
+					href={site.reservationsUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					data-i18n="reservas"
+					class="hidden rounded-full bg-burdeos px-5 py-2 text-xs font-semibold tracking-widest text-cream uppercase shadow-md shadow-burdeos/20 transition-all hover:-translate-y-0.5 hover:bg-burdeos-deep sm:inline-block"
+				>
+					{i18n.reservas}
+				</a>
+				<button
+					id="menu-toggle"
+					type="button"
+					aria-controls="mobile-menu"
+					aria-expanded="false"
+					class="inline-flex h-10 w-10 items-center justify-center rounded-md border border-line text-ink lg:hidden"
+				>
+					<span class="sr-only" data-i18n="menu">{i18n.menu}</span>
+					<svg id="menu-icon-open" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+						<path d="M4 7h16M4 12h16M4 17h16" />
+					</svg>
+					<svg id="menu-icon-close" aria-hidden="true" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+						<path d="M6 6l12 12M18 6L6 18" />
+					</svg>
+				</button>
+			</div>
+		</nav>
+
+		<div id="mobile-menu" class="hidden border-t border-line bg-paper lg:hidden">
+			<ul class="mx-auto max-w-6xl space-y-1 px-4 py-4 text-sm font-medium text-ink-soft sm:px-6">
+				<li><a href="/" data-i18n="inicio" class="block rounded-md px-3 py-2 hover:bg-paper-deep">{i18n.inicio}</a></li>
+				<li>
+					<p data-i18n="carta" class="px-3 pt-2 pb-1 text-xs font-semibold tracking-widest text-burdeos uppercase">{i18n.carta}</p>
+					<ul class="space-y-1">
+						{menuLinks.map((link) => (
+							<li>
+								<a href={link.href} data-i18n={link.key} class="block rounded-md px-5 py-2 hover:bg-paper-deep">{link.label}</a>
+							</li>
+						))}
+					</ul>
+				</li>
+				<li>
+					<a href={site.ordersUrl} target="_blank" rel="noopener noreferrer" data-i18n="pedidos" class="block rounded-md px-3 py-2 hover:bg-paper-deep">{i18n.pedidos}</a>
+				</li>
+				<li>
+					<a href={site.reservationsUrl} target="_blank" rel="noopener noreferrer" data-i18n="reservas" class="block rounded-md px-3 py-2 hover:bg-paper-deep">{i18n.reservas}</a>
+				</li>
+				<li><a href="/contacto/" data-i18n="contacto" class="block rounded-md px-3 py-2 hover:bg-paper-deep">{i18n.contacto}</a></li>
+			</ul>
+			<div class="mx-auto max-w-6xl px-4 pb-5 sm:px-6">
+				<p data-i18n="languageAria" class="mb-2 border-t border-line pt-4 text-xs font-semibold tracking-widest text-burdeos uppercase">{i18n.languageAria}</p>
+				<div role="group" aria-label={i18n.languageAria} class="flex items-center gap-2">
+					{LANGS.map((code) => (
+						<button
+							type="button"
+							data-lang-btn={code}
+							lang={code}
+							aria-pressed="false"
+							title={LANG_NAMES[code]}
+							class="flex h-8 w-8 items-center justify-center rounded-full opacity-60 transition-all hover:opacity-100 focus-visible:ring-0"
+						>
+							<span aria-hidden="true" class="block h-5 w-7 overflow-hidden rounded-[4px] shadow-sm" set:html={FLAG_SVGS[code]} />
+							<span class="sr-only">{LANG_NAMES[code]}</span>
+						</button>
+					))}
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+<script>
+	const toggle = document.getElementById('menu-toggle');
+	const menu = document.getElementById('mobile-menu');
+	const iconOpen = document.getElementById('menu-icon-open');
+	const iconClose = document.getElementById('menu-icon-close');
+
+	if (toggle && menu) {
+		toggle.addEventListener('click', () => {
+			const open = menu.classList.toggle('hidden');
+			toggle.setAttribute('aria-expanded', String(!open));
+			iconOpen?.classList.toggle('hidden', !open);
+			iconClose?.classList.toggle('hidden', !open);
+		});
+
+		menu.addEventListener('click', (event) => {
+			if ((event.target as HTMLElement).closest('a')) {
+				menu.classList.add('hidden');
+				toggle.setAttribute('aria-expanded', 'false');
+				iconOpen?.classList.remove('hidden');
+				iconClose?.classList.add('hidden');
+			}
+		});
+	}
+</script>

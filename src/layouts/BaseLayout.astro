@@ -1,0 +1,183 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+import { LANGS, LANG_NAMES, NAV_I18N, type Lang } from '../data/i18n';
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+	lang?: Lang;
+	ogType?: string;
+}
+
+const {
+	title = site.title,
+	description = site.description,
+	image = '/img/hero/home-hero.jpg',
+	lang = 'es',
+	ogType = 'website',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, site.url);
+const ogImage = new URL(image, site.url);
+
+const ogLocale: Record<Lang, string> = {
+	es: 'es_ES',
+	en: 'en_US',
+	fr: 'fr_FR',
+	it: 'it_IT',
+	pt: 'pt_PT',
+};
+
+const siteI18n = structurizeSiteI18n();
+function structurizeSiteI18n() {
+	const out: Record<string, Record<string, string>> = {};
+	for (const l of LANGS) out[l] = NAV_I18N[l];
+	return out;
+}
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'Restaurant',
+	name: site.name,
+	image: new URL('/img/hero/home-hero.jpg', site.url),
+	url: site.url,
+	telephone: site.phone.tel,
+	email: site.email,
+	servesCuisine: ['Segoviana', 'Tradicional', 'Vegetariana', 'Sin gluten'],
+	priceRange: '€€',
+	address: {
+		'@type': 'PostalAddress',
+		streetAddress: site.address.street,
+		postalCode: site.address.postalCode,
+		addressLocality: site.address.city,
+		addressCountry: site.address.countryCode,
+	},
+	openingHoursSpecification: [
+		{
+			'@type': 'OpeningHoursSpecification',
+			dayOfWeek: ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+			opens: '12:00',
+			closes: '16:00',
+		},
+		{
+			'@type': 'OpeningHoursSpecification',
+			dayOfWeek: ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+			opens: '20:00',
+			closes: '00:00',
+		},
+	],
+	acceptsReservations: site.reservationsUrl,
+};
+---
+
+<html lang={lang} class="grain">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<link rel="canonical" href={canonical.href} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+			rel="stylesheet"
+		/>
+		<title>{title}</title>
+		<meta name="description" content={description} />
+
+		<meta property="og:type" content={ogType} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical.href} />
+		<meta property="og:image" content={ogImage.href} />
+		<meta property="og:locale" content={ogLocale[lang]} />
+		<meta property="og:site_name" content={site.name} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage.href} />
+
+		<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+	</head>
+	<body class="flex min-h-screen flex-col">
+		<a
+			href="#content"
+			class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-md focus:bg-burdeos focus:px-4 focus:py-2 focus:text-white"
+		>
+			<span data-i18n="skip">{NAV_I18N[lang].skip}</span>
+		</a>
+		<Header lang={lang} />
+		<main id="content" class="flex-1">
+			<slot />
+		</main>
+		<Footer lang={lang} />
+
+		<script type="application/json" id="site-i18n" set:html={JSON.stringify(siteI18n)}></script>
+	</body>
+</html>
+
+<script>
+	const ALL_LANGS = ['es', 'en', 'fr', 'it', 'pt'];
+	const DEFAULT_LANG = 'es';
+
+	type UiMap = Record<string, Record<string, string>> | null;
+
+	const $site: UiMap = JSON.parse((document.getElementById('site-i18n') as HTMLElement | null)?.textContent ?? 'null');
+	const $page: UiMap = JSON.parse((document.getElementById('carta-i18n') as HTMLElement | null)?.textContent ?? 'null');
+	const ui: Record<string, Record<string, string>> = {};
+	if ($site) Object.assign(ui, $site);
+	if ($page) {
+		for (const l of Object.keys($page)) {
+			if (!ui[l]) ui[l] = {};
+			Object.assign(ui[l], $page[l]);
+		}
+	}
+
+	let lang = localStorage.getItem('pasapan.lang') ?? DEFAULT_LANG;
+	if (!ALL_LANGS.includes(lang)) lang = DEFAULT_LANG;
+
+	const langButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-lang-btn]'));
+	const langNodes = Array.from(document.querySelectorAll<HTMLElement>('[data-lang]'));
+	const i18nNodes = Array.from(document.querySelectorAll<HTMLElement>('[data-i18n]'));
+	const ariaNodes = Array.from(document.querySelectorAll<HTMLElement>('[data-i18n-aria]'));
+
+	function applyLang(next: string) {
+		lang = next;
+		localStorage.setItem('pasapan.lang', next);
+		document.documentElement.lang = next;
+		for (const node of langNodes) {
+			const on = node.getAttribute('data-lang') === next;
+			node.hidden = !on;
+			node.toggleAttribute('inert', !on);
+		}
+		for (const node of i18nNodes) {
+			const text = ui[next]?.[node.getAttribute('data-i18n')!];
+			if (text) node.textContent = text;
+		}
+		for (const node of ariaNodes) {
+			const text = ui[next]?.[node.getAttribute('data-i18n-aria')!];
+			if (text) node.setAttribute('aria-label', text);
+		}
+		for (const b of langButtons) {
+			const active = b.getAttribute('data-lang-btn') === next;
+			b.setAttribute('aria-pressed', String(active));
+			b.classList.toggle('ring-2', active);
+			b.classList.toggle('ring-offset-2', active);
+			b.classList.toggle('ring-burdeos', active);
+			b.classList.toggle('opacity-100', active);
+			b.classList.toggle('opacity-60', !active);
+		}
+	}
+
+	for (const b of langButtons) {
+		b.addEventListener('click', () => applyLang(b.getAttribute('data-lang-btn')!));
+	}
+
+	applyLang(lang);
+</script>

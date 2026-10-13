@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import PortalRestEmbed from '../components/PortalRestEmbed.astro';
+import { site } from '../data/site';
+---
+<BaseLayout
+	title="Pedir online · Restaurante Pasapán · Segovia"
+	description="Pide online en el Restaurante Pasapán de Segovia. Recoge tu pedido o llámanos al 921 70 10 06. Cocina tradicional del siglo XXI lista para llevar."
+>
+	<PageHero
+		title="Pide para recoger"
+		eyebrow="Pedidos Online"
+		description="Nuestros platos viajan bien. Prepara tu pedido con la carta en pantalla y pásate a recogerlo por la cocina."
+		image="/img/restaurant/platos.jpg"
+	/>
+
+	<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+		<div class="mb-10 flex flex-col items-center gap-4 rounded-3xl border border-line bg-cream p-8 text-center">
+			<h2 class="font-display text-2xl font-medium text-ink">¿Listo para pedir?</h2>
+			<p class="max-w-xl text-sm leading-relaxed text-ink-soft">
+				Abre el panel de pedidos de PortalRest a pantalla completa para ver la carta y completar tu pedido. También puedes llamarnos y recogerlo cuando esté listo.
+			</p>
+			<div class="flex flex-wrap items-center justify-center gap-4">
+				<a
+					href={site.ordersUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="inline-flex items-center gap-2 rounded-full bg-burdeos px-8 py-3 text-xs font-semibold tracking-widest text-cream uppercase shadow-md shadow-burdeos/20 transition-all hover:-translate-y-0.5 hover:bg-burdeos-deep"
+				>
+					Pedir ahora
+					<span aria-hidden="true">→</span>
+				</a>
+				<a href={`tel:${site.phone.tel}`} class="inline-flex items-center gap-2 rounded-full border border-line bg-paper px-8 py-3 text-xs font-semibold tracking-widest text-ink-soft uppercase transition-all hover:text-burdeos">
+					Llamar al +{site.phone.tel.replace('+', '')}
+				</a>
+			</div>
+		</div>
+
+		<h2 class="font-display text-xl font-medium text-ink">Pedido desde esta pantalla</h2>
+		<p class="mt-1 text-sm text-ink-soft">Usa el panel inferior para elegir tus platos. En pantallas pequeñas usa el botón superior para abrirlo a pantalla completa.</p>
+		<div class="mt-5">
+			<PortalRestEmbed fullscreen={false} />
+		</div>
+
+		<aside class="mt-12 rounded-3xl border border-dashed border-olive/50 bg-olive/10 p-6 sm:p-8">
+			<h2 class="font-display text-lg font-medium text-ink">En tu mesa, con QR</h2>
+			<p class="mt-2 text-sm leading-relaxed text-ink-soft">
+				Próximamente podrás consultar la carta y hacer tu pedido directamente desde la mesa escaneando el código QR que encontrarás en ella. Esta sección está preparada para conectarla al sistema de HIOPOS cuando esté activo.
+			</p>
+		</aside>
+	</section>
+</BaseLayout>

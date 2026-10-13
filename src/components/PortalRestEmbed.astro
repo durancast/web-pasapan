@@ -1,0 +1,20 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+	src?: string;
+	title?: string;
+	fullscreen?: boolean;
+}
+const { src = site.ordersUrl, title = 'Pedido online de Restaurante Pasapán', fullscreen = false } = Astro.props;
+---
+<div class="overflow-hidden rounded-3xl border border-line bg-cream shadow-lg shadow-ink/5">
+	<iframe
+		src={src}
+		title={title}
+		class:list={['w-full border-0', fullscreen ? 'h-[76vh] min-h-[600px]' : 'h-[2200px] xl:h-[1900px]']}
+		loading={fullscreen ? 'eager' : 'lazy'}
+		referrerpolicy="strict-origin-when-cross-origin"
+		allow="payment"
+	></iframe>
+</div>

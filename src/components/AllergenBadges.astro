@@ -1,0 +1,24 @@
+---
+import { allergenInfo, type AllergenKey } from '../data/allergens';
+
+interface Props {
+	keys: AllergenKey[];
+	class?: string;
+}
+const { keys, class: className = '' } = Astro.props;
+
+const labels = keys.map((k) => allergenInfo(k).label);
+---
+<ul
+	class:list={['flex flex-wrap items-center gap-1.5', className]}
+	aria-label={labels.length ? `Alergenos: ${labels.join(', ')}` : 'Sin alérgenos declarados'}
+>
+	{keys.map((key) => {
+		const a = allergenInfo(key);
+		return (
+			<li>
+				<img src={a.icon} alt="" width={22} height={22} class="h-[22px] w-[22px] rounded-[4px] border border-line/70" loading="lazy" />
+			</li>
+		);
+	})}
+</ul>

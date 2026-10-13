@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { site } from '../data/site';
+import menu from '../data/menu.json';
+import { formatPrice } from '../data/site';
+
+interface Highlight {
+	id: string;
+	image: string;
+	name: string;
+	price: number;
+}
+
+const highlightIds = ['torrezno-revolcona', 'secreto-iberico', 'tarta-queso-violetas'];
+const highlights: Highlight[] = highlightIds
+	.map((id) => menu.dishes.find((d) => d.id === id))
+	.filter((d): d is (typeof menu.dishes)[number] => Boolean(d))
+	.map((d) => ({ id: d.id, image: d.image, name: d.name.es, price: d.price }));
+---
+<BaseLayout
+	title="Restaurante Pasapán · Cocina Tradicional del Siglo XXI · Segovia"
+	description="Restaurante en el casco histórico de Segovia. Cocina tradicional, artesana y creativa con producto de proximidad. Reserva tu mesa en Pasapán."
+>
+	<!-- Hero -->
+	<section class="relative flex min-h-[88svh] items-end overflow-hidden bg-ink text-paper">
+		<img src="/img/hero/home-hero.jpg" alt="Interior del Restaurante Pasapán en Segovia" class="absolute inset-0 h-full w-full object-cover" loading="eager" decoding="async" />
+		<div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-ink/20" aria-hidden="true"></div>
+		<div class="relative mx-auto w-full max-w-6xl px-4 pt-24 pb-20 sm:px-6 sm:pb-24">
+			<p class="reveal text-xs font-semibold tracking-[0.32em] text-gold-deep uppercase" style="animation-delay:0ms">Cocina tradicional del siglo XXI</p>
+			<h1 class="reveal mt-5 max-w-3xl font-display text-5xl leading-[1.02] font-medium sm:text-7xl" style="animation-delay:120ms">
+				Una experiencia<br />para tus sentidos
+			</h1>
+			<div class="reveal mt-8 flex flex-wrap items-center gap-4" style="animation-delay:240ms">
+				<a href="/carta/" class="rounded-full bg-burdeos px-7 py-3 text-xs font-semibold tracking-widest text-cream uppercase shadow-lg shadow-burdeos/30 transition-all hover:-translate-y-0.5 hover:bg-burdeos-deep">
+					Ver la carta
+				</a>
+				<a href={site.reservationsUrl} target="_blank" rel="noopener noreferrer" class="rounded-full border border-paper/40 px-7 py-3 text-xs font-semibold tracking-widest text-paper uppercase backdrop-blur-sm transition-colors hover:border-paper hover:bg-paper hover:text-ink">
+					Reservar mesa
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Historia -->
+	<section class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+		<div class="grid items-center gap-12 lg:grid-cols-[3fr_2fr]">
+			<div>
+				<p class="reveal text-xs font-semibold tracking-[0.28em] text-gold-deep uppercase">Restaurante Segovia</p>
+				<h2 class="reveal mt-4 font-display text-3xl leading-tight font-medium text-ink sm:text-5xl" style="animation-delay:80ms">Descubre Nuestra Historia</h2>
+				<div class="reveal mt-8 space-y-5 leading-relaxed text-ink-soft" style="animation-delay:160ms">
+					<p>
+						<span class="font-semibold text-ink">Pasapán</span> es un <em class="font-display text-ink">restaurante</em> que aúna <strong>tradición, elegancia y modernidad</strong>.
+					</p>
+					<p>Un espacio gastronómico donde confluyen la ilusión, el trabajo y la pasión por la restauración.</p>
+					<p><strong>Cocina e innovación</strong> en pleno <strong>casco histórico de Segovia</strong>.</p>
+				</div>
+				<a href="/carta/" class="reveal group mt-10 inline-flex items-center gap-2 text-sm font-semibold tracking-widest text-burdeos uppercase transition-colors hover:text-burdeos-deep" style="animation-delay:240ms">
+					Conoce nuestra carta
+					<span aria-hidden="true" class="transition-transform group-hover:translate-x-1">→</span>
+				</a>
+			</div>
+			<div class="reveal relative" style="animation-delay:200ms">
+				<img src="/img/restaurant/logo-pared.jpg" alt="Logotipo de Pasapán sobre la pared del restaurante" loading="lazy" decoding="async" width={800} height={600} class="aspect-[4/5] w-full rounded-2xl border border-line object-cover shadow-xl shadow-ink/10" />
+				<img src="/img/restaurant/mesa-cuadrada.jpg" alt="Mesa del restaurante con mantel y vajilla" loading="lazy" decoding="async" width={700} height={500} class="absolute -bottom-10 -left-6 hidden aspect-[4/3] w-1/2 rounded-2xl border-4 border-paper object-cover shadow-2xl sm:block" />
+			</div>
+		</div>
+	</section>
+
+	<!-- Saborea lo bueno -->
+	<section class="bg-paper-deep/50">
+		<div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
+			<div class="grid items-center gap-12 lg:grid-cols-2">
+				<img src="/img/restaurant/interior.jpg" alt="Interior acogedor del restaurante Pasapán" loading="lazy" decoding="async" width={900} height={640} class="order-2 aspect-[4/3] w-full rounded-2xl border border-line object-cover shadow-lg lg:order-1" />
+				<div class="order-1 text-center lg:order-2 lg:text-left">
+					<div class="text-center lg:text-left">
+						<p class="text-xs font-semibold tracking-[0.28em] text-gold-deep uppercase">Con buen gusto</p>
+						<h2 class="mt-3 font-display text-3xl leading-tight font-medium text-ink sm:text-4xl">Saborea lo bueno</h2>
+						<div class="rule-gold mx-auto mt-5 w-24 lg:mx-0"></div>
+					</div>
+
+					<div class="mt-10">
+						<h3 class="font-display text-2xl font-medium text-ink">Equipo humano</h3>
+						<p class="mt-4 leading-relaxed text-ink-soft">
+							Un grupo de diez profesionales del sector de la hostelería preparados para hacerle sentir como en casa, ofreciendo un trato cercano, amable y personalizado.
+						</p>
+						<p class="mt-3 leading-relaxed text-ink-soft">
+							Nuestra filosofía se basa en el trabajo constante para no dejar de sorprenderle.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Gastronomía artesana -->
+	<section class="bg-ink text-paper">
+		<div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+			<div class="grid items-center gap-12 lg:grid-cols-[3fr_2fr]">
+				<div>
+					<p class="text-xs font-semibold tracking-[0.28em] text-gold-deep uppercase">El plato perfecto · Gastronomía artesana</p>
+					<h2 class="mt-4 font-display text-3xl leading-tight font-medium sm:text-5xl">Del producto de nuestra tierra a tu mesa</h2>
+					<p class="mt-8 leading-relaxed text-paper/80">
+						Una propuesta gastronómica elaborada, artesana y creativa, con influencias de cocinas del mundo pero, sobre todo, una cocina de calidad, utilizando materias primas de la tierra de Segovia, producto de proximidad, ecológico y respetuoso con el medio ambiente.
+					</p>
+					<p class="mt-6 leading-relaxed text-paper/80">
+						Formamos parte de la marca <strong class="text-cream">Alimentos de Segovia</strong>. Elaboramos platos con alimentos artesanos, productos naturales y auténticos hechos en Segovia apostando por el consumo de cercanía, por el producto de nuestra tierra.
+					</p>
+					<div class="mt-10 flex flex-wrap items-center gap-5">
+						<a href={site.reservationsUrl} target="_blank" rel="noopener noreferrer" class="rounded-full bg-gold px-7 py-3 text-xs font-semibold tracking-widest text-ink uppercase transition-all hover:-translate-y-0.5 hover:bg-gold/90">
+							Haz una reserva
+						</a>
+						<a href="/carta/" class="text-xs font-semibold tracking-widest text-paper/80 uppercase underline-offset-4 hover:text-paper hover:underline">Ver carta</a>
+					</div>
+				</div>
+				<div class="flex flex-col gap-6">
+					<img src="/img/restaurant/platos.jpg" alt="Platos elaborados del Restaurante Pasapán" loading="lazy" decoding="async" width={800} height={600} class="aspect-[4/3] w-full rounded-2xl border border-paper/10 object-cover shadow-2xl" />
+					<img src="/img/logo/alimentos-de-segovia.png" alt="Alimentos de Segovia" loading="lazy" decoding="async" width={600} height={200} class="mx-auto h-20 w-auto drop-shadow-lg" />
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Destacados de la carta -->
+	<section class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
+		<div class="text-center">
+			<p class="text-xs font-semibold tracking-[0.28em] text-gold-deep uppercase">Destacados de nuestra carta</p>
+			<h2 class="mt-3 font-display text-3xl leading-tight font-medium text-ink sm:text-4xl">Un paseo por la carta</h2>
+			<div class="rule-gold mx-auto mt-5 w-24"></div>
+		</div>
+		<div class="mt-12 grid gap-6 md:grid-cols-3">
+			{highlights.map((dish) => (
+				<a href="/carta" class="group flex flex-col overflow-hidden rounded-2xl border border-line bg-cream shadow-sm shadow-ink/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-ink/10">
+					<figure class="aspect-[4/3] overflow-hidden bg-paper-deep">
+						<img src={dish.image} alt={dish.name} loading="lazy" decoding="async" width={640} height={480} class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+					</figure>
+					<div class="flex flex-1 flex-col justify-between gap-3 p-5">
+						<h3 class="font-display text-lg leading-snug font-medium text-ink">{dish.name}</h3>
+						<div class="flex items-center justify-between gap-3">
+							<span class="font-display text-xl font-semibold tracking-wide text-burdeos">{formatPrice(dish.price)}</span>
+							<span class="text-xs font-semibold tracking-widest text-burdeos uppercase">Ver en la carta →</span>
+						</div>
+					</div>
+				</a>
+			))}
+		</div>
+	</section>
+
+	<CtaBanner />
+</BaseLayout>

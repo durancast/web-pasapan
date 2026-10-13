@@ -1,0 +1,20 @@
+# Redirecciones permanentes (301) — Cloudflare Pages
+# Migración desde WordPress antiguo
+
+/carta-pasapan        /carta  301
+/carta-pasapan/       /carta  301
+/carta-veggie         /carta  301
+/carta-veggie/        /carta  301
+/carta-sin-gluten     /carta  301
+/carta-sin-gluten/    /carta  301
+/restaurant-menu      /carta  301
+/restaurant-menu/     /carta  301
+
+# Páginas legales renombradas
+
+/aviso-legal-y-terminos-de-uso-de-la-web  /aviso-legal  301
+/aviso-legal-y-terminos-de-uso-de-la-web/ /aviso-legal  301
+/politica-de-privacidad                   /privacidad   301
+/politica-de-privacidad/                  /privacidad   301
+/politica-de-cookies                      /cookies      301
+/politica-de-cookies/                     /cookies      301

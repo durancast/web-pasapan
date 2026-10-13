@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import LegendStory from '../components/LegendStory.astro';
+import MenuCard from '../components/MenuCard.astro';
+import { allergenCatalog } from '../data/allergens';
+import menu from '../data/menu.json';
+
+interface MenuDish {
+	id: string;
+	category: string;
+	section: string;
+	price: number;
+	image: string;
+	allergens: string[];
+	veg?: 'veggie' | 'vegano';
+	badge?: Record<string, string>;
+	note?: Record<string, string>;
+	name: Record<string, string>;
+	description: Record<string, string>;
+}
+
+const langs: string[] = menu.langs;
+const sections = ['entrantes', 'principales', 'postres'];
+const categories = ['general', 'veggie', 'sin-gluten'];
+
+const ui: Record<string, Record<string, string>> = {};
+for (const lang of langs) {
+	const u = menu.ui[lang as keyof typeof menu.ui];
+	ui[lang] = {
+		menuTitle: u.menuTitle,
+		'filters.general': u.filters.general,
+		'filters.veggie': u.filters.veggie,
+		'filters.sin-gluten': u.filters['sin-gluten'],
+		'sections.entrantes': u.sections.entrantes,
+		'sections.principales': u.sections.principales,
+		'sections.postres': u.sections.postres,
+		categoriesLabel: u.categoriesLabel,
+		allergenLegend: u.allergenLegend,
+		'vegTags.veggie': u.vegTags.veggie,
+		'vegTags.vegano': u.vegTags.vegano,
+		badge: u.badge,
+		glutenNote: u.glutenNote,
+	};
+}
+
+const dishes = menu.dishes as unknown as MenuDish[];
+const legendLang = 'es';
+---
+<BaseLayout
+	title="Carta Pasapán · Restaurante Pasapán · Segovia"
+	description="Carta del Restaurante Pasapán en Segovia: carta general, veggie y sin gluten. Cocina tradicional del siglo XXI con producto local. Selecciona tu idioma y tu carta."
+>
+	<PageHero
+		title="Carta Pasapán"
+		eyebrow="Cocina tradicional del siglo XXI"
+		description="Platos elaborados con producto de la tierra de Segovia: de la parrilla al plato más creativo, en versión general, veggie o sin gluten."
+		image="/img/hero/carta-header.jpg"
+	/>
+
+	<section class="mx-auto max-w-6xl px-4 sm:px-6">
+		<!-- Barra de control: secciones + filtros -->
+		<div class="sticky top-[105px] z-40 -mx-4 border-b border-line bg-paper/90 px-4 py-3 backdrop-blur-md sm:-mx-6 sm:px-6">
+			<div class="nav flex items-center gap-5 overflow-x-auto text-xs font-semibold tracking-[0.14em] text-ink-soft uppercase">
+				{sections.map((s) => (
+					<a href={`#${s}`} data-i18n={`sections.${s}`} class="whitespace-nowrap transition-colors hover:text-burdeos"></a>
+				))}
+			</div>
+			<div role="group" aria-label="Elegir carta" data-i18n-aria="categoriesLabel" class="mt-3 flex flex-wrap gap-2">
+				{categories.map((c) => (
+					<button
+						type="button"
+						data-category-btn={c}
+						class="inline-flex items-center gap-2 rounded-full border border-line bg-paper px-4 py-1.5 text-xs font-semibold tracking-widest text-ink-soft uppercase transition-all"
+					>
+						<span data-i18n={`filters.${c}`}></span>
+					</button>
+				))}
+			</div>
+		</div>
+
+		<div class="mt-14">
+			<LegendStory lang={legendLang} />
+		</div>
+
+		<!-- Secciones de platos -->
+		{sections.map((section) => (
+			<section id={section} data-section-block={section} class="mt-14 scroll-mt-44">
+				<div class="flex flex-wrap items-end justify-between gap-4 border-b border-line pb-6">
+					<h2 class="font-display text-3xl font-medium text-ink sm:text-4xl">
+						<span aria-hidden="true" class="mr-3 text-gold">✦</span>
+						<span data-i18n={`sections.${section}`}></span>
+					</h2>
+				</div>
+				<div class="mt-6 grid gap-5">
+					{dishes
+						.filter((d) => d.section === section)
+						.map((dish) => (
+							<MenuCard dish={dish} langs={langs} />
+						))}
+				</div>
+			</section>
+		))}
+
+		<!-- Aviso sin gluten -->
+		<p data-cat-note="sin-gluten" hidden class="mt-12 rounded-xl border border-dashed border-olive/50 bg-olive/10 px-5 py-4 text-sm leading-relaxed text-ink-soft italic" data-i18n="glutenNote">
+		</p>
+
+		<!-- Leyenda de alérgenos -->
+		<div class="mt-14 rounded-3xl border border-line bg-cream p-6 sm:p-8">
+			<h2 class="font-display text-xl font-medium text-ink">
+				<span aria-hidden="true" class="mr-2 text-gold">✦</span>
+				<span data-i18n="allergenLegend"></span>
+			</h2>
+			<ul class="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
+				{allergenCatalog.map((a) => (
+					<li class="flex items-center gap-2 text-sm text-ink-soft">
+						<img src={a.icon} alt="" width={22} height={22} loading="lazy" decoding="async" class="h-[22px] w-[22px] rounded-[4px] border border-line/70" />
+						{a.label}
+					</li>
+				))}
+			</ul>
+		</div>
+	</section>
+</BaseLayout>
+
+<script type="application/json" id="carta-i18n" set:html={JSON.stringify(ui)}>
+</script>
+
+<script>
+	const DEFAULT_CATEGORY = 'general';
+	const categories = ['general', 'veggie', 'sin-gluten'];
+
+	let category = localStorage.getItem('pasapan.category') ?? DEFAULT_CATEGORY;
+	if (!categories.includes(category)) category = DEFAULT_CATEGORY;
+
+	const fromHash = location.hash.replace('#', '');
+	if (fromHash && categories.includes(fromHash)) {
+		category = fromHash;
+		history.replaceState(null, '', `${location.pathname}${location.search}`);
+	}
+
+	const categoryButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-category-btn]'));
+	const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-category]'));
+	const sectionBlocks = Array.from(document.querySelectorAll<HTMLElement>('[data-section-block]'));
+	const catNotes = Array.from(document.querySelectorAll<HTMLElement>('[data-cat-note]'));
+
+	function applyCategory(next: string) {
+		category = next;
+		localStorage.setItem('pasapan.category', next);
+		for (const card of cards) {
+			const on = card.getAttribute('data-category') === next;
+			card.hidden = !on;
+			card.toggleAttribute('inert', !on);
+		}
+		for (const block of sectionBlocks) {
+			const visible = Array.from(block.querySelectorAll<HTMLElement>('[data-category]')).some((c) => !c.hidden);
+			block.hidden = !visible;
+			block.toggleAttribute('inert', !visible);
+		}
+		for (const note of catNotes) note.hidden = note.getAttribute('data-cat-note') !== next;
+		for (const b of categoryButtons) {
+			const active = b.getAttribute('data-category-btn') === next;
+			b.setAttribute('aria-pressed', String(active));
+			b.classList.toggle('bg-burdeos', active);
+			b.classList.toggle('text-cream', active);
+			b.classList.toggle('border-burdeos', active);
+			b.classList.toggle('border-line', !active);
+			b.classList.toggle('text-ink-soft', !active);
+			b.classList.toggle('bg-paper', !active);
+		}
+	}
+
+	for (const b of categoryButtons) {
+		b.addEventListener('click', () => applyCategory(b.getAttribute('data-category-btn')!));
+	}
+
+	applyCategory(category);
+</script>

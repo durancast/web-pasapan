@@ -1,0 +1,30 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+	src?: string;
+	title?: string;
+	height?: string;
+	openLabel?: string;
+	openText?: string;
+}
+const { src = site.reservationsUrl, title = 'Sistema de reservas de Restaurante Pasapán', openLabel = '', openText = 'abrir en una nueva pestaña' } = Astro.props;
+---
+<div class="overflow-hidden rounded-3xl border border-line bg-cream shadow-lg shadow-ink/5">
+	<iframe
+		src={src}
+		title={title}
+		class="h-[2100px] w-full border-0 sm:h-[2300px] md:h-[2000px] lg:h-[1800px] xl:h-[1600px]"
+		loading="lazy"
+		referrerpolicy="strict-origin-when-cross-origin"
+		allow="payment; clipboard-write"
+	></iframe>
+</div>
+{openLabel ? (
+	<p class="mt-4 text-center text-sm text-ink-soft">
+		{openLabel}{' '}
+		<a href={src} target="_blank" rel="noopener noreferrer" class="font-semibold text-burdeos hover:underline">
+			{openText}
+		</a>
+	</p>
+) : null}

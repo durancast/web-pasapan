@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalPage from '../components/LegalPage.astro';
+import { condicionesCompra } from '../data/legal';
+---
+<BaseLayout title={`Términos y Condiciones de Compra · ${'Restaurante Pasapán'}`} description="Términos y condiciones de compra de los pedidos online de Restaurante Pasapán (Segovia).">
+	<LegalPage doc={condicionesCompra} />
+</BaseLayout>

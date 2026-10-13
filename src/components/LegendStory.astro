@@ -1,0 +1,47 @@
+---
+import { legendEs, legendEn, type Legend } from '../data/legend';
+
+interface Props {
+	lang?: 'es' | 'en';
+	headingLevel?: 1 | 2 | 3;
+}
+const { lang = 'es', headingLevel = 2 } = Astro.props;
+const legend: Legend = lang === 'es' ? legendEs : legendEn;
+
+const chapter = {
+	es: ['I', 'II', 'III', 'IV'],
+	en: ['I', 'II', 'III', 'IV'],
+}[lang];
+---
+<section class="mx-auto max-w-3xl px-4 py-16 sm:px-6" aria-label={legend.title}>
+	<div class="text-center">
+		<p class="text-xs font-semibold tracking-[0.28em] text-gold-deep uppercase">{lang === 'es' ? 'Un cuento entre plato y plato' : 'A tale between courses'}</p>
+		{headingLevel === 1 ? (
+			<h1 class="mt-4 font-display text-3xl leading-tight font-medium text-ink sm:text-4xl">{legend.title}</h1>
+		) : (
+			<h2 class="mt-4 font-display text-3xl leading-tight font-medium text-ink sm:text-4xl">{legend.title}</h2>
+		)}
+		<div class="rule-gold mx-auto mt-6 w-24"></div>
+	</div>
+
+	<div class="mt-14 space-y-12">
+		{legend.parts.map((part, i) => (
+			<article class="grid gap-6 sm:grid-cols-[auto_1fr] sm:gap-8">
+				<div class="flex items-start gap-4">
+					<span class="font-display text-5xl leading-none font-light text-paper-deep sm:text-6xl" aria-hidden="true">{chapter[i]}</span>
+					<div class="hidden h-px w-8 translate-y-8 bg-sand sm:block" aria-hidden="true"></div>
+				</div>
+				<div>
+					<p class="text-xs font-semibold tracking-[0.24em] text-burdeos uppercase">{part.title}</p>
+					<div class="mt-3 space-y-3">
+						{part.text.map((p, j) => (
+							<p class:list={['leading-relaxed', j === 0 ? 'font-display text-lg text-ink' : 'text-sm text-ink-soft']}>
+								{p}
+							</p>
+						))}
+					</div>
+				</div>
+			</article>
+		))}
+	</div>
+</section>

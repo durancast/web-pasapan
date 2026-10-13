@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalPage from '../components/LegalPage.astro';
+import { politicaCookies } from '../data/legal';
+---
+<BaseLayout title={`Cookies · ${'Restaurante Pasapán'}`} description="Política de cookies de Restaurante Pasapán (Segovia): qué son, qué tipos se utilizan y cómo configurarlas.">
+	<LegalPage doc={politicaCookies} />
+	<div class="mx-auto max-w-3xl px-4 pb-16 sm:px-6">
+		<figure class="rounded-2xl border border-line bg-cream p-6">
+			<img src="/img/logo/cookies-table.jpg" alt="Tabla detallada de las cookies utilizadas en la web de Restaurante Pasapán" width={872} height={1024} loading="lazy" decoding="async" class="w-full rounded-xl border border-line" />
+		</figure>
+	</div>
+</BaseLayout>

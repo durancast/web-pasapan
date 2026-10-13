@@ -1,0 +1,41 @@
+---
+import { formatPrice } from '../data/site';
+import type { DrinkCategory } from '../data/drinks';
+
+interface Props {
+	title: string;
+	categories: DrinkCategory[];
+}
+const { title, categories } = Astro.props;
+---
+<div class="mb-10">
+	<h3 class="font-display text-2xl font-medium text-ink">{title}</h3>
+	<div class="rule-gold mt-4 w-16"></div>
+
+	<div class="mt-8 grid gap-x-10 gap-y-8 md:grid-cols-2">
+		{categories.map((category) => (
+			<section>
+				<p class="text-xs font-semibold tracking-[0.2em] text-olive uppercase">{category.title}</p>
+				<div class="mt-3 space-y-6">
+					{category.groups.map((group) => (
+						<div>
+							<p class="text-xs font-medium tracking-widest text-bark uppercase">{group.label}</p>
+							<ul class="mt-2 divide-y divide-line/60">
+								{group.items.map((item) => (
+									<li class="flex items-baseline gap-2 py-2 text-sm">
+										<span class="text-ink-soft">
+											{item.name}
+											{item.note ? <span class="text-bark"> ({item.note})</span> : null}
+										</span>
+										<span class="mx-1 flex-1 border-b border-dotted border-sand" aria-hidden="true"></span>
+										<span class="font-medium whitespace-nowrap text-burdeos">{formatPrice(item.price)}</span>
+									</li>
+								))}
+							</ul>
+						</div>
+					))}
+				</div>
+			</section>
+		))}
+	</div>
+</div>

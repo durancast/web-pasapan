@@ -1,0 +1,1356 @@
+{
+	"langs": [
+		"es",
+		"en",
+		"fr",
+		"it",
+		"pt"
+	],
+	"defaultLang": "es",
+	"ui": {
+		"es": {
+			"menuTitle": "Nuestra carta",
+			"filters": {
+				"general": "Carta General",
+				"veggie": "Carta Veggie",
+				"sin-gluten": "Carta Sin Gluten"
+			},
+			"sections": {
+				"entrantes": "Entrantes",
+				"principales": "Principales",
+				"postres": "Postres"
+			},
+			"categoriesLabel": "Elegir carta",
+			"languageLabel": "Elegir idioma",
+			"allergenLegend": "Alérgenos",
+			"allergenNone": "Sin alérgenos declarados",
+			"vegTags": {
+				"veggie": "Vegetariano",
+				"vegano": "Vegano"
+			},
+			"badge": "Fuera de carta",
+			"glutenNote": "* Los platos de esta carta no contienen gluten pero al utilizar en la cocina otros productos con gluten no podemos garantizar que no exista una contaminación cruzada."
+		},
+		"en": {
+			"menuTitle": "Our menu",
+			"filters": {
+				"general": "Main Menu",
+				"veggie": "Veggie Menu",
+				"sin-gluten": "Gluten-free Menu"
+			},
+			"sections": {
+				"entrantes": "Starters",
+				"principales": "Main courses",
+				"postres": "Desserts"
+			},
+			"categoriesLabel": "Choose menu",
+			"languageLabel": "Choose language",
+			"allergenLegend": "Allergens",
+			"allergenNone": "No declared allergens",
+			"vegTags": {
+				"veggie": "Vegetarian",
+				"vegano": "Vegan"
+			},
+			"badge": "Off-menu",
+			"glutenNote": "* These dishes contain no gluten, but because other gluten-containing products are used in the kitchen we cannot guarantee there is no cross-contamination."
+		},
+		"fr": {
+			"menuTitle": "Notre carte",
+			"filters": {
+				"general": "Carte principale",
+				"veggie": "Carte Végétarienne",
+				"sin-gluten": "Carte Sans Gluten"
+			},
+			"sections": {
+				"entrantes": "Entrées",
+				"principales": "Plats principaux",
+				"postres": "Desserts"
+			},
+			"categoriesLabel": "Choisir la carte",
+			"languageLabel": "Choisir la langue",
+			"allergenLegend": "Allergènes",
+			"allergenNone": "Aucun allergène déclaré",
+			"vegTags": {
+				"veggie": "Végétarien",
+				"vegano": "Végane"
+			},
+			"badge": "Hors carte",
+			"glutenNote": "* Ces plats ne contiennent pas de gluten mais, comme d'autres produits contenant du gluten sont utilisés en cuisine, nous ne pouvons pas garantir qu'il n'y ait pas de contamination croisée."
+		},
+		"it": {
+			"menuTitle": "Il nostro menù",
+			"filters": {
+				"general": "Menù Principale",
+				"veggie": "Menù Vegetariano",
+				"sin-gluten": "Menù Senza Glutine"
+			},
+			"sections": {
+				"entrantes": "Antipasti",
+				"principales": "Portate principali",
+				"postres": "Dolci"
+			},
+			"categoriesLabel": "Scegli il menù",
+			"languageLabel": "Scegli la lingua",
+			"allergenLegend": "Allergeni",
+			"allergenNone": "Nessun allergene dichiarato",
+			"vegTags": {
+				"veggie": "Vegetariano",
+				"vegano": "Vegano"
+			},
+			"badge": "Fuori menù",
+			"glutenNote": "* Questi piatti non contengono glutine ma, poiché in cucina si usano altri prodotti con glutine, non possiamo garantire l'assenza di contaminazione crociata."
+		},
+		"pt": {
+			"menuTitle": "A nossa carta",
+			"filters": {
+				"general": "Carta Principal",
+				"veggie": "Carta Vegetariana",
+				"sin-gluten": "Carta Sem Glúten"
+			},
+			"sections": {
+				"entrantes": "Entradas",
+				"principales": "Pratos principais",
+				"postres": "Sobremesas"
+			},
+			"categoriesLabel": "Escolher carta",
+			"languageLabel": "Escolher idioma",
+			"allergenLegend": "Alergénios",
+			"allergenNone": "Sem alergénios declarados",
+			"vegTags": {
+				"veggie": "Vegetariano",
+				"vegano": "Vegano"
+			},
+			"badge": "Fora de carta",
+			"glutenNote": "* Os pratos desta carta não contêm glúten, mas, como na cozinha se usam outros produtos com glúten, não podemos garantir que não exista contaminação cruzada."
+		}
+	},
+	"dishes": [
+		{
+			"id": "ensalada-salmon",
+			"category": "general",
+			"section": "entrantes",
+			"price": 14,
+			"image": "/img/dishes/salmon-marinado.png",
+			"allergens": [
+				"pescado",
+				"soja",
+				"sesamo"
+			],
+			"name": {
+				"es": "Ensalada de salmón marinado al jerez, rabanitos, semillas de sésamo negro, tomatitos cherry y salsa ponzu",
+				"en": "Salad of Jerez-marinated salmon, radishes, black sesame seeds, cherry tomatoes and ponzu sauce",
+				"fr": "Salade de saumon mariné au jerez, radis, graines de sésame noir, tomates cerises et sauce ponzu",
+				"it": "Insalata di salmone marinato al jerez, ravanelli, semi di sesamo nero, pomodorini e salsa ponzu",
+				"pt": "Salada de salmão marinado ao jerez, rabanetes, sementes de sésamo preto, tomate-cereja e molho ponzu"
+			},
+			"description": {
+				"es": "Salmón macerado en jerez con verduras frescas y un toque cítrico.",
+				"en": "Jerez-marinated salmon with fresh vegetables and a citrus touch.",
+				"fr": "Saumon mariné au jerez, légumes frais et touche d'agrumes.",
+				"it": "Salmone marinato al jerez con verdure fresche e un tocco di agrumi.",
+				"pt": "Salmão macerado ao jerez com legumes frescos e um toque cítrico."
+			}
+		},
+		{
+			"id": "ensaladilla-ventresca",
+			"category": "general",
+			"section": "entrantes",
+			"price": 12.5,
+			"image": "/img/dishes/ensaladilla-ventresca.png",
+			"allergens": [
+				"pescado",
+				"huevo",
+				"gluten",
+				"sulfitos"
+			],
+			"badge": {
+				"es": "Fuera de carta",
+				"en": "Off-menu",
+				"fr": "Hors carte",
+				"it": "Fuori menù",
+				"pt": "Fora de carta"
+			},
+			"note": {
+				"es": "Disponible opción sin gluten",
+				"en": "Gluten-free option available",
+				"fr": "Option sans gluten disponible",
+				"it": "Opzione senza glutine disponibile",
+				"pt": "Opção sem glúten disponível"
+			},
+			"name": {
+				"es": "Ensaladilla Pasapán con ventresca de atún y mahonesa de lima y jengibre",
+				"en": "Pasapán-style Russian potato salad with tuna belly and lime & ginger mayonnaise",
+				"fr": "Salade russe Pasapán avec ventrèche de thon et mayonnaise citron vert-gingembre",
+				"it": "Insalatina russa Pasapán con ventresca di tonno e maionese al lime e zenzero",
+				"pt": "Salada russa Pasapán com ventresca de atum e maionese de lima e gengibre"
+			},
+			"description": {
+				"es": "Un clásico reinventado con ventresca y mahonesa cítrica.",
+				"en": "A classic reinvented with tuna belly and citrus mayonnaise.",
+				"fr": "Un classique réinventé avec la ventrèche et une mayonnaise aux agrumes.",
+				"it": "Un classico reinventato con ventresca e maionese agli agrumi.",
+				"pt": "Um clássico reinventado com ventresca e maionese cítrica."
+			}
+		},
+		{
+			"id": "hummus-garbanzos",
+			"category": "general",
+			"section": "entrantes",
+			"price": 12.1,
+			"image": "/img/dishes/hummus.jpg",
+			"allergens": [
+				"gluten",
+				"sesamo"
+			],
+			"note": {
+				"es": "Disponible opción sin gluten y opción veggie",
+				"en": "Gluten-free and veggie options available",
+				"fr": "Options sans gluten et végétarienne disponibles",
+				"it": "Opzioni senza glutine e vegetariane disponibili",
+				"pt": "Opções sem glúten e vegetarianas disponíveis"
+			},
+			"name": {
+				"es": "Hummus de garbanzo de Valseca a las finas hierbas, semillas de sésamo negro y pan pita",
+				"en": "Hummus of Valseca chickpeas with fine herbs, black sesame seeds and pita bread",
+				"fr": "Houmous de pois chiches de Valseca aux fines herbes, graines de sésame noir et pain pita",
+				"it": "Hummus di ceci di Valseca alle erbe aromatiche, semi di sesamo nero e pane pita",
+				"pt": "Húmus de grão-de-bico de Valseca com ervas finas, sementes de sésamo preto e pão pita"
+			},
+			"description": {
+				"es": "Hummus cremoso con hierbas frescas y pita caliente.",
+				"en": "Creamy hummus with fresh herbs and warm pita.",
+				"fr": "Houmous onctueux aux herbes fraîches et pita chaude.",
+				"it": "Hummus cremoso alle erbe fresche e pita calda.",
+				"pt": "Húmus cremoso com ervas frescas e pita quente."
+			}
+		},
+		{
+			"id": "torrezno-revolcona",
+			"category": "general",
+			"section": "entrantes",
+			"price": 14.5,
+			"image": "/img/dishes/torrezno.jpg",
+			"allergens": [
+				"sesamo",
+				"soja"
+			],
+			"name": {
+				"es": "Torrezno de Segovia con patata revolcona y salsa Red Thai",
+				"en": "Segovian crispy pork belly with mashed paprika potato and Red Thai sauce",
+				"fr": "Croustillant de porc de Ségovie, purée de pommes de terre au paprika et sauce Red Thai",
+				"it": "Cotenne croccanti di Segovia con purè di patate al paprika e salsa Red Thai",
+				"pt": "Torresmo de Segóvia com puré de batata e molho Red Thai"
+			},
+			"description": {
+				"es": "Torrezno crujiente, patata con pimentón y toque tailandés.",
+				"en": "Crispy pork belly, paprika potato and a Thai twist.",
+				"fr": "Porc croustillant, pommes de terre au paprika et touche thaïe.",
+				"it": "Maiale croccante, patate al paprika e un tocco thailandese.",
+				"pt": "Porco crocante, batata com pimentão e um toque tailandês."
+			}
+		},
+		{
+			"id": "papas-castellanas",
+			"category": "general",
+			"section": "entrantes",
+			"price": 12.4,
+			"image": "/img/dishes/papas-arrugas.jpg",
+			"allergens": [
+				"gluten",
+				"huevo",
+				"lacteos",
+				"sesamo"
+			],
+			"note": {
+				"es": "Disponible opción sin gluten y opción veggie",
+				"en": "Gluten-free and veggie options available",
+				"fr": "Options sans gluten et végétarienne disponibles",
+				"it": "Opzioni senza glutine e vegetariane disponibili",
+				"pt": "Opções sem glúten e vegetarianas disponíveis"
+			},
+			"name": {
+				"es": "Papas castellanas con tres salsas",
+				"en": "Castilian-style potatoes with three sauces",
+				"fr": "Pommes de terre à la castillane, trois sauces",
+				"it": "Patate alla castigliana con tre salse",
+				"pt": "Batatas à castelhana com três molhos"
+			},
+			"description": {
+				"es": "Patata de la tierra con tres salsas caseras.",
+				"en": "Local potatoes with three homemade sauces.",
+				"fr": "Pommes de terre du terroir avec trois sauces maison.",
+				"it": "Patate del territorio con tre salse fatte in casa.",
+				"pt": "Batata da terra com três molhos caseiros."
+			}
+		},
+		{
+			"id": "croquetas-cecina",
+			"category": "general",
+			"section": "entrantes",
+			"price": 12.5,
+			"image": "/img/dishes/croquetas-cecina.jpg",
+			"allergens": [
+				"gluten",
+				"huevo",
+				"lacteos"
+			],
+			"name": {
+				"es": "Cremosas croquetas de cecina",
+				"en": "Creamy beef jerky croquettes",
+				"fr": "Croquettes crémeuses de cecina",
+				"it": "Cremose crocchette di cecina",
+				"pt": "Cremosas croquetes de cecina"
+			},
+			"description": {
+				"es": "Croquetas artesanas con bechamel muy cremosa.",
+				"en": "Handmade croquettes with a very creamy béchamel.",
+				"fr": "Croquettes artisanales à la béchamel très onctueuse.",
+				"it": "Crocchette fatte a mano con besciamella molto cremosa.",
+				"pt": "Croquetes artesanais com bechamel muito cremosa."
+			}
+		},
+		{
+			"id": "tacos-cochinita",
+			"category": "general",
+			"section": "entrantes",
+			"price": 14.8,
+			"image": "/img/dishes/tacos-cochinita.jpg",
+			"allergens": [
+				"gluten",
+				"lacteos"
+			],
+			"note": {
+				"es": "Disponible opción veggie",
+				"en": "Veggie option available",
+				"fr": "Option végétarienne disponible",
+				"it": "Opzione vegetariana disponibile",
+				"pt": "Opção vegetariana disponível"
+			},
+			"name": {
+				"es": "Tacos de cochinita pibil con salsa sriracha y guacamole (2 und)",
+				"en": "Cochinita pibil tacos with sriracha sauce and guacamole (2 pieces)",
+				"fr": "Tacos de cochinita pibil, sauce sriracha et guacamole (2 pièces)",
+				"it": "Tacos di cochinita pibil con salsa sriracha e guacamole (2 pezzi)",
+				"pt": "Tacos de cochinita pibil com molho sriracha e guacamole (2 un.)"
+			},
+			"description": {
+				"es": "Cerdo marinado al estilo yucateco con guacamole casero.",
+				"en": "Yucatán-style marinated pork with homemade guacamole.",
+				"fr": "Porc mariné à la yucatèque avec guacamole maison.",
+				"it": "Maiale marinato in stile yucateco con guacamole fatto in casa.",
+				"pt": "Porco marinado à moda de Yucatán com guacamole caseiro."
+			}
+		},
+		{
+			"id": "quesadilla-pollo",
+			"category": "general",
+			"section": "entrantes",
+			"price": 14.8,
+			"image": "/img/dishes/quesadilla-pollo.jpg",
+			"allergens": [
+				"gluten",
+				"lacteos",
+				"sulfitos"
+			],
+			"name": {
+				"es": "Quesadilla de pollo de corral al chilindrón",
+				"en": "Free-range chicken quesadilla with 'chilindrón' sauce",
+				"fr": "Quesadilla au poulet fermier, sauce chilindrón",
+				"it": "Quesadilla di pollo ruspante al chilindrón",
+				"pt": "Quesadilla de frango do campo ao chilindrón"
+			},
+			"description": {
+				"es": "Pollo de corral con pimientos y tomate fundido.",
+				"en": "Free-range chicken with peppers and melted tomato.",
+				"fr": "Poulet fermier, poivrons et tomate fondante.",
+				"it": "Pollo ruspante con peperoni e pomodoro filante.",
+				"pt": "Frango do campo com pimentos e tomate fundente."
+			}
+		},
+		{
+			"id": "lasana-ternera",
+			"category": "general",
+			"section": "principales",
+			"price": 14.8,
+			"image": "/img/dishes/lasana-ternera.jpg",
+			"allergens": [
+				"gluten",
+				"huevo",
+				"lacteos"
+			],
+			"name": {
+				"es": "Lasaña de ternera con queso de oveja gratinado",
+				"en": "Veal lasagna with grated sheep cheese",
+				"fr": "Lasagnes de veau au fromage de brebis gratiné",
+				"it": "Lasagne di vitello con formaggio di pecora gratinato",
+				"pt": "Lasanha de vitela com queijo de ovelha gratinado"
+			},
+			"description": {
+				"es": "Lasaña casera con carne de ternera y gratinado de queso.",
+				"en": "Homemade lasagna with veal and a golden cheese top.",
+				"fr": "Lasagnes maison au veau et gratin de fromage.",
+				"it": "Lasagne fatte in casa al vitello con gratinatura di formaggio.",
+				"pt": "Lasanha caseira com carne de vitela e gratinado de queijo."
+			}
+		},
+		{
+			"id": "hamburguesa-segoviana",
+			"category": "general",
+			"section": "principales",
+			"price": 15,
+			"image": "/img/dishes/hamburguesa-segoviana.jpg",
+			"allergens": [
+				"gluten",
+				"huevo",
+				"pescado",
+				"lacteos"
+			],
+			"note": {
+				"es": "Disponible opción sin gluten",
+				"en": "Gluten-free option available",
+				"fr": "Option sans gluten disponible",
+				"it": "Opzione senza glutine disponibile",
+				"pt": "Opção sem glúten disponível"
+			},
+			"name": {
+				"es": "Hamburguesa 100% segoviana con carne de ternera, queso de aquí, cebolla crujiente y salsa de Whisky DYC",
+				"en": "100% Segovian beef burger with local cheese, crispy onions and Whisky DYC sauce",
+				"fr": "Burger 100% ségove : bœuf local, fromage du terroir, oignons croustillants et sauce au whisky DYC",
+				"it": "Hamburger 100% di Segovia con manzo locale, formaggio del territorio, cipolla croccante e salsa al whisky DYC",
+				"pt": "Hambúrguer 100% segoviano com carne de vitela, queijo da terra, cebola crocante e molho de whisky DYC"
+			},
+			"description": {
+				"es": "Ternera segoviana, queso de aquí y un toque del whisky de la tierra.",
+				"en": "Segovian beef, local cheese and a touch of local whisky.",
+				"fr": "Bœuf ségove, fromage local et une touche de whisky du terroir.",
+				"it": "Manzo di Segovia, formaggio locale e un tocco di whisky del territorio.",
+				"pt": "Vitela de Segóvia, queijo local e um toque do whisky da terra."
+			}
+		},
+		{
+			"id": "hamburguesa-deluxe",
+			"category": "general",
+			"section": "principales",
+			"price": 15.5,
+			"image": "/img/dishes/hamburguesa-deluxe.png",
+			"allergens": [
+				"gluten",
+				"huevo",
+				"pescado",
+				"lacteos",
+				"soja",
+				"mostaza",
+				"sesamo"
+			],
+			"badge": {
+				"es": "Fuera de carta",
+				"en": "Off-menu",
+				"fr": "Hors carte",
+				"it": "Fuori menù",
+				"pt": "Fora de carta"
+			},
+			"name": {
+				"es": "Hamburguesa Pasapán Deluxe",
+				"en": "Pasapán Deluxe burger",
+				"fr": "Burger Pasapán Deluxe",
+				"it": "Hamburger Pasapán Deluxe",
+				"pt": "Hambúrguer Pasapán Deluxe"
+			},
+			"description": {
+				"es": "La hamburguesa más especial de la casa.",
+				"en": "The most special burger of the house.",
+				"fr": "Le burger le plus spécial de la maison.",
+				"it": "L'hamburger più speciale della casa.",
+				"pt": "O hambúrguer mais especial da casa."
+			}
+		},
+		{
+			"id": "bacalao-pisto",
+			"category": "general",
+			"section": "principales",
+			"price": 21.5,
+			"image": "/img/dishes/bacalao-pisto.jpg",
+			"allergens": [
+				"pescado",
+				"lacteos",
+				"sulfitos",
+				"frutos-cascara"
+			],
+			"name": {
+				"es": "Lomo de bacalao confitado con pisto italiano y crujiente de parmesano",
+				"en": "Confit cod loin with Italian ratatouille and crispy parmesan",
+				"fr": "Filet de cabillaud confit, ratatouille italienne et parmesan croustillant",
+				"it": "Lombo di merluzzo confit con ratatouille all'italiana e parmigiano croccante",
+				"pt": "Lombo de bacalhau confitado com refogado italiano e parmesão crocante"
+			},
+			"description": {
+				"es": "Bacalao confitado sobre pisto y parmesano crujiente.",
+				"en": "Confit cod over ratatouille with crispy parmesan.",
+				"fr": "Cabillaud confit sur ratatouille et parmesan croustillant.",
+				"it": "Merluzzo confit su ratatouille con parmigiano croccante.",
+				"pt": "Bacalhau confitado sobre refogado e parmesão crocante."
+			}
+		},
+		{
+			"id": "secreto-iberico",
+			"category": "general",
+			"section": "principales",
+			"price": 18.5,
+			"image": "/img/dishes/secreto-cerdo.jpg",
+			"allergens": [
+				"gluten",
+				"lacteos"
+			],
+			"note": {
+				"es": "Disponible opción sin gluten",
+				"en": "Gluten-free option available",
+				"fr": "Option sans gluten disponible",
+				"it": "Opzione senza glutine disponibile",
+				"pt": "Opção sem glúten disponível"
+			},
+			"name": {
+				"es": "Secreto de cerdo ibérico a la parrilla con salsa tamarindo, puré de manzana asada y chips de setas",
+				"en": "Grilled Iberian pork secreto with tamarind sauce, roasted apple purée and mushroom chips",
+				"fr": "Secreto de porc ibérique grillé, sauce tamarin, purée de pommes rôties et chips de champignons",
+				"it": "Secreto di maiale iberico alla griglia con salsa al tamarindo, purea di mele arrosto e chips di funghi",
+				"pt": "Secreto de porco ibérico grelhado com molho de tamarindo, puré de maçã assada e chips de cogumelos"
+			},
+			"description": {
+				"es": "Ibérico a la parrilla con salsa agridulce de tamarindo.",
+				"en": "Iberian pork grilled with a sweet-and-sour tamarind sauce.",
+				"fr": "Porc ibérique grillé avec une sauce aigre-douce au tamarin.",
+				"it": "Maiale iberico alla griglia con salsa agrodolce al tamarindo.",
+				"pt": "Porco ibérico grelhado com molho agridoce de tamarindo."
+			}
+		},
+		{
+			"id": "vacio-ternera",
+			"category": "general",
+			"section": "principales",
+			"price": 20.5,
+			"image": "/img/dishes/vacio-ternera.jpg",
+			"allergens": [
+				"lacteos",
+				"pescado"
+			],
+			"name": {
+				"es": "Vacío de ternera a la parrilla con queso ahumado y chimichurri argentino",
+				"en": "Grilled beef vacuum with smoked cheese and Argentinian chimichurri",
+				"fr": "Vide de bœuf grillé, fromage fumé et chimichurri argentin",
+				"it": "Vacio di manzo alla griglia con formaggio affumicato e chimichurri argentino",
+				"pt": "Vazio de vitela grelhado com queijo fumado e chimichurri argentino"
+			},
+			"description": {
+				"es": "Ternera a la parrilla, queso ahumado y chimichurri.",
+				"en": "Grilled beef, smoked cheese and chimichurri.",
+				"fr": "Bœuf grillé, fromage fumé et chimichurri.",
+				"it": "Manzo alla griglia, formaggio affumicato e chimichurri.",
+				"pt": "Vitela grelhada, queijo fumado e chimichurri."
+			}
+		},
+		{
+			"id": "costilla-barbacoa-koreana",
+			"category": "general",
+			"section": "principales",
+			"price": 21.5,
+			"image": "/img/dishes/costilla-cerdo.jpg",
+			"allergens": [
+				"gluten",
+				"soja",
+				"moluscos"
+			],
+			"name": {
+				"es": "Costilla de cerdo laqueada con salsa barbacoa koreana",
+				"en": "Glazed pork rib with Korean barbecue sauce",
+				"fr": "Côte de porc laquée à la sauce barbecue coréenne",
+				"it": "Costolette di maiale glassate con salsa barbecue coreana",
+				"pt": "Costeleta de porco lacada com molho barbecue coreano"
+			},
+			"description": {
+				"es": "Costilla glaseada con barbacoa coreana.",
+				"en": "Pork rib glazed with Korean barbecue sauce.",
+				"fr": "Côte de porc glacée au barbecue coréen.",
+				"it": "Costolette glassate con barbecue coreano.",
+				"pt": "Costeleta vidrada com barbecue coreano."
+			}
+		},
+		{
+			"id": "helado-vainilla-brownie",
+			"category": "general",
+			"section": "postres",
+			"price": 6.2,
+			"image": "/img/dishes/helado-vainilla.jpg",
+			"allergens": [
+				"gluten",
+				"huevo",
+				"lacteos",
+				"soja",
+				"frutos-cascara"
+			],
+			"name": {
+				"es": "Helado de vainilla con tierra de brownie",
+				"en": "Vanilla ice cream with brownie soil",
+				"fr": "Glace à la vanille, terre de brownie",
+				"it": "Gelato alla vaniglia con terra di brownie",
+				"pt": "Gelado de baunilha com terra de brownie"
+			},
+			"description": {
+				"es": "Contraste de crema fría y brownie crujiente.",
+				"en": "Cold cream meets crunchy brownie soil.",
+				"fr": "Crème froide et brownie croustillant.",
+				"it": "Crema fredda e brownie croccante.",
+				"pt": "Contraste de creme frio e brownie crocante."
+			}
+		},
+		{
+			"id": "tarta-mascarpone",
+			"category": "general",
+			"section": "postres",
+			"price": 6.5,
+			"image": "/img/dishes/tarta-mascarpone.png",
+			"allergens": [
+				"gluten",
+				"huevo",
+				"lacteos",
+				"soja",
+				"frutos-cascara"
+			],
+			"badge": {
+				"es": "Fuera de carta",
+				"en": "Off-menu",
+				"fr": "Hors carte",
+				"it": "Fuori menù",
+				"pt": "Fora de carta"
+			},
+			"name": {
+				"es": "Tarta de mascarpone, pistacho y café",
+				"en": "Mascarpone, pistachio and coffee cake",
+				"fr": "Gâteau au mascarpone, pistache et café",
+				"it": "Torta di mascarpone, pistacchio e caffè",
+				"pt": "Torta de mascarpone, pistácio e café"
+			},
+			"description": {
+				"es": "Tarta cremosa de mascarpone con pistacho.",
+				"en": "Creamy mascarpone cake with pistachio.",
+				"fr": "Gâteau crémeux au mascarpone et à la pistache.",
+				"it": "Torta cremosa al mascarpone con pistacchio.",
+				"pt": "Torta cremosa de mascarpone com pistácio."
+			}
+		},
+		{
+			"id": "tarta-manzana",
+			"category": "general",
+			"section": "postres",
+			"price": 6.6,
+			"image": "/img/dishes/tarta-manzana.jpg",
+			"allergens": [
+				"gluten",
+				"huevo",
+				"lacteos"
+			],
+			"note": {
+				"es": "Disponible opción veggie",
+				"en": "Veggie option available",
+				"fr": "Option végétarienne disponible",
+				"it": "Opzione vegetariana disponibile",
+				"pt": "Opção vegetariana disponível"
+			},
+			"name": {
+				"es": "Tarta de manzana horneada en el momento (15 min)",
+				"en": "Freshly baked homemade apple pie (15 min)",
+				"fr": "Tarte aux pommes cuite sur place (15 min)",
+				"it": "Torta di mele sfornata al momento (15 min)",
+				"pt": "Torta de maçã cozinhada na hora (15 min)"
+			},
+			"description": {
+				"es": "Horneada al momento con manzana de temporada.",
+				"en": "Baked to order with seasonal apples.",
+				"fr": "Cuite à la demande avec des pommes de saison.",
+				"it": "Infornata al momento con mele di stagione.",
+				"pt": "Cozinhada na hora com maçã da época."
+			}
+		},
+		{
+			"id": "brownie-yogur-griego",
+			"category": "general",
+			"section": "postres",
+			"price": 6.2,
+			"image": "/img/dishes/brownie.jpg",
+			"allergens": [
+				"gluten",
+				"huevo",
+				"lacteos"
+			],
+			"note": {
+				"es": "Disponible opción veggie",
+				"en": "Veggie option available",
+				"fr": "Option végétarienne disponible",
+				"it": "Opzione vegetariana disponibile",
+				"pt": "Opção vegetariana disponível"
+			},
+			"name": {
+				"es": "Brownie de chocolate con yogur griego",
+				"en": "Chocolate brownie with Greek yogurt",
+				"fr": "Brownie au chocolat, yaourt grec",
+				"it": "Brownie al cioccolato con yogurt greco",
+				"pt": "Brownie de chocolate com iogurte grego"
+			},
+			"description": {
+				"es": "Brownie húmedo templado con yogur griego.",
+				"en": "Moist warm brownie with Greek yogurt.",
+				"fr": "Brownie moelleux tiède au yaourt grec.",
+				"it": "Brownie morbido tiepido con yogurt greco.",
+				"pt": "Brownie húmido e morno com iogurte grego."
+			}
+		},
+		{
+			"id": "espuma-coco",
+			"category": "general",
+			"section": "postres",
+			"price": 6.2,
+			"image": "/img/dishes/espuma-coco.jpg",
+			"allergens": [
+				"sesamo"
+			],
+			"note": {
+				"es": "Disponible opción sin gluten y opción veggie",
+				"en": "Gluten-free and veggie options available",
+				"fr": "Options sans gluten et végétarienne disponibles",
+				"it": "Opzioni senza glutine e vegetariane disponibili",
+				"pt": "Opções sem glúten e vegetarianas disponíveis"
+			},
+			"name": {
+				"es": "Espuma de coco con frutas de temporada y gelatina de cítricos",
+				"en": "Coconut foam with seasonal fruits and citrus jelly",
+				"fr": "Mousse de coco, fruits de saison et gelée d'agrumes",
+				"it": "Schiuma di cocco con frutta di stagione e gelatina di agrumi",
+				"pt": "Espuma de coco com frutas da época e gelatina de citrinos"
+			},
+			"description": {
+				"es": "Ligera espuma de coco con frutas frescas.",
+				"en": "Light coconut foam with fresh fruits.",
+				"fr": "Mousse légère de coco avec des fruits frais.",
+				"it": "Schiuma leggera di cocco con frutta fresca.",
+				"pt": "Espuma leve de coco com frutas frescas."
+			}
+		},
+		{
+			"id": "tarta-queso-violetas",
+			"category": "general",
+			"section": "postres",
+			"price": 6.8,
+			"image": "/img/dishes/tarta-queso.jpg",
+			"allergens": [
+				"gluten",
+				"huevo",
+				"lacteos"
+			],
+			"name": {
+				"es": "Tarta de queso asada con coulis de violetas",
+				"en": "Roasted cheesecake with violet coulis",
+				"fr": "Cheesecake doré au coulis de violettes",
+				"it": "Cheesecake cotto con coulis di violette",
+				"pt": "Cheesecake assado com coulis de violetas"
+			},
+			"description": {
+				"es": "Queso horneado con flores de violeta.",
+				"en": "Baked cheese topped with violet flowers.",
+				"fr": "Fromage cuit et fleurs de violette.",
+				"it": "Formaggio cotto con fiori di viola.",
+				"pt": "Queijo cozinhado com flores de violeta."
+			}
+		},
+		{
+			"id": "veggie-papas-castellanas",
+			"category": "veggie",
+			"section": "entrantes",
+			"price": 12.4,
+			"image": "/img/dishes/papas-especiales.jpg",
+			"allergens": [
+				"gluten",
+				"huevo",
+				"lacteos",
+				"sesamo"
+			],
+			"veg": "veggie",
+			"note": {
+				"es": "Plato vegetariano con opción vegana",
+				"en": "Vegetarian dish with a vegan option",
+				"fr": "Plat végétarien avec option végane",
+				"it": "Piatto vegetariano con opzione vegana",
+				"pt": "Prato vegetariano com opção vegana"
+			},
+			"name": {
+				"es": "Papas castellanas con tres salsas",
+				"en": "Castilian-style potatoes with three sauces",
+				"fr": "Pommes de terre à la castillane, trois sauces",
+				"it": "Patate alla castigliana con tre salse",
+				"pt": "Batatas à castelhana com três molhos"
+			},
+			"description": {
+				"es": "Patata de la tierra con tres salsas caseras.",
+				"en": "Local potatoes with three homemade sauces.",
+				"fr": "Pommes de terre du terroir avec trois sauces maison.",
+				"it": "Patate del territorio con tre salse fatte in casa.",
+				"pt": "Batata da terra com três molhos caseiros."
+			}
+		},
+		{
+			"id": "veggie-hummus",
+			"category": "veggie",
+			"section": "entrantes",
+			"price": 12.1,
+			"image": "/img/dishes/hummus.jpg",
+			"allergens": [
+				"gluten",
+				"sesamo"
+			],
+			"veg": "vegano",
+			"note": {
+				"es": "Plato vegano",
+				"en": "Vegan dish",
+				"fr": "Plat végane",
+				"it": "Piatto vegano",
+				"pt": "Prato vegano"
+			},
+			"name": {
+				"es": "Hummus de garbanzo de Valseca a las finas hierbas, semillas de sésamo negro y pan pita",
+				"en": "Hummus of Valseca chickpeas with fine herbs, black sesame seeds and pita bread",
+				"fr": "Houmous de pois chiches de Valseca aux fines herbes, graines de sésame noir et pain pita",
+				"it": "Hummus di ceci di Valseca alle erbe aromatiche, semi di sesamo nero e pane pita",
+				"pt": "Húmus de grão-de-bico de Valseca com ervas finas, sementes de sésamo preto e pão pita"
+			},
+			"description": {
+				"es": "Hummus cremoso con hierbas frescas y pita caliente.",
+				"en": "Creamy hummus with fresh herbs and warm pita.",
+				"fr": "Houmous onctueux aux herbes fraîches et pita chaude.",
+				"it": "Hummus cremoso alle erbe fresche e pita calda.",
+				"pt": "Húmus cremoso com ervas frescas e pita quente."
+			}
+		},
+		{
+			"id": "tumbet",
+			"category": "veggie",
+			"section": "principales",
+			"price": 14.5,
+			"image": "/img/dishes/tumbet.jpg",
+			"allergens": [],
+			"veg": "vegano",
+			"note": {
+				"es": "Plato vegano",
+				"en": "Vegan dish",
+				"fr": "Plat végane",
+				"it": "Piatto vegano",
+				"pt": "Prato vegano"
+			},
+			"name": {
+				"es": "Tumbet mallorquín recién horneado",
+				"en": "Freshly baked Majorcan tumbet",
+				"fr": "Tumbet majorquin cuit au four",
+				"it": "Tumbet maiorchino appena sfornato",
+				"pt": "Tumbet maiorquino acabado de assar"
+			},
+			"description": {
+				"es": "Verduras asadas a capas, al estilo mallorquín.",
+				"en": "Layered roasted vegetables, Majorcan style.",
+				"fr": "Légumes rôtis en couches, à la majorquine.",
+				"it": "Verdure arrosto a strati, stile maiorchino.",
+				"pt": "Legumes assados em camadas, à moda maiorquina."
+			}
+		},
+		{
+			"id": "vegan-burguer",
+			"category": "veggie",
+			"section": "principales",
+			"price": 14.5,
+			"image": "/img/dishes/vegan-burger.jpg",
+			"allergens": [
+				"gluten",
+				"soja",
+				"frutos-cascara",
+				"mostaza"
+			],
+			"veg": "vegano",
+			"note": {
+				"es": "Plato vegano",
+				"en": "Vegan dish",
+				"fr": "Plat végane",
+				"it": "Piatto vegano",
+				"pt": "Prato vegano"
+			},
+			"name": {
+				"es": "Pasapán Vegan Burguer",
+				"en": "Pasapán vegan burger",
+				"fr": "Burger végane Pasapán",
+				"it": "Hamburger vegano Pasapán",
+				"pt": "Hambúrguer vegano Pasapán"
+			},
+			"description": {
+				"es": "Hamburguesa vegetal 100% vegana con guarnición.",
+				"en": "Fully vegan plant-based burger with sides.",
+				"fr": "Burger végétal 100% végane avec accompagnement.",
+				"it": "Hamburger vegetale 100% vegano con contorno.",
+				"pt": "Hambúrguer vegetal 100% vegano com acompanhamento."
+			}
+		},
+		{
+			"id": "albondigas-veganas",
+			"category": "veggie",
+			"section": "principales",
+			"price": 16.5,
+			"image": "/img/dishes/albondigas-veganas.jpg",
+			"allergens": [
+				"gluten",
+				"soja"
+			],
+			"veg": "vegano",
+			"note": {
+				"es": "Plato vegano",
+				"en": "Vegan dish",
+				"fr": "Plat végane",
+				"it": "Piatto vegano",
+				"pt": "Prato vegano"
+			},
+			"name": {
+				"es": "Albóndigas veganas en salsa de tomate y albahaca con noodles salteados, kale y seta shiitake",
+				"en": "Vegan meatballs in tomato and basil sauce with sautéed noodles, kale and shiitake mushroom",
+				"fr": "Boulettes véganes sauce tomate-basilic, nouilles sautées, kale et champignon shiitaké",
+				"it": "Polpette vegane in salsa di pomodoro e basilico con noodles saltati, cavolo riccio e fungo shiitake",
+				"pt": "Almôndegas veganas em molho de tomate e manjericão com noodles salteados, couve e cogumelo shiitake"
+			},
+			"description": {
+				"es": "Bolas vegetales con salsa de tomate y albahaca.",
+				"en": "Plant-based balls with tomato and basil sauce.",
+				"fr": "Boulettes végétales, sauce tomate et basilic.",
+				"it": "Polpette vegetali con salsa al pomodoro e basilico.",
+				"pt": "Bolas vegetais com molho de tomate e manjericão."
+			}
+		},
+		{
+			"id": "tacos-veganos",
+			"category": "veggie",
+			"section": "principales",
+			"price": 14.8,
+			"image": "/img/dishes/tacos-plant-based.jpg",
+			"allergens": [
+				"gluten",
+				"soja",
+				"sulfitos"
+			],
+			"veg": "vegano",
+			"note": {
+				"es": "Plato vegano",
+				"en": "Vegan dish",
+				"fr": "Plat végane",
+				"it": "Piatto vegano",
+				"pt": "Prato vegano"
+			},
+			"name": {
+				"es": "Tacos veganos, salsa sriracha y guacamole",
+				"en": "Vegan tacos with sriracha sauce and guacamole",
+				"fr": "Tacos véganes, sauce sriracha et guacamole",
+				"it": "Tacos vegani con salsa sriracha e guacamole",
+				"pt": "Tacos veganos, molho sriracha e guacamole"
+			},
+			"description": {
+				"es": "Tacos vegetales con guacamole casero.",
+				"en": "Plant-based tacos with homemade guacamole.",
+				"fr": "Tacos végétaux avec guacamole maison.",
+				"it": "Tacos vegetali con guacamole fatto in casa.",
+				"pt": "Tacos vegetais com guacamole caseiro."
+			}
+		},
+		{
+			"id": "veggie-tarta-manzana",
+			"category": "veggie",
+			"section": "postres",
+			"price": 6.6,
+			"image": "/img/dishes/tarta-manzana.jpg",
+			"allergens": [
+				"gluten",
+				"huevo",
+				"lacteos"
+			],
+			"veg": "veggie",
+			"note": {
+				"es": "Postre vegetariano",
+				"en": "Vegetarian dessert",
+				"fr": "Dessert végétarien",
+				"it": "Dolce vegetariano",
+				"pt": "Sobremesa vegetariana"
+			},
+			"name": {
+				"es": "Tarta de manzana horneada en el momento (15 min)",
+				"en": "Freshly baked homemade apple pie (15 min)",
+				"fr": "Tarte aux pommes cuite sur place (15 min)",
+				"it": "Torta di mele sfornata al momento (15 min)",
+				"pt": "Torta de maçã cozinhada na hora (15 min)"
+			},
+			"description": {
+				"es": "Horneada al momento con manzana de temporada.",
+				"en": "Baked to order with seasonal apples.",
+				"fr": "Cuite à la demande avec des pommes de saison.",
+				"it": "Infornata al momento con mele di stagione.",
+				"pt": "Cozinhada na hora com maçã da época."
+			}
+		},
+		{
+			"id": "veggie-brownie",
+			"category": "veggie",
+			"section": "postres",
+			"price": 6.2,
+			"image": "/img/dishes/brownie.jpg",
+			"allergens": [
+				"gluten",
+				"huevo",
+				"lacteos"
+			],
+			"veg": "veggie",
+			"note": {
+				"es": "Postre vegetariano",
+				"en": "Vegetarian dessert",
+				"fr": "Dessert végétarien",
+				"it": "Dolce vegetariano",
+				"pt": "Sobremesa vegetariana"
+			},
+			"name": {
+				"es": "Brownie de chocolate con yogur griego",
+				"en": "Chocolate brownie with Greek yogurt",
+				"fr": "Brownie au chocolat, yaourt grec",
+				"it": "Brownie al cioccolato con yogurt greco",
+				"pt": "Brownie de chocolate com iogurte grego"
+			},
+			"description": {
+				"es": "Brownie húmedo templado con yogur griego.",
+				"en": "Moist warm brownie with Greek yogurt.",
+				"fr": "Brownie moelleux tiède au yaourt grec.",
+				"it": "Brownie morbido tiepido con yogurt greco.",
+				"pt": "Brownie húmido e morno com iogurte grego."
+			}
+		},
+		{
+			"id": "veggie-espuma-coco",
+			"category": "veggie",
+			"section": "postres",
+			"price": 6.2,
+			"image": "/img/dishes/espuma-coco.jpg",
+			"allergens": [
+				"sesamo"
+			],
+			"veg": "vegano",
+			"note": {
+				"es": "Postre vegano",
+				"en": "Vegan dessert",
+				"fr": "Dessert végane",
+				"it": "Dolce vegano",
+				"pt": "Sobremesa vegana"
+			},
+			"name": {
+				"es": "Espuma de coco con frutas de temporada y cítricos",
+				"en": "Coconut foam with seasonal fruits and citrus",
+				"fr": "Mousse de coco, fruits de saison et agrumes",
+				"it": "Schiuma di cocco con frutta di stagione e agrumi",
+				"pt": "Espuma de coco com frutas da época e citrinos"
+			},
+			"description": {
+				"es": "Ligera espuma de coco con frutas frescas.",
+				"en": "Light coconut foam with fresh fruits.",
+				"fr": "Mousse légère de coco avec des fruits frais.",
+				"it": "Schiuma leggera di cocco con frutta fresca.",
+				"pt": "Espuma leve de coco com frutas frescas."
+			}
+		},
+		{
+			"id": "veggie-tarta-queso",
+			"category": "veggie",
+			"section": "postres",
+			"price": 6.8,
+			"image": "/img/dishes/tarta-queso.jpg",
+			"allergens": [
+				"gluten",
+				"huevo",
+				"lacteos"
+			],
+			"veg": "veggie",
+			"note": {
+				"es": "Postre vegetariano",
+				"en": "Vegetarian dessert",
+				"fr": "Dessert végétarien",
+				"it": "Dolce vegetariano",
+				"pt": "Sobremesa vegetariana"
+			},
+			"name": {
+				"es": "Tarta de queso asada con gel de violetas",
+				"en": "Roasted cheesecake with violet gel",
+				"fr": "Cheesecake doré au gel de violettes",
+				"it": "Cheesecake cotto con gel di violette",
+				"pt": "Cheesecake assado com gel de violetas"
+			},
+			"description": {
+				"es": "Queso horneado con flores de violeta.",
+				"en": "Baked cheese topped with violet flowers.",
+				"fr": "Fromage cuit et fleurs de violette.",
+				"it": "Formaggio cotto con fiori di viola.",
+				"pt": "Queijo cozinhado com flores de violeta."
+			}
+		},
+		{
+			"id": "sg-salmón",
+			"category": "sin-gluten",
+			"section": "entrantes",
+			"price": 14,
+			"image": "/img/dishes/salmon-marinado.png",
+			"allergens": [
+				"pescado",
+				"soja",
+				"sesamo"
+			],
+			"name": {
+				"es": "Ensalada de salmón marinado al jerez, rabanitos, semillas de sésamo negro, tomatitos cherry y salsa ponzu",
+				"en": "Salad of Jerez-marinated salmon, radishes, black sesame seeds, cherry tomatoes and ponzu sauce",
+				"fr": "Salade de saumon mariné au jerez, radis, graines de sésame noir, tomates cerises et sauce ponzu",
+				"it": "Insalata di salmone marinato al jerez, ravanelli, semi di sesamo nero, pomodorini e salsa ponzu",
+				"pt": "Salada de salmão marinado ao jerez, rabanetes, sementes de sésamo preto, tomate-cereja e molho ponzu"
+			},
+			"description": {
+				"es": "Salmón macerado en jerez con verduras frescas y un toque cítrico.",
+				"en": "Jerez-marinated salmon with fresh vegetables and a citrus touch.",
+				"fr": "Saumon mariné au jerez, légumes frais et touche d'agrumes.",
+				"it": "Salmone marinato al jerez con verdure fresche e un tocco di agrumi.",
+				"pt": "Salmão macerado ao jerez com legumes frescos e um toque cítrico."
+			}
+		},
+		{
+			"id": "sg-ensaladilla",
+			"category": "sin-gluten",
+			"section": "entrantes",
+			"price": 12.5,
+			"image": "/img/dishes/ensaladilla-ventresca.png",
+			"allergens": [
+				"pescado",
+				"huevo",
+				"sulfitos"
+			],
+			"badge": {
+				"es": "Fuera de carta",
+				"en": "Off-menu",
+				"fr": "Hors carte",
+				"it": "Fuori menù",
+				"pt": "Fora de carta"
+			},
+			"name": {
+				"es": "Ensaladilla Pasapán con ventresca de atún y mahonesa de lima y jengibre",
+				"en": "Pasapán-style Russian potato salad with tuna belly and lime & ginger mayonnaise",
+				"fr": "Salade russe Pasapán avec ventrèche de thon et mayonnaise citron vert-gingembre",
+				"it": "Insalatina russa Pasapán con ventresca di tonno e maionese al lime e zenzero",
+				"pt": "Salada russa Pasapán com ventresca de atum e maionese de lima e gengibre"
+			},
+			"description": {
+				"es": "Un clásico reinventado con ventresca y mahonesa cítrica.",
+				"en": "A classic reinvented with tuna belly and citrus mayonnaise.",
+				"fr": "Un classique réinventé avec la ventrèche et une mayonnaise aux agrumes.",
+				"it": "Un classico reinventato con ventresca e maionese agli agrumi.",
+				"pt": "Um clássico reinventado com ventresca e maionese cítrica."
+			}
+		},
+		{
+			"id": "sg-papas",
+			"category": "sin-gluten",
+			"section": "entrantes",
+			"price": 12.4,
+			"image": "/img/dishes/papas-arrugas.jpg",
+			"allergens": [
+				"huevo",
+				"lacteos",
+				"sesamo",
+				"frutos-cascara"
+			],
+			"name": {
+				"es": "Papas castellanas con tres salsas",
+				"en": "Castilian-style potatoes with three sauces",
+				"fr": "Pommes de terre à la castillane, trois sauces",
+				"it": "Patate alla castigliana con tre salse",
+				"pt": "Batatas à castelhana com três molhos"
+			},
+			"description": {
+				"es": "Patata de la tierra con tres salsas caseras.",
+				"en": "Local potatoes with three homemade sauces.",
+				"fr": "Pommes de terre du terroir avec trois sauces maison.",
+				"it": "Patate del territorio con tre salse fatte in casa.",
+				"pt": "Batata da terra com três molhos caseiros."
+			}
+		},
+		{
+			"id": "sg-hummus",
+			"category": "sin-gluten",
+			"section": "entrantes",
+			"price": 12.1,
+			"image": "/img/dishes/hummus.jpg",
+			"allergens": [
+				"sesamo"
+			],
+			"name": {
+				"es": "Hummus de garbanzo de Valseca a las finas hierbas, semillas de sésamo negro y tostadas sin gluten",
+				"en": "Hummus of Valseca chickpeas with fine herbs, black sesame seeds and gluten-free toasts",
+				"fr": "Houmous de pois chiches de Valseca aux fines herbes, graines de sésame noir et tartines sans gluten",
+				"it": "Hummus di ceci di Valseca alle erbe aromatiche, semi di sesamo nero e bruschette senza glutine",
+				"pt": "Húmus de grão-de-bico de Valseca com ervas finas, sementes de sésamo preto e tostas sem glúten"
+			},
+			"description": {
+				"es": "Hummus cremoso con tostadas sin gluten.",
+				"en": "Creamy hummus with gluten-free toasts.",
+				"fr": "Houmous onctueux avec tartines sans gluten.",
+				"it": "Hummus cremoso con bruschette senza glutine.",
+				"pt": "Húmus cremoso com tostas sem glúten."
+			}
+		},
+		{
+			"id": "sg-tumbet",
+			"category": "sin-gluten",
+			"section": "principales",
+			"price": 14.5,
+			"image": "/img/dishes/tumbet.jpg",
+			"allergens": [],
+			"name": {
+				"es": "Tumbet mallorquín recién horneado",
+				"en": "Freshly baked Majorcan tumbet",
+				"fr": "Tumbet majorquin cuit au four",
+				"it": "Tumbet maiorchino appena sfornato",
+				"pt": "Tumbet maiorquino acabado de assar"
+			},
+			"description": {
+				"es": "Verduras asadas a capas, al estilo mallorquín.",
+				"en": "Layered roasted vegetables, Majorcan style.",
+				"fr": "Légumes rôtis en couches, à la majorquine.",
+				"it": "Verdure arrosto a strati, stile maiorchino.",
+				"pt": "Legumes assados em camadas, à moda maiorquina."
+			}
+		},
+		{
+			"id": "sg-hamburguesa",
+			"category": "sin-gluten",
+			"section": "principales",
+			"price": 15.5,
+			"image": "/img/dishes/hamburguesa-segoviana.jpg",
+			"allergens": [
+				"huevo",
+				"pescado",
+				"lacteos"
+			],
+			"name": {
+				"es": "Hamburguesa 100% segoviana con carne de ternera y salsa barbacoa",
+				"en": "100% Segovian beef burger with barbecue sauce",
+				"fr": "Burger 100% ségove au bœuf local, sauce barbecue",
+				"it": "Hamburger 100% di Segovia con manzo locale e salsa barbecue",
+				"pt": "Hambúrguer 100% segoviano com carne de vitela e molho barbecue"
+			},
+			"description": {
+				"es": "Ternera segoviana con pan y salsa sin gluten.",
+				"en": "Segovian beef with a gluten-free bun and sauce.",
+				"fr": "Bœuf ségove, pain et sauce sans gluten.",
+				"it": "Manzo di Segovia con panino e salsa senza glutine.",
+				"pt": "Vitela de Segóvia com pão e molho sem glúten."
+			}
+		},
+		{
+			"id": "sg-bacalao",
+			"category": "sin-gluten",
+			"section": "principales",
+			"price": 21.5,
+			"image": "/img/dishes/bacalao-pisto.jpg",
+			"allergens": [
+				"pescado",
+				"lacteos",
+				"frutos-cascara",
+				"sulfitos"
+			],
+			"name": {
+				"es": "Lomo de bacalao confitado con pisto, romesco y crujiente de parmesano",
+				"en": "Confit cod loin with ratatouille, romesco and crispy parmesan",
+				"fr": "Filet de cabillaud confit, ratatouille, romesco et parmesan croustillant",
+				"it": "Lombo di merluzzo confit con ratatouille, romesco e parmigiano croccante",
+				"pt": "Lombo de bacalhau confitado com refogado, romesco e parmesão crocante"
+			},
+			"description": {
+				"es": "Bacalao confitado con pisto y romesco.",
+				"en": "Confit cod with ratatouille and romesco.",
+				"fr": "Cabillaud confit, ratatouille et romesco.",
+				"it": "Merluzzo confit con ratatouille e romesco.",
+				"pt": "Bacalhau confitado com refogado e romesco."
+			}
+		},
+		{
+			"id": "sg-secreto",
+			"category": "sin-gluten",
+			"section": "principales",
+			"price": 18.5,
+			"image": "/img/dishes/secreto-cerdo.jpg",
+			"allergens": [
+				"lacteos"
+			],
+			"name": {
+				"es": "Secreto de cerdo con puré de manzana, salsa de tamarindo y setas salteadas",
+				"en": "Iberian pork secreto with apple purée, tamarind sauce and sautéed mushrooms",
+				"fr": "Secreto de porc, purée de pommes, sauce tamarin et champignons sautés",
+				"it": "Secreto di maiale con purea di mele, salsa al tamarindo e funghi saltati",
+				"pt": "Secreto de porco com puré de maçã, molho de tamarindo e cogumelos salteados"
+			},
+			"description": {
+				"es": "Cerdo ibérico con manzana asada y tamarindo.",
+				"en": "Iberian pork with roasted apple and tamarind.",
+				"fr": "Porc ibérique, pomme rôtie et tamarin.",
+				"it": "Maiale iberico con mela arrosto e tamarindo.",
+				"pt": "Porco ibérico com maçã assada e tamarindo."
+			}
+		},
+		{
+			"id": "sg-vacio",
+			"category": "sin-gluten",
+			"section": "principales",
+			"price": 20.5,
+			"image": "/img/dishes/vacio-ternera.jpg",
+			"allergens": [
+				"pescado",
+				"lacteos"
+			],
+			"name": {
+				"es": "Vacío de ternera a la parrilla con queso ahumado y chimichurri argentino",
+				"en": "Grilled beef vacuum with smoked cheese and Argentinian chimichurri",
+				"fr": "Vide de bœuf grillé, fromage fumé et chimichurri argentin",
+				"it": "Vacio di manzo alla griglia con formaggio affumicato e chimichurri argentino",
+				"pt": "Vazio de vitela grelhado com queijo fumado e chimichurri argentino"
+			},
+			"description": {
+				"es": "Ternera a la parrilla, queso ahumado y chimichurri.",
+				"en": "Grilled beef, smoked cheese and chimichurri.",
+				"fr": "Bœuf grillé, fromage fumé et chimichurri.",
+				"it": "Manzo alla griglia, formaggio affumicato e chimichurri.",
+				"pt": "Vitela grelhada, queijo fumado e chimichurri."
+			}
+		},
+		{
+			"id": "sg-espuma-coco",
+			"category": "sin-gluten",
+			"section": "postres",
+			"price": 6.2,
+			"image": "/img/dishes/espuma-coco.jpg",
+			"allergens": [
+				"sesamo"
+			],
+			"name": {
+				"es": "Espuma de coco con frutas de temporada y cítricos",
+				"en": "Coconut foam with seasonal fruits and citrus",
+				"fr": "Mousse de coco, fruits de saison et agrumes",
+				"it": "Schiuma di cocco con frutta di stagione e agrumi",
+				"pt": "Espuma de coco com frutas da época e citrinos"
+			},
+			"description": {
+				"es": "Ligera espuma de coco con frutas frescas.",
+				"en": "Light coconut foam with fresh fruits.",
+				"fr": "Mousse légère de coco avec des fruits frais.",
+				"it": "Schiuma leggera di cocco con frutta fresca.",
+				"pt": "Espuma leve de coco com frutas frescas."
+			}
+		}
+	]
+}
