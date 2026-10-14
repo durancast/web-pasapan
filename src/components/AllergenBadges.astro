@@ -17,7 +17,7 @@ const labels = keys.map((k) => allergenInfo(k).label);
 		const a = allergenInfo(key);
 		return (
 			<li>
-				<img src={a.icon} alt="" width={22} height={22} class="h-[22px] w-[22px] rounded-[4px] border border-line/70" loading="lazy" />
+				<img src={a.icon} alt="" title={a.label} width={22} height={22} class="h-[22px] w-[22px] rounded-[4px] border border-line/70" loading="lazy" />
 			</li>
 		);
 	})}

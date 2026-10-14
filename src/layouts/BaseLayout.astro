@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import StickyMobileBar from '../components/StickyMobileBar.astro';
 import { site } from '../data/site';
 import { LANGS, NAV_I18N, type Lang } from '../data/i18n';
 import '../styles/global.css';
@@ -70,7 +71,9 @@ const schema = {
 			closes: '00:00',
 		},
 	],
-	acceptsReservations: site.reservationsUrl,
+	acceptsReservations: true,
+	hasMenu: `${site.url}/carta/`,
+	sameAs: site.socials.map((s) => s.url),
 };
 ---
 
@@ -117,6 +120,7 @@ const schema = {
 			<slot />
 		</main>
 		<Footer lang={lang} />
+		<StickyMobileBar lang={lang} />
 
 		<script type="application/json" id="site-i18n" set:html={JSON.stringify(siteI18n)}></script>
 	</body>

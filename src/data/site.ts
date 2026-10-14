@@ -12,12 +12,13 @@ export const site = {
 		city: 'Segovia',
 		country: 'España',
 		countryCode: 'ES',
+		mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Restaurante+Pasapan+Calle+Colon+5+Segovia',
 	},
 	phone: { display: '921 70 10 06', tel: '+34921701006' },
 	email: 'info@restaurantepasapan.es',
 	hours: [
-		{ day: 'Martes a Domingo', label: '12,00h a 16,00h', start: '12:00', end: '16:00' },
-		{ day: 'Martes a Domingo', label: '20,00h a 00,00h', start: '20:00', end: '00:00' },
+		{ day: 'Martes a Domingo', label: '12:00h a 16:00h', start: '12:00', end: '16:00' },
+		{ day: 'Martes a Domingo', label: '20:00h a 00:00h', start: '20:00', end: '00:00' },
 	],
 	reservationsUrl: 'https://restaurantepasapan.myrestoo.net/es/reservar',
 	ordersUrl: 'https://cloudclient28.hiopos.com/portalrest/#/',
@@ -45,9 +46,9 @@ export const site = {
 
 export const announcement = {
 	text: '¡Bienvenidos al Restaurante Pasapán!',
-	hours: 'Abierto de martes a domingo de 12h a 16h y de 20h a 00h',
+	hours: 'Abierto de martes a domingo de 12:00h a 16:00h y de 20:00h a 00:00h',
 };
 
 export function formatPrice(value: number): string {
-	return `${String(value).replace('.', ',')} €`;
+	return `${value.toFixed(2).replace('.', ',')} €`;
 }

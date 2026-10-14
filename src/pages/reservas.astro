@@ -22,9 +22,10 @@ import { site } from '../data/site';
 					<h2 class="text-xs font-semibold tracking-[0.18em] text-burdeos uppercase">Horario de apertura</h2>
 					<ul class="mt-4 space-y-2 text-sm text-ink-soft">
 						<li>
-							<p class="font-semibold text-ink">Martes a Domingo</p>
-							<p>12,00h a 16,00h</p>
-							<p>20,00h a 00,00h</p>
+							<p class="font-semibold text-ink">{site.hours[0].day}</p>
+							{site.hours.map((h) => (
+								<p>{h.label}</p>
+							))}
 						</li>
 					</ul>
 				</div>
@@ -34,7 +35,7 @@ import { site } from '../data/site';
 					<p class="mt-4 text-sm leading-relaxed text-ink-soft">
 						¿Prefieres hablar con nosotros?
 						<a href={`tel:${site.phone.tel}`} class="mt-1 block font-semibold text-burdeos hover:underline">
-							+{site.phone.tel.replace('+', '')}
+							{site.phone.display}
 						</a>
 					</p>
 				</div>

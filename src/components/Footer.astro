@@ -11,11 +11,11 @@ const i18n = NAV_I18N[lang];
 
 const year = new Date().getFullYear();
 ---
-<footer class="mt-auto border-t border-line bg-paper-deep/60">
+<footer class="mt-auto border-t border-line bg-paper-deep/60 pb-20 sm:pb-0">
 	<div class="mx-auto max-w-6xl px-4 py-14 sm:px-6">
 		<div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
 			<div>
-				<img src="/img/logo/logo-text.png" alt="Restaurante Pasapán — Segovia" class="h-10 w-auto" loading="lazy" />
+				<img src="/img/logo/logo-text.png" alt="Restaurante Pasapán — Segovia" width={180} height={40} class="h-10 w-auto" loading="lazy" />
 				<p class="mt-4 text-sm leading-relaxed text-ink-soft">
 					<span data-i18n="footerContactanos">{i18n.footerContactanos}</span>
 				</p>
@@ -33,7 +33,7 @@ const year = new Date().getFullYear();
 					{site.address.postalCode} {site.address.city}<br />
 					{site.address.country}
 				</address>
-				<a href="/contacto/" data-i18n="footerContacto" class="mt-4 inline-block text-sm font-medium text-burdeos underline-offset-4 hover:underline">{i18n.footerContacto}</a>
+				<a href={site.address.mapsUrl} target="_blank" rel="noopener noreferrer" data-i18n="footerComoLlegar" class="mt-4 inline-block text-sm font-medium text-burdeos underline-offset-4 hover:underline">{i18n.footerComoLlegar}</a>
 			</div>
 
 			<div>
@@ -53,8 +53,9 @@ const year = new Date().getFullYear();
 					<ul class="mt-4 space-y-2 text-sm text-ink-soft">
 						<li>
 							<p data-i18n="days">{i18n.days}</p>
-							<p class="mt-1">12,00h a 16,00h</p>
-							<p>20,00h a 00,00h</p>
+							{site.hours.map((h, i) => (
+								<p class={i === 0 ? 'mt-1' : ''}>{h.label}</p>
+							))}
 						</li>
 					</ul>
 					<p class="mt-4 flex items-center gap-1 text-xs tracking-wide text-olive uppercase">
@@ -95,8 +96,8 @@ const year = new Date().getFullYear();
 							))}
 						</ul>
 					</div>
-					<a href="/contacto/" class="shrink-0" aria-label={i18n.footerQr} data-i18n-aria="footerQr" title={i18n.footerQr}>
-						<img src="/img/logo/qr-carta.png" alt="" class="h-16 w-16 rounded-md border border-line" loading="lazy" width={64} height={64} />
+					<a href="/carta/" class="shrink-0" aria-label={i18n.footerQr} data-i18n-aria="footerQr" title={i18n.footerQr}>
+						<img src="/img/logo/qr-carta.png" alt={i18n.footerQr} class="h-16 w-16 rounded-md border border-line" loading="lazy" width={64} height={64} />
 					</a>
 				</div>
 			</div>

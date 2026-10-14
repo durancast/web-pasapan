@@ -18,9 +18,10 @@ const FLAG_SVGS: Record<string, string> = {
 };
 
 const menuLinks = [
-	{ href: '/carta', label: i18n.carta, key: 'carta' },
-	{ href: '/carta#veggie', label: i18n['carta.veggie'], key: 'carta.veggie' },
-	{ href: '/carta#sin-gluten', label: i18n['carta.sin-gluten'], key: 'carta.sin-gluten' },
+	{ href: '/carta/', label: i18n.carta, key: 'carta' },
+	{ href: '/carta/#veggie', label: i18n['carta.veggie'], key: 'carta.veggie' },
+	{ href: '/carta/#sin-gluten', label: i18n['carta.sin-gluten'], key: 'carta.sin-gluten' },
+	{ href: '/carta/#bebidas', label: i18n['carta.bebidas'], key: 'carta.bebidas' },
 	{ href: '/menudeldia/', label: i18n.menudeldia, key: 'menudeldia' },
 ];
 ---
@@ -33,9 +34,9 @@ const menuLinks = [
 		</p>
 	</div>
 	<div class="border-b border-line bg-paper/90 backdrop-blur-md">
-		<nav aria-label={i18n.carta} class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3 sm:px-6">
+		<nav aria-label="Principal" class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3 sm:px-6">
 			<a href="/" class="flex items-center gap-3" aria-label="Restaurante Pasapán — Inicio">
-				<img src="/img/logo/header-logo.png" alt="Restaurante Pasapán" class="h-9 w-auto sm:h-10" loading="eager" />
+				<img src="/img/logo/header-logo.png" alt="Restaurante Pasapán" width={160} height={40} class="h-9 w-auto sm:h-10" loading="eager" />
 			</a>
 
 			<ul class="hidden items-center gap-7 text-[0.82rem] font-medium tracking-wide text-ink-soft lg:flex">
@@ -62,11 +63,6 @@ const menuLinks = [
 				<li>
 					<a href={site.ordersUrl} target="_blank" rel="noopener noreferrer" data-i18n="pedidos" class="transition-colors hover:text-burdeos">
 						{i18n.pedidos}
-					</a>
-				</li>
-				<li>
-					<a href={site.reservationsUrl} target="_blank" rel="noopener noreferrer" data-i18n="reservas" class="transition-colors hover:text-burdeos">
-						{i18n.reservas}
 					</a>
 				</li>
 				<li>
@@ -168,10 +164,11 @@ const menuLinks = [
 
 	if (toggle && menu) {
 		toggle.addEventListener('click', () => {
-			const open = menu.classList.toggle('hidden');
-			toggle.setAttribute('aria-expanded', String(!open));
-			iconOpen?.classList.toggle('hidden', !open);
-			iconClose?.classList.toggle('hidden', !open);
+			const isHidden = menu.classList.toggle('hidden');
+			const isOpen = !isHidden;
+			toggle.setAttribute('aria-expanded', String(isOpen));
+			iconOpen?.classList.toggle('hidden', isOpen);
+			iconClose?.classList.toggle('hidden', !isOpen);
 		});
 
 		menu.addEventListener('click', (event) => {

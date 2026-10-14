@@ -2,21 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import { site } from '../data/site';
-import menu from '../data/menu.json';
-import { formatPrice } from '../data/site';
-
-interface Highlight {
-	id: string;
-	image: string;
-	name: string;
-	price: number;
-}
-
-const highlightIds = ['torrezno-revolcona', 'secreto-iberico', 'tarta-queso-violetas'];
-const highlights: Highlight[] = highlightIds
-	.map((id) => menu.dishes.find((d) => d.id === id))
-	.filter((d): d is (typeof menu.dishes)[number] => Boolean(d))
-	.map((d) => ({ id: d.id, image: d.image, name: d.name.es, price: d.price }));
 ---
 <BaseLayout
 	title="Restaurante Pasapán · Cocina Tradicional del Siglo XXI · Segovia"
@@ -24,7 +9,7 @@ const highlights: Highlight[] = highlightIds
 >
 	<!-- Hero -->
 	<section class="relative flex min-h-[88svh] items-end overflow-hidden bg-ink text-paper">
-		<img src="/img/hero/home-hero.jpg" alt="Interior del Restaurante Pasapán en Segovia" class="absolute inset-0 h-full w-full object-cover" loading="eager" decoding="async" />
+		<img src="/img/hero/home-hero.jpg" alt="Interior del Restaurante Pasapán en Segovia" class="absolute inset-0 h-full w-full object-cover" fetchpriority="high" width={1920} height={1080} loading="eager" decoding="async" />
 		<div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-ink/20" aria-hidden="true"></div>
 		<div class="relative mx-auto w-full max-w-6xl px-4 pt-24 pb-20 sm:px-6 sm:pb-24">
 			<p class="reveal text-xs font-semibold tracking-[0.32em] text-gold-deep uppercase" style="animation-delay:0ms">Cocina tradicional del siglo XXI</p>
@@ -37,6 +22,9 @@ const highlights: Highlight[] = highlightIds
 				</a>
 				<a href={site.reservationsUrl} target="_blank" rel="noopener noreferrer" class="rounded-full border border-paper/40 px-7 py-3 text-xs font-semibold tracking-widest text-paper uppercase backdrop-blur-sm transition-colors hover:border-paper hover:bg-paper hover:text-ink">
 					Reservar mesa
+				</a>
+				<a href={site.ordersUrl} target="_blank" rel="noopener noreferrer" data-i18n="pedidos" class="rounded-full border border-gold/60 bg-paper/15 px-7 py-3 text-xs font-semibold tracking-widest text-cream uppercase backdrop-blur-sm transition-colors hover:border-gold hover:bg-gold hover:text-ink">
+					Pedir online
 				</a>
 			</div>
 		</div>
@@ -82,10 +70,10 @@ const highlights: Highlight[] = highlightIds
 					<div class="mt-10">
 						<h3 class="font-display text-2xl font-medium text-ink">Equipo humano</h3>
 						<p class="mt-4 leading-relaxed text-ink-soft">
-							Un grupo de diez profesionales del sector de la hostelería preparados para hacerle sentir como en casa, ofreciendo un trato cercano, amable y personalizado.
+							Un grupo de diez profesionales del sector de la hostelería preparados para hacerte sentir como en casa, ofreciendo un trato cercano, amable y personalizado.
 						</p>
 						<p class="mt-3 leading-relaxed text-ink-soft">
-							Nuestra filosofía se basa en el trabajo constante para no dejar de sorprenderle.
+							Nuestra filosofía se basa en el trabajo constante para no dejar de sorprenderte.
 						</p>
 					</div>
 				</div>
@@ -110,6 +98,9 @@ const highlights: Highlight[] = highlightIds
 						<a href={site.reservationsUrl} target="_blank" rel="noopener noreferrer" class="rounded-full bg-gold px-7 py-3 text-xs font-semibold tracking-widest text-ink uppercase transition-all hover:-translate-y-0.5 hover:bg-gold/90">
 							Haz una reserva
 						</a>
+						<a href={site.ordersUrl} target="_blank" rel="noopener noreferrer" data-i18n="pedidos" class="rounded-full border border-paper/40 px-7 py-3 text-xs font-semibold tracking-widest text-paper uppercase transition-colors hover:border-paper hover:bg-paper hover:text-ink">
+							Pedir online
+						</a>
 						<a href="/carta/" class="text-xs font-semibold tracking-widest text-paper/80 uppercase underline-offset-4 hover:text-paper hover:underline">Ver carta</a>
 					</div>
 				</div>
@@ -118,31 +109,6 @@ const highlights: Highlight[] = highlightIds
 					<img src="/img/logo/alimentos-de-segovia.png" alt="Alimentos de Segovia" loading="lazy" decoding="async" width={600} height={200} class="mx-auto h-20 w-auto drop-shadow-lg" />
 				</div>
 			</div>
-		</div>
-	</section>
-
-	<!-- Destacados de la carta -->
-	<section class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
-		<div class="text-center">
-			<p class="text-xs font-semibold tracking-[0.28em] text-gold-deep uppercase">Destacados de nuestra carta</p>
-			<h2 class="mt-3 font-display text-3xl leading-tight font-medium text-ink sm:text-4xl">Un paseo por la carta</h2>
-			<div class="rule-gold mx-auto mt-5 w-24"></div>
-		</div>
-		<div class="mt-12 grid gap-6 md:grid-cols-3">
-			{highlights.map((dish) => (
-				<a href="/carta" class="group flex flex-col overflow-hidden rounded-2xl border border-line bg-cream shadow-sm shadow-ink/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-ink/10">
-					<figure class="aspect-[4/3] overflow-hidden bg-paper-deep">
-						<img src={dish.image} alt={dish.name} loading="lazy" decoding="async" width={640} height={480} class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-					</figure>
-					<div class="flex flex-1 flex-col justify-between gap-3 p-5">
-						<h3 class="font-display text-lg leading-snug font-medium text-ink">{dish.name}</h3>
-						<div class="flex items-center justify-between gap-3">
-							<span class="font-display text-xl font-semibold tracking-wide text-burdeos">{formatPrice(dish.price)}</span>
-							<span class="text-xs font-semibold tracking-widest text-burdeos uppercase">Ver en la carta →</span>
-						</div>
-					</div>
-				</a>
-			))}
 		</div>
 	</section>
 

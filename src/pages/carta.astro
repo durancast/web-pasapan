@@ -3,7 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import LegendStory from '../components/LegendStory.astro';
 import MenuCard from '../components/MenuCard.astro';
+import DrinkSection from '../components/DrinkSection.astro';
 import { allergenCatalog } from '../data/allergens';
+import { drinkCatalog } from '../data/drinks';
 import menu from '../data/menu.json';
 
 interface MenuDish {
@@ -45,7 +47,6 @@ for (const lang of langs) {
 }
 
 const dishes = menu.dishes as unknown as MenuDish[];
-const legendLang = 'es';
 ---
 <BaseLayout
 	title="Carta Pasapán · Restaurante Pasapán · Segovia"
@@ -63,8 +64,9 @@ const legendLang = 'es';
 		<div class="sticky top-[105px] z-40 -mx-4 border-b border-line bg-paper/90 px-4 py-3 backdrop-blur-md sm:-mx-6 sm:px-6">
 			<div class="nav flex items-center gap-5 overflow-x-auto text-xs font-semibold tracking-[0.14em] text-ink-soft uppercase">
 				{sections.map((s) => (
-					<a href={`#${s}`} data-i18n={`sections.${s}`} class="whitespace-nowrap transition-colors hover:text-burdeos"></a>
+					<a href={`#${s}`} data-i18n={`sections.${s}`} class="whitespace-nowrap transition-colors hover:text-burdeos">{ui.es[`sections.${s}`]}</a>
 				))}
+				<a href="#bebidas" data-i18n="carta.bebidas" class="whitespace-nowrap transition-colors hover:text-burdeos">Bodega y Bebidas</a>
 			</div>
 			<div role="group" aria-label="Elegir carta" data-i18n-aria="categoriesLabel" class="mt-3 flex flex-wrap gap-2">
 				{categories.map((c) => (
@@ -73,14 +75,10 @@ const legendLang = 'es';
 						data-category-btn={c}
 						class="inline-flex items-center gap-2 rounded-full border border-line bg-paper px-4 py-1.5 text-xs font-semibold tracking-widest text-ink-soft uppercase transition-all"
 					>
-						<span data-i18n={`filters.${c}`}></span>
+						<span data-i18n={`filters.${c}`}>{ui.es[`filters.${c}`]}</span>
 					</button>
 				))}
 			</div>
-		</div>
-
-		<div class="mt-14">
-			<LegendStory lang={legendLang} />
 		</div>
 
 		<!-- Secciones de platos -->
@@ -89,9 +87,10 @@ const legendLang = 'es';
 				<div class="flex flex-wrap items-end justify-between gap-4 border-b border-line pb-6">
 					<h2 class="font-display text-3xl font-medium text-ink sm:text-4xl">
 						<span aria-hidden="true" class="mr-3 text-gold">✦</span>
-						<span data-i18n={`sections.${section}`}></span>
+						<span data-i18n={`sections.${section}`}>{ui.es[`sections.${section}`]}</span>
 					</h2>
 				</div>
+				<LegendStory section={section as 'entrantes' | 'principales' | 'postres'} />
 				<div class="mt-6 grid gap-5">
 					{dishes
 						.filter((d) => d.section === section)
@@ -104,13 +103,23 @@ const legendLang = 'es';
 
 		<!-- Aviso sin gluten -->
 		<p data-cat-note="sin-gluten" hidden class="mt-12 rounded-xl border border-dashed border-olive/50 bg-olive/10 px-5 py-4 text-sm leading-relaxed text-ink-soft italic" data-i18n="glutenNote">
+			{ui.es.glutenNote}
 		</p>
+
+		<!-- Bodega y bebidas -->
+		<section id="bebidas" class="mt-16 scroll-mt-44">
+			{drinkCatalog.map((cat) => (
+				<div id={cat.anchor} class="scroll-mt-44">
+					<DrinkSection title={cat.title} categories={cat.categories} />
+				</div>
+			))}
+		</section>
 
 		<!-- Leyenda de alérgenos -->
 		<div class="mt-14 rounded-3xl border border-line bg-cream p-6 sm:p-8">
 			<h2 class="font-display text-xl font-medium text-ink">
 				<span aria-hidden="true" class="mr-2 text-gold">✦</span>
-				<span data-i18n="allergenLegend"></span>
+				<span data-i18n="allergenLegend">{ui.es.allergenLegend}</span>
 			</h2>
 			<ul class="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
 				{allergenCatalog.map((a) => (
@@ -135,9 +144,18 @@ const legendLang = 'es';
 	if (!categories.includes(category)) category = DEFAULT_CATEGORY;
 
 	const fromHash = location.hash.replace('#', '');
-	if (fromHash && categories.includes(fromHash)) {
-		category = fromHash;
-		history.replaceState(null, '', `${location.pathname}${location.search}`);
+	let scrollTarget: HTMLElement | null = null;
+	if (fromHash) {
+		if (categories.includes(fromHash)) {
+			category = fromHash;
+			history.replaceState(null, '', `${location.pathname}${location.search}`);
+		} else {
+			const target = document.getElementById(fromHash);
+			if (target?.hasAttribute('data-category')) {
+				category = target.getAttribute('data-category') ?? category;
+				scrollTarget = target;
+			}
+		}
 	}
 
 	const categoryButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-category-btn]'));
@@ -176,4 +194,8 @@ const legendLang = 'es';
 	}
 
 	applyCategory(category);
+
+	if (scrollTarget) {
+		requestAnimationFrame(() => scrollTarget?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+	}
 </script>

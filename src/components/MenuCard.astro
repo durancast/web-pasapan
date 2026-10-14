@@ -42,25 +42,31 @@ const badge = dish.badge;
 				class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
 			/>
 		</figure>
-		{badge ? <p data-i18n="badge" class="absolute top-3 left-3 rounded-full bg-burdeos px-3 py-1 text-[0.62rem] font-semibold tracking-[0.12em] text-cream uppercase shadow-md"></p> : null}
+		{badge ? (
+			<div class="absolute top-3 left-3 rounded-full bg-burdeos px-3 py-1 text-[0.62rem] font-semibold tracking-[0.12em] text-cream uppercase shadow-md">
+				{langs.map((l) => (
+					<span lang={l} data-lang={l} hidden={l !== 'es'} inert={l !== 'es' ? true : undefined}>{badge[l] ?? badge.es}</span>
+				))}
+			</div>
+		) : null}
 	</div>
 
 	<div class="flex flex-1 flex-col justify-between gap-3 p-5">
 		<div>
 			{langs.map((l) => (
-				<h3 lang={l} data-lang={l} class="font-display text-lg leading-snug font-medium text-ink md:text-xl">
+				<h3 lang={l} data-lang={l} hidden={l !== 'es'} inert={l !== 'es' ? true : undefined} class="font-display text-lg leading-snug font-medium text-ink md:text-xl">
 					{dish.name[l]}
 				</h3>
 			))}
 			{langs.map((l) => (
-				<p lang={l} data-lang={l} class="mt-1 text-sm leading-relaxed text-ink-soft">
+				<p lang={l} data-lang={l} hidden={l !== 'es'} inert={l !== 'es' ? true : undefined} class="mt-1 text-sm leading-relaxed text-ink-soft">
 					{dish.description[l]}
 				</p>
 			))}
 			{dish.veg ? (
 				<p class="mt-2 inline-flex items-center gap-1.5 rounded-full bg-olive/15 px-3 py-0.5 text-[0.65rem] font-semibold tracking-widest text-olive uppercase">
 					<span aria-hidden="true">✦</span>
-					<span data-i18n={`vegTags.${dish.veg}`}></span>
+					<span data-i18n={`vegTags.${dish.veg}`}>{dish.veg === 'veggie' ? 'Vegetariano' : 'Vegano'}</span>
 				</p>
 			) : null}
 		</div>
@@ -70,7 +76,7 @@ const badge = dish.badge;
 				<AllergenBadges keys={dish.allergens as AllergenKey[]} />
 				{note
 					? langs.map((l) => (
-							<p lang={l} data-lang={l} class="max-w-xs text-xs italic text-bark">
+							<p lang={l} data-lang={l} hidden={l !== 'es'} inert={l !== 'es' ? true : undefined} class="max-w-xs text-xs italic text-bark">
 								{note[l]}
 							</p>
 						))

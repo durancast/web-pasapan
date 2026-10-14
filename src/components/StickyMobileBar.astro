@@ -1,0 +1,31 @@
+---
+import { site } from '../data/site';
+import { NAV_I18N, type Lang } from '../data/i18n';
+
+interface Props {
+	lang?: Lang;
+}
+
+const { lang = 'es' } = Astro.props;
+const i18n = NAV_I18N[lang];
+---
+<div class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper/95 px-4 py-2.5 backdrop-blur-md sm:hidden">
+	<div class="grid grid-cols-2 gap-3">
+		<a
+			href="/carta/"
+			data-i18n="carta"
+			class="flex items-center justify-center rounded-full border border-ink/20 bg-cream px-4 py-2.5 text-xs font-semibold tracking-widest text-ink uppercase"
+		>
+			{i18n.carta}
+		</a>
+		<a
+			href={site.reservationsUrl}
+			target="_blank"
+			rel="noopener noreferrer"
+			data-i18n="reservas"
+			class="flex items-center justify-center rounded-full bg-burdeos px-4 py-2.5 text-xs font-semibold tracking-widest text-cream uppercase"
+		>
+			{i18n.reservas}
+		</a>
+	</div>
+</div>
