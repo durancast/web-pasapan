@@ -6,15 +6,17 @@ interface Props {
 	title?: string;
 	height?: string;
 	openLabel?: string;
+	openLabelI18n?: string;
 	openText?: string;
+	openTextI18n?: string;
 }
-const { src = site.reservationsUrl, title = 'Sistema de reservas de Restaurante Pasapán', openLabel = '', openText = 'abrir en una nueva pestaña' } = Astro.props;
+const { src = site.reservationsUrl, title = 'Sistema de reservas de Restaurante Pasapán', openLabel = '', openLabelI18n, openText = 'abrir en una nueva pestaña', openTextI18n } = Astro.props;
 ---
 <div class="overflow-hidden rounded-3xl border border-line bg-cream shadow-lg shadow-ink/5">
 	<iframe
 		src={src}
 		title={title}
-		class="h-[2100px] w-full border-0 sm:h-[2300px] md:h-[2000px] lg:h-[1800px] xl:h-[1600px]"
+		class="h-[78svh] min-h-[580px] w-full border-0 sm:h-[1800px] lg:h-[1600px]"
 		loading="lazy"
 		referrerpolicy="strict-origin-when-cross-origin"
 		allow="payment; clipboard-write"
@@ -22,8 +24,8 @@ const { src = site.reservationsUrl, title = 'Sistema de reservas de Restaurante 
 </div>
 {openLabel ? (
 	<p class="mt-4 text-center text-sm text-ink-soft">
-		{openLabel}{' '}
-		<a href={src} target="_blank" rel="noopener noreferrer" class="font-semibold text-burdeos hover:underline">
+		<span data-i18n={openLabelI18n}>{openLabel}</span>{' '}
+		<a href={src} target="_blank" rel="noopener noreferrer" data-i18n={openTextI18n} class="font-semibold text-burdeos hover:underline">
 			{openText}
 		</a>
 	</p>

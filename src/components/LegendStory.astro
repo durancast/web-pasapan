@@ -17,9 +17,24 @@ const partsBySection: Record<Section, number[]> = {
 	postres: [3],
 };
 
-const showHeading = section === 'entrantes';
 const showEpilogue = section === 'postres';
 const partIndexes = partsBySection[section];
+
+const summaries: Record<Lang, { chapters: string; chapter: string; readStory: string; continueReading: string; readEnding: string }> = {
+	es: { chapters: 'Capítulos I y II', chapter: 'Capítulo', readStory: 'Leer historia', continueReading: 'Continuar leyendo', readEnding: 'Leer final' },
+	en: { chapters: 'Chapters I and II', chapter: 'Chapter', readStory: 'Read the story', continueReading: 'Continue reading', readEnding: 'Read the ending' },
+	fr: { chapters: 'Chapitres I et II', chapter: 'Chapitre', readStory: "Lire l'histoire", continueReading: 'Continuer la lecture', readEnding: 'Lire la fin' },
+	it: { chapters: 'Capitoli I e II', chapter: 'Capitolo', readStory: 'Leggi la storia', continueReading: 'Continua a leggere', readEnding: 'Leggi il finale' },
+	pt: { chapters: 'Capítulos I e II', chapter: 'Capítulo', readStory: 'Ler a história', continueReading: 'Continuar a ler', readEnding: 'Ler o final' },
+};
+
+function summaryFor(l: Lang) {
+	const legend = legends[l];
+	const s = summaries[l];
+	if (section === 'entrantes') return `${legend.title} · ${s.chapters} (${s.readStory})`;
+	if (section === 'principales') return `${legend.title} · ${s.chapter} III: ${legend.parts[2].title} (${s.continueReading})`;
+	return `${legend.title} · ${s.chapter} IV: ${legend.parts[3].title} (${s.readEnding})`;
+}
 ---
 
 {
@@ -27,57 +42,66 @@ const partIndexes = partsBySection[section];
 		const legend = legends[l];
 		const parts = partIndexes.map((i) => ({ chapter: CHAPTERS[i], part: legend.parts[i] }));
 		return (
-			<aside
+			<details
 				lang={l}
 				data-lang={l}
 				hidden={l !== 'es'}
 				inert={l !== 'es' ? true : undefined}
-				class="mt-10"
-				aria-label={legend.title}
+				class="group mb-6 rounded-2xl border border-line bg-cream/80 px-4 py-3 sm:px-6"
 			>
-				{showHeading ? (
-					<div class="text-center">
-						<p class="text-xs font-semibold tracking-[0.28em] text-gold-deep uppercase">{legend.eyebrow}</p>
-						<h3 class="mt-4 font-display text-3xl leading-tight font-medium text-ink sm:text-4xl">{legend.title}</h3>
-						<div class="rule-gold mx-auto mt-6 w-24" />
-						<p class="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-ink-soft italic">{legend.intro}</p>
-					</div>
-				) : null}
+				<summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-left">
+					<span class="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-3">
+						<span class="text-[0.7rem] font-semibold tracking-[0.24em] text-gold-deep uppercase">
+							<span aria-hidden="true" class="mr-2">✦</span>
+							{legend.eyebrow}
+						</span>
+						<span class="font-display text-sm font-medium text-ink sm:text-base">{summaryFor(l)}</span>
+					</span>
+					<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0 text-burdeos transition-transform group-open:rotate-180">
+						<path d="m6 9 6 6 6-6" />
+					</svg>
+				</summary>
 
-				<div class="mt-12 space-y-12">
-					{parts.map(({ chapter, part }) => (
-						<article class="grid gap-6 sm:grid-cols-[auto_1fr] sm:gap-8">
-							<div class="flex items-start gap-4">
-								<span class="font-display text-5xl leading-none font-light text-paper-deep sm:text-6xl" aria-hidden="true">
-									{chapter}
-								</span>
-								<div class="hidden h-px w-8 translate-y-8 bg-sand sm:block" aria-hidden="true" />
-							</div>
-							<div>
-								<p class="text-xs font-semibold tracking-[0.24em] text-burdeos uppercase">{part.title}</p>
-								<div class="mt-3 space-y-3">
-									{part.text.map((p, j) => (
-										<p
-											class:list={[
-												'leading-relaxed',
-												j === 0 ? 'font-display text-lg text-ink' : 'text-sm text-ink-soft',
-											]}
-										>
-											{p}
-										</p>
-									))}
+				<div class="mt-4 border-t border-line/60 pt-4">
+					{section === 'entrantes' ? (
+						<p class="mx-auto max-w-2xl text-center text-sm leading-relaxed text-ink-soft italic">{legend.intro}</p>
+					) : null}
+
+					<div class="mt-8 space-y-12">
+						{parts.map(({ chapter, part }) => (
+							<article class="grid gap-6 sm:grid-cols-[auto_1fr] sm:gap-8">
+								<div class="flex items-start gap-4">
+									<span class="font-display text-5xl leading-none font-light text-paper-deep sm:text-6xl" aria-hidden="true">
+										{chapter}
+									</span>
+									<div class="hidden h-px w-8 translate-y-8 bg-sand sm:block" aria-hidden="true" />
 								</div>
-							</div>
-						</article>
-					))}
-				</div>
+								<div>
+									<p class="text-xs font-semibold tracking-[0.24em] text-burdeos uppercase">{part.title}</p>
+									<div class="mt-3 space-y-3">
+										{part.text.map((p, j) => (
+											<p
+												class:list={[
+													'leading-relaxed',
+													j === 0 ? 'font-display text-lg text-ink' : 'text-sm text-ink-soft',
+												]}
+											>
+												{p}
+											</p>
+										))}
+									</div>
+								</div>
+							</article>
+						))}
+					</div>
 
-				{showEpilogue ? (
-					<p class="mt-12 border-t border-line pt-8 text-center font-display text-lg leading-relaxed text-ink">
-						{legend.epilogue}
-					</p>
-				) : null}
-			</aside>
+					{showEpilogue ? (
+						<p class="mt-12 border-t border-line pt-8 text-center font-display text-lg leading-relaxed text-ink">
+							{legend.epilogue}
+						</p>
+					) : null}
+				</div>
+			</details>
 		);
 	})
 }

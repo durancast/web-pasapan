@@ -12,18 +12,18 @@ import { site } from '../data/site';
 		<img src="/img/hero/home-hero.jpg" alt="Interior del Restaurante Pasapán en Segovia" class="absolute inset-0 h-full w-full object-cover" fetchpriority="high" width={1920} height={1080} loading="eager" decoding="async" />
 		<div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-ink/20" aria-hidden="true"></div>
 		<div class="relative mx-auto w-full max-w-6xl px-4 pt-24 pb-20 sm:px-6 sm:pb-24">
-			<p class="reveal text-xs font-semibold tracking-[0.32em] text-gold-deep uppercase" style="animation-delay:0ms">Cocina tradicional del siglo XXI</p>
-			<h1 class="reveal mt-5 max-w-3xl font-display text-5xl leading-[1.02] font-medium sm:text-7xl" style="animation-delay:120ms">
+			<p data-i18n="home.heroEyebrow" class="reveal text-xs font-semibold tracking-[0.32em] text-gold-deep uppercase" style="animation-delay:0ms">Cocina tradicional del siglo XXI</p>
+			<h1 data-i18n-html="home.heroTitle" class="reveal mt-5 max-w-3xl font-display text-5xl leading-[1.02] font-medium sm:text-7xl" style="animation-delay:120ms">
 				Una experiencia<br />para tus sentidos
 			</h1>
-			<div class="reveal mt-8 flex flex-wrap items-center gap-4" style="animation-delay:240ms">
-				<a href="/carta/" class="rounded-full bg-burdeos px-7 py-3 text-xs font-semibold tracking-widest text-cream uppercase shadow-lg shadow-burdeos/30 transition-all hover:-translate-y-0.5 hover:bg-burdeos-deep">
+			<div class="reveal mt-8 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center sm:gap-4" style="animation-delay:240ms">
+				<a href="/carta/" data-i18n="home.heroCarta" class="col-span-2 text-center rounded-full bg-burdeos px-7 py-3 text-xs font-semibold tracking-widest text-cream uppercase shadow-lg shadow-burdeos/30 transition-all hover:-translate-y-0.5 hover:bg-burdeos-deep sm:col-span-1">
 					Ver la carta
 				</a>
-				<a href={site.reservationsUrl} target="_blank" rel="noopener noreferrer" class="rounded-full border border-paper/40 px-7 py-3 text-xs font-semibold tracking-widest text-paper uppercase backdrop-blur-sm transition-colors hover:border-paper hover:bg-paper hover:text-ink">
+				<a href={site.reservationsUrl} target="_blank" rel="noopener noreferrer" data-i18n="reservas" class="text-center rounded-full border border-paper/40 px-7 py-3 text-xs font-semibold tracking-widest text-paper uppercase backdrop-blur-sm transition-colors hover:border-paper hover:bg-paper hover:text-ink">
 					Reservar mesa
 				</a>
-				<a href={site.ordersUrl} target="_blank" rel="noopener noreferrer" data-i18n="pedidos" class="rounded-full border border-gold/60 bg-paper/15 px-7 py-3 text-xs font-semibold tracking-widest text-cream uppercase backdrop-blur-sm transition-colors hover:border-gold hover:bg-gold hover:text-ink">
+				<a href={site.ordersUrl} target="_blank" rel="noopener noreferrer" data-i18n="pedidos" class="text-center rounded-full border border-gold/60 bg-paper/15 px-7 py-3 text-xs font-semibold tracking-widest text-cream uppercase backdrop-blur-sm transition-colors hover:border-gold hover:bg-gold hover:text-ink">
 					Pedir online
 				</a>
 			</div>
@@ -34,17 +34,17 @@ import { site } from '../data/site';
 	<section class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
 		<div class="grid items-center gap-12 lg:grid-cols-[3fr_2fr]">
 			<div>
-				<p class="reveal text-xs font-semibold tracking-[0.28em] text-gold-deep uppercase">Restaurante Segovia</p>
-				<h2 class="reveal mt-4 font-display text-3xl leading-tight font-medium text-ink sm:text-5xl" style="animation-delay:80ms">Descubre Nuestra Historia</h2>
+				<p data-i18n="home.historiaEyebrow" class="reveal text-xs font-semibold tracking-[0.28em] text-gold-deep uppercase">Restaurante Segovia</p>
+				<h2 data-i18n="home.historiaTitle" class="reveal mt-4 font-display text-3xl leading-tight font-medium text-ink sm:text-5xl" style="animation-delay:80ms">Descubre Nuestra Historia</h2>
 				<div class="reveal mt-8 space-y-5 leading-relaxed text-ink-soft" style="animation-delay:160ms">
-					<p>
+					<p data-i18n-html="home.historiaP1">
 						<span class="font-semibold text-ink">Pasapán</span> es un <em class="font-display text-ink">restaurante</em> que aúna <strong>tradición, elegancia y modernidad</strong>.
 					</p>
-					<p>Un espacio gastronómico donde confluyen la ilusión, el trabajo y la pasión por la restauración.</p>
-					<p><strong>Cocina e innovación</strong> en pleno <strong>casco histórico de Segovia</strong>.</p>
+					<p data-i18n="home.historiaP2">Un espacio gastronómico donde confluyen la ilusión, el trabajo y la pasión por la restauración.</p>
+					<p data-i18n-html="home.historiaP3"><strong>Cocina e innovación</strong> en pleno <strong>casco histórico de Segovia</strong>.</p>
 				</div>
 				<a href="/carta/" class="reveal group mt-10 inline-flex items-center gap-2 text-sm font-semibold tracking-widest text-burdeos uppercase transition-colors hover:text-burdeos-deep" style="animation-delay:240ms">
-					Conoce nuestra carta
+					<span data-i18n="home.historiaCta">Conoce nuestra carta</span>
 					<span aria-hidden="true" class="transition-transform group-hover:translate-x-1">→</span>
 				</a>
 			</div>
@@ -62,17 +62,17 @@ import { site } from '../data/site';
 				<img src="/img/restaurant/interior.jpg" alt="Interior acogedor del restaurante Pasapán" loading="lazy" decoding="async" width={900} height={640} class="order-2 aspect-[4/3] w-full rounded-2xl border border-line object-cover shadow-lg lg:order-1" />
 				<div class="order-1 text-center lg:order-2 lg:text-left">
 					<div class="text-center lg:text-left">
-						<p class="text-xs font-semibold tracking-[0.28em] text-gold-deep uppercase">Con buen gusto</p>
-						<h2 class="mt-3 font-display text-3xl leading-tight font-medium text-ink sm:text-4xl">Saborea lo bueno</h2>
+						<p data-i18n="home.saboreaEyebrow" class="text-xs font-semibold tracking-[0.28em] text-gold-deep uppercase">Con buen gusto</p>
+						<h2 data-i18n="home.saboreaTitle" class="mt-3 font-display text-3xl leading-tight font-medium text-ink sm:text-4xl">Saborea lo bueno</h2>
 						<div class="rule-gold mx-auto mt-5 w-24 lg:mx-0"></div>
 					</div>
 
 					<div class="mt-10">
-						<h3 class="font-display text-2xl font-medium text-ink">Equipo humano</h3>
-						<p class="mt-4 leading-relaxed text-ink-soft">
+						<h3 data-i18n="home.saboreaEquipoTitle" class="font-display text-2xl font-medium text-ink">Equipo humano</h3>
+						<p data-i18n="home.saboreaEquipo1" class="mt-4 leading-relaxed text-ink-soft">
 							Un grupo de diez profesionales del sector de la hostelería preparados para hacerte sentir como en casa, ofreciendo un trato cercano, amable y personalizado.
 						</p>
-						<p class="mt-3 leading-relaxed text-ink-soft">
+						<p data-i18n="home.saboreaEquipo2" class="mt-3 leading-relaxed text-ink-soft">
 							Nuestra filosofía se basa en el trabajo constante para no dejar de sorprenderte.
 						</p>
 					</div>
@@ -86,22 +86,22 @@ import { site } from '../data/site';
 		<div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
 			<div class="grid items-center gap-12 lg:grid-cols-[3fr_2fr]">
 				<div>
-					<p class="text-xs font-semibold tracking-[0.28em] text-gold-deep uppercase">El plato perfecto · Gastronomía artesana</p>
-					<h2 class="mt-4 font-display text-3xl leading-tight font-medium sm:text-5xl">Del producto de nuestra tierra a tu mesa</h2>
-					<p class="mt-8 leading-relaxed text-paper/80">
+					<p data-i18n="home.gastroEyebrow" class="text-xs font-semibold tracking-[0.28em] text-gold-deep uppercase">El plato perfecto · Gastronomía artesana</p>
+					<h2 data-i18n="home.gastroTitle" class="mt-4 font-display text-3xl leading-tight font-medium sm:text-5xl">Del producto de nuestra tierra a tu mesa</h2>
+					<p data-i18n="home.gastroP1" class="mt-8 leading-relaxed text-paper/80">
 						Una propuesta gastronómica elaborada, artesana y creativa, con influencias de cocinas del mundo pero, sobre todo, una cocina de calidad, utilizando materias primas de la tierra de Segovia, producto de proximidad, ecológico y respetuoso con el medio ambiente.
 					</p>
-					<p class="mt-6 leading-relaxed text-paper/80">
+					<p data-i18n-html="home.gastroP2" class="mt-6 leading-relaxed text-paper/80">
 						Formamos parte de la marca <strong class="text-cream">Alimentos de Segovia</strong>. Elaboramos platos con alimentos artesanos, productos naturales y auténticos hechos en Segovia apostando por el consumo de cercanía, por el producto de nuestra tierra.
 					</p>
 					<div class="mt-10 flex flex-wrap items-center gap-5">
-						<a href={site.reservationsUrl} target="_blank" rel="noopener noreferrer" class="rounded-full bg-gold px-7 py-3 text-xs font-semibold tracking-widest text-ink uppercase transition-all hover:-translate-y-0.5 hover:bg-gold/90">
+						<a href={site.reservationsUrl} target="_blank" rel="noopener noreferrer" data-i18n="home.gastroCtaReservar" class="rounded-full bg-gold px-7 py-3 text-xs font-semibold tracking-widest text-ink uppercase transition-all hover:-translate-y-0.5 hover:bg-gold/90">
 							Haz una reserva
 						</a>
 						<a href={site.ordersUrl} target="_blank" rel="noopener noreferrer" data-i18n="pedidos" class="rounded-full border border-paper/40 px-7 py-3 text-xs font-semibold tracking-widest text-paper uppercase transition-colors hover:border-paper hover:bg-paper hover:text-ink">
 							Pedir online
 						</a>
-						<a href="/carta/" class="text-xs font-semibold tracking-widest text-paper/80 uppercase underline-offset-4 hover:text-paper hover:underline">Ver carta</a>
+						<a href="/carta/" data-i18n="home.gastroCtaCarta" class="text-xs font-semibold tracking-widest text-paper/80 uppercase underline-offset-4 hover:text-paper hover:underline">Ver carta</a>
 					</div>
 				</div>
 				<div class="flex flex-col gap-6">

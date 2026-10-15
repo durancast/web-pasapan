@@ -10,8 +10,11 @@ import { site } from '../data/site';
 >
 	<PageHero
 		title="Reserva tu mesa"
+		titleI18n="page.reservas.title"
 		eyebrow="Reservas"
+		eyebrowI18n="page.reservas.eyebrow"
 		description="Garantiza tu mesa en el corazón de Segovia. Reserva online, por teléfono o directamente en el local."
+		descriptionI18n="page.reservas.desc"
 		image="/img/restaurant/logo-pared.jpg"
 	/>
 
@@ -19,7 +22,7 @@ import { site } from '../data/site';
 		<div class="grid gap-10 lg:grid-cols-[1fr_2fr]">
 			<aside class="space-y-6">
 				<div class="rounded-2xl border border-line bg-cream p-6">
-					<h2 class="text-xs font-semibold tracking-[0.18em] text-burdeos uppercase">Horario de apertura</h2>
+					<h2 data-i18n="reservas.hoursTitle" class="text-xs font-semibold tracking-[0.18em] text-burdeos uppercase">Horario de apertura</h2>
 					<ul class="mt-4 space-y-2 text-sm text-ink-soft">
 						<li>
 							<p class="font-semibold text-ink">{site.hours[0].day}</p>
@@ -31,9 +34,9 @@ import { site } from '../data/site';
 				</div>
 
 				<div class="rounded-2xl border border-line bg-cream p-6">
-					<h2 class="text-xs font-semibold tracking-[0.18em] text-burdeos uppercase">Reservas por teléfono</h2>
+					<h2 data-i18n="reservas.phoneTitle" class="text-xs font-semibold tracking-[0.18em] text-burdeos uppercase">Reservas por teléfono</h2>
 					<p class="mt-4 text-sm leading-relaxed text-ink-soft">
-						¿Prefieres hablar con nosotros?
+						<span data-i18n="reservas.phoneText">¿Prefieres hablar con nosotros?</span>
 						<a href={`tel:${site.phone.tel}`} class="mt-1 block font-semibold text-burdeos hover:underline">
 							{site.phone.display}
 						</a>
@@ -41,7 +44,7 @@ import { site } from '../data/site';
 				</div>
 
 				<div class="rounded-2xl border border-line bg-cream p-6">
-					<h2 class="text-xs font-semibold tracking-[0.18em] text-burdeos uppercase">¿Dónde estamos?</h2>
+					<h2 data-i18n="reservas.whereTitle" class="text-xs font-semibold tracking-[0.18em] text-burdeos uppercase">¿Dónde estamos?</h2>
 					<address class="mt-4 text-sm leading-relaxed text-ink-soft not-italic">
 						{site.name}<br />
 						{site.address.street}<br />
@@ -51,11 +54,11 @@ import { site } from '../data/site';
 			</aside>
 
 			<div class="space-y-4">
-				<h2 class="font-display text-2xl font-medium text-ink">Reserva online con Restoo</h2>
-				<p class="text-sm leading-relaxed text-ink-soft">
+				<h2 data-i18n="reservas.onlineTitle" class="font-display text-2xl font-medium text-ink">Reserva online con Restoo</h2>
+				<p data-i18n="reservas.onlineText" class="text-sm leading-relaxed text-ink-soft">
 					Selecciona fecha, hora y comensales. Recibirás la confirmación por email. Para grupos, llamadnos y lo organizamos con mucho gusto.
 				</p>
-				<RestooEmbed openLabel="¿No carga el sistema de reservas?" openText="Abrir el sistema de reservas en una nueva pestaña" />
+				<RestooEmbed openLabel="¿No carga el sistema de reservas?" openLabelI18n="reservas.embedLabel" openText="Abrir el sistema de reservas en una nueva pestaña" openTextI18n="reservas.embedText" />
 			</div>
 		</div>
 	</section>

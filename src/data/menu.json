@@ -11,9 +11,11 @@
 		"es": {
 			"menuTitle": "Nuestra carta",
 			"filters": {
-				"general": "Carta General",
-				"veggie": "Carta Veggie",
-				"sin-gluten": "Carta Sin Gluten"
+				"general": "General",
+				"veggie": "Veggie",
+				"sin-gluten": "Sin Gluten",
+				"vinos": "Vinos",
+				"bebidas": "Bebidas"
 			},
 			"sections": {
 				"entrantes": "Entrantes",
@@ -28,15 +30,17 @@
 				"veggie": "Vegetariano",
 				"vegano": "Vegano"
 			},
-			"badge": "Fuera de carta",
+			"badge": "Recomendación del chef",
 			"glutenNote": "* Los platos de esta carta no contienen gluten pero al utilizar en la cocina otros productos con gluten no podemos garantizar que no exista una contaminación cruzada."
 		},
 		"en": {
 			"menuTitle": "Our menu",
 			"filters": {
-				"general": "Main Menu",
-				"veggie": "Veggie Menu",
-				"sin-gluten": "Gluten-free Menu"
+				"general": "Main",
+				"veggie": "Veggie",
+				"sin-gluten": "Gluten-Free",
+				"vinos": "Wines",
+				"bebidas": "Drinks"
 			},
 			"sections": {
 				"entrantes": "Starters",
@@ -51,15 +55,17 @@
 				"veggie": "Vegetarian",
 				"vegano": "Vegan"
 			},
-			"badge": "Off-menu",
+			"badge": "Chef's recommendation",
 			"glutenNote": "* These dishes contain no gluten, but because other gluten-containing products are used in the kitchen we cannot guarantee there is no cross-contamination."
 		},
 		"fr": {
 			"menuTitle": "Notre carte",
 			"filters": {
-				"general": "Carte principale",
-				"veggie": "Carte Végétarienne",
-				"sin-gluten": "Carte Sans Gluten"
+				"general": "Générale",
+				"veggie": "Veggie",
+				"sin-gluten": "Sans Gluten",
+				"vinos": "Vins",
+				"bebidas": "Boissons"
 			},
 			"sections": {
 				"entrantes": "Entrées",
@@ -74,15 +80,17 @@
 				"veggie": "Végétarien",
 				"vegano": "Végane"
 			},
-			"badge": "Hors carte",
+			"badge": "Suggestion du chef",
 			"glutenNote": "* Ces plats ne contiennent pas de gluten mais, comme d'autres produits contenant du gluten sont utilisés en cuisine, nous ne pouvons pas garantir qu'il n'y ait pas de contamination croisée."
 		},
 		"it": {
 			"menuTitle": "Il nostro menù",
 			"filters": {
-				"general": "Menù Principale",
-				"veggie": "Menù Vegetariano",
-				"sin-gluten": "Menù Senza Glutine"
+				"general": "Generale",
+				"veggie": "Veggie",
+				"sin-gluten": "Senza Glutine",
+				"vinos": "Vini",
+				"bebidas": "Bevande"
 			},
 			"sections": {
 				"entrantes": "Antipasti",
@@ -97,15 +105,17 @@
 				"veggie": "Vegetariano",
 				"vegano": "Vegano"
 			},
-			"badge": "Fuori menù",
+			"badge": "Consiglio dello chef",
 			"glutenNote": "* Questi piatti non contengono glutine ma, poiché in cucina si usano altri prodotti con glutine, non possiamo garantire l'assenza di contaminazione crociata."
 		},
 		"pt": {
 			"menuTitle": "A nossa carta",
 			"filters": {
-				"general": "Carta Principal",
-				"veggie": "Carta Vegetariana",
-				"sin-gluten": "Carta Sem Glúten"
+				"general": "Geral",
+				"veggie": "Veggie",
+				"sin-gluten": "Sem Glúten",
+				"vinos": "Vinhos",
+				"bebidas": "Bebidas"
 			},
 			"sections": {
 				"entrantes": "Entradas",
@@ -120,7 +130,7 @@
 				"veggie": "Vegetariano",
 				"vegano": "Vegano"
 			},
-			"badge": "Fora de carta",
+			"badge": "Recomendação do chef",
 			"glutenNote": "* Os pratos desta carta não contêm glúten, mas, como na cozinha se usam outros produtos com glúten, não podemos garantir que não exista contaminação cruzada."
 		}
 	},
@@ -163,13 +173,6 @@
 				"gluten",
 				"sulfitos"
 			],
-			"badge": {
-				"es": "Fuera de carta",
-				"en": "Off-menu",
-				"fr": "Hors carte",
-				"it": "Fuori menù",
-				"pt": "Fora de carta"
-			},
 			"note": {
 				"es": "Disponible opción sin gluten",
 				"en": "Gluten-free option available",
@@ -294,6 +297,13 @@
 				"huevo",
 				"lacteos"
 			],
+			"badge": {
+				"es": "Recomendación del chef",
+				"en": "Chef's recommendation",
+				"fr": "Suggestion du chef",
+				"it": "Consiglio dello chef",
+				"pt": "Recomendação do chef"
+			},
 			"name": {
 				"es": "Cremosas croquetas de cecina",
 				"en": "Creamy beef jerky croquettes",
@@ -352,6 +362,13 @@
 				"lacteos",
 				"sulfitos"
 			],
+			"badge": {
+				"es": "Recomendación del chef",
+				"en": "Chef's recommendation",
+				"fr": "Suggestion du chef",
+				"it": "Consiglio dello chef",
+				"pt": "Recomendação do chef"
+			},
 			"name": {
 				"es": "Quesadilla de pollo de corral al chilindrón",
 				"en": "Free-range chicken quesadilla with 'chilindrón' sauce",
@@ -442,13 +459,6 @@
 				"mostaza",
 				"sesamo"
 			],
-			"badge": {
-				"es": "Fuera de carta",
-				"en": "Off-menu",
-				"fr": "Hors carte",
-				"it": "Fuori menù",
-				"pt": "Fora de carta"
-			},
 			"name": {
 				"es": "Hamburguesa Pasapán Deluxe",
 				"en": "Pasapán Deluxe burger",
@@ -533,6 +543,13 @@
 				"lacteos",
 				"pescado"
 			],
+			"badge": {
+				"es": "Recomendación del chef",
+				"en": "Chef's recommendation",
+				"fr": "Suggestion du chef",
+				"it": "Consiglio dello chef",
+				"pt": "Recomendação do chef"
+			},
 			"name": {
 				"es": "Vacío de ternera a la parrilla con queso ahumado y chimichurri argentino",
 				"en": "Grilled beef vacuum with smoked cheese and Argentinian chimichurri",
@@ -616,11 +633,11 @@
 				"frutos-cascara"
 			],
 			"badge": {
-				"es": "Fuera de carta",
-				"en": "Off-menu",
-				"fr": "Hors carte",
-				"it": "Fuori menù",
-				"pt": "Fora de carta"
+				"es": "Recomendación del chef",
+				"en": "Chef's recommendation",
+				"fr": "Suggestion du chef",
+				"it": "Consiglio dello chef",
+				"pt": "Recomendação do chef"
 			},
 			"name": {
 				"es": "Tarta de mascarpone, pistacho y café",
@@ -1131,13 +1148,6 @@
 				"huevo",
 				"sulfitos"
 			],
-			"badge": {
-				"es": "Fuera de carta",
-				"en": "Off-menu",
-				"fr": "Hors carte",
-				"it": "Fuori menù",
-				"pt": "Fora de carta"
-			},
 			"name": {
 				"es": "Ensaladilla Pasapán con ventresca de atún y mahonesa de lima y jengibre",
 				"en": "Pasapán-style Russian potato salad with tuna belly and lime & ginger mayonnaise",
@@ -1313,6 +1323,13 @@
 				"pescado",
 				"lacteos"
 			],
+			"badge": {
+				"es": "Recomendación del chef",
+				"en": "Chef's recommendation",
+				"fr": "Suggestion du chef",
+				"it": "Consiglio dello chef",
+				"pt": "Recomendação do chef"
+			},
 			"name": {
 				"es": "Vacío de ternera a la parrilla con queso ahumado y chimichurri argentino",
 				"en": "Grilled beef vacuum with smoked cheese and Argentinian chimichurri",

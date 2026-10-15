@@ -3,39 +3,38 @@ import { formatPrice } from '../data/site';
 import type { DrinkCategory } from '../data/drinks';
 
 interface Props {
-	title: string;
 	categories: DrinkCategory[];
 }
-const { title, categories } = Astro.props;
----
-<div class="mb-10">
-	<h3 class="font-display text-2xl font-medium text-ink">{title}</h3>
-	<div class="rule-gold mt-4 w-16"></div>
+const { categories } = Astro.props;
 
-	<div class="mt-8 grid gap-x-10 gap-y-8 md:grid-cols-2">
-		{categories.map((category) => (
-			<section>
-				<p class="text-xs font-semibold tracking-[0.2em] text-olive uppercase">{category.title}</p>
-				<div class="mt-3 space-y-6">
-					{category.groups.map((group) => (
-						<div>
-							<p class="text-xs font-medium tracking-widest text-bark uppercase">{group.label}</p>
-							<ul class="mt-2 divide-y divide-line/60">
-								{group.items.map((item) => (
-									<li class="flex items-baseline gap-2 py-2 text-sm">
-										<span class="text-ink-soft">
-											{item.name}
-											{item.note ? <span class="text-bark"> ({item.note})</span> : null}
-										</span>
-										<span class="mx-1 flex-1 border-b border-dotted border-sand" aria-hidden="true"></span>
-										<span class="font-medium whitespace-nowrap text-burdeos">{formatPrice(item.price)}</span>
-									</li>
-								))}
-							</ul>
-						</div>
-					))}
+const GROUP_KEYS: Record<string, string> = {
+	'Vino ecológico': 'drinks.ecoWine',
+	'Hechas en Segovia': 'drinks.madeInSegovia',
+};
+---
+{categories.map((category) => (
+	<section id={category.id} class="mb-14 scroll-mt-44">
+		<h3 data-i18n={category.id === 'espumosos' ? undefined : `drinks.${category.id}`} class="font-display text-2xl font-medium text-ink sm:text-3xl">{category.title}</h3>
+		<div class="rule-gold mt-4 w-16"></div>
+
+		<div class="mt-8 grid gap-6 md:grid-cols-2">
+			{category.groups.map((group) => (
+				<div class="rounded-2xl border border-line/80 bg-cream p-5 shadow-sm shadow-ink/5 sm:p-6">
+					<h4 data-i18n={GROUP_KEYS[group.label]} class="mb-4 border-b border-line/60 pb-2 font-display text-base font-semibold tracking-wide text-burdeos">{group.label}</h4>
+					<ul class="space-y-3">
+						{group.items.map((item) => (
+							<li class="flex items-baseline justify-between gap-4 text-sm">
+								<div class="flex-1">
+									<span class="font-medium text-ink">{item.name}</span>
+									{item.note ? <span class="block text-xs italic text-bark sm:ml-1.5 sm:inline">({item.note})</span> : null}
+								</div>
+								<span class="mx-2 hidden flex-1 border-b border-dotted border-sand sm:block" aria-hidden="true"></span>
+								<span class="font-display font-semibold whitespace-nowrap text-burdeos">{formatPrice(item.price)}</span>
+							</li>
+						))}
+					</ul>
 				</div>
-			</section>
-		))}
-	</div>
-</div>
+			))}
+		</div>
+	</section>
+))}

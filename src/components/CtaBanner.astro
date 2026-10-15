@@ -3,75 +3,28 @@ import { site } from '../data/site';
 import { allergenCatalog } from '../data/allergens';
 
 interface Props {
-	lang?: 'es' | 'en';
 	showAllergens?: boolean;
 }
-const { lang = 'es', showAllergens = false } = Astro.props;
-
-const i18n = {
-	es: {
-		title: 'Reserva tu mesa o contáctanos',
-		note: 'Reserva online con confirmación inmediata. Si sois un grupo de más de 8 personas o tenéis alguna petición especial, escríbenos o llámanos con antelación y nos encargaremos de todo.',
-		cta: 'Reservar mesa',
-		products: 'Nuestros Productos',
-		productsText: 'Platos elaborados con toda nuestra experiencia. Nos esforzamos en conseguir sensaciones deliciosas y agradables.',
-		philosophy: 'Nuestra Filosofía',
-		philosophyText: 'Tomamos muchas decisiones sobre lo que comemos y cada una de nuestras elecciones de alimentos tiene un impacto ético y ambiental.',
-		allergens: 'Leyenda de alérgenos',
-		contactanos: 'Contáctanos',
-	},
-	en: {
-		title: 'Contact us',
-		note: 'Please, contact us at least 24 hours before your reservation and we will do our best to satisfy your request.',
-		cta: 'Make a reservation',
-		products: 'Our Products',
-		productsText: 'Plates made with all our experience. We strive to achieve delicious and pleasant sensations.',
-		philosophy: 'Our Philosophy',
-		philosophyText: 'Each of our food choices has an ethical and environmental impact.',
-		allergens: 'Allergen legend',
-		contactanos: 'Contact us',
-	},
-}[lang];
-
-const gallery = ['burrata', 'quesadilla-pollo', 'papas-arrugas', 'raviolis', 'lasana-2', 'brownie-2'].map((n) => `/img/gallery/${n}.jpg`);
-const galleryAlt = [
-	'Burrata italiana con confitura de setas y tomate cherry confitado',
-	'Quesadilla de pollo de corral al chilindrón',
-	'Papas castellanas con tres salsas',
-	'Raviolis de ricota, pera y espinacas',
-	'Lasaña de ternera gratinada con queso de oveja',
-	'Brownie de chocolate con yogur griego',
-];
+const { showAllergens = false } = Astro.props;
 ---
 <section class="border-t border-line bg-paper-deep/50">
 	<div class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
 		<div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
 			<div class="max-w-2xl">
-				<p class="text-xs font-semibold tracking-[0.28em] text-gold-deep uppercase">{lang === 'es' ? 'Pasa un buen día entre nosotros' : 'Have a good day between us'}</p>
-				<h2 class="mt-3 font-display text-3xl leading-tight font-medium text-ink sm:text-4xl">{i18n.title}</h2>
-				<p class="mt-3 leading-relaxed text-ink-soft">{i18n.note}</p>
+				<p data-i18n="cta.eyebrow" class="text-xs font-semibold tracking-[0.28em] text-gold-deep uppercase">Pasa un buen día entre nosotros</p>
+				<h2 data-i18n="cta.title" class="mt-3 font-display text-3xl leading-tight font-medium text-ink sm:text-4xl">Reserva tu mesa o contáctanos</h2>
+				<p data-i18n="cta.note" class="mt-3 leading-relaxed text-ink-soft">Reserva online con confirmación inmediata. Si sois un grupo de más de 8 personas o tenéis alguna petición especial, escríbenos o llámanos con antelación y nos encargaremos de todo.</p>
 			</div>
 			<div class="flex shrink-0 flex-wrap gap-3">
-				<a href={site.reservationsUrl} target="_blank" rel="noopener noreferrer" class="rounded-full bg-burdeos px-6 py-3 text-xs font-semibold tracking-widest text-cream uppercase shadow-md shadow-burdeos/20 transition-all hover:-translate-y-0.5 hover:bg-burdeos-deep">
-					{i18n.cta}
+				<a href={site.reservationsUrl} target="_blank" rel="noopener noreferrer" data-i18n="reservas" class="rounded-full bg-burdeos px-6 py-3 text-xs font-semibold tracking-widest text-cream uppercase shadow-md shadow-burdeos/20 transition-all hover:-translate-y-0.5 hover:bg-burdeos-deep">
+					Reservar mesa
 				</a>
 				<a href={site.ordersUrl} target="_blank" rel="noopener noreferrer" data-i18n="pedidos" class="rounded-full border border-burdeos/40 px-6 py-3 text-xs font-semibold tracking-widest text-burdeos uppercase transition-colors hover:bg-burdeos hover:text-cream">
 					Pedir online
 				</a>
-				<a href="/contacto/" class="rounded-full border border-ink/20 px-6 py-3 text-xs font-semibold tracking-widest text-ink uppercase transition-colors hover:bg-ink hover:text-paper">
-					{i18n.contactanos}
+				<a href="/contacto/" data-i18n="footerContactanos" class="rounded-full border border-ink/20 px-6 py-3 text-xs font-semibold tracking-widest text-ink uppercase transition-colors hover:bg-ink hover:text-paper">
+					Contáctanos
 				</a>
-			</div>
-		</div>
-
-		<div class="mt-12">
-			<div class="grid grid-cols-3 gap-4 md:grid-cols-6">
-				{gallery.map((src, i) => (
-					<figure class="group relative overflow-hidden rounded-xl border border-line">
-						<img src={src} alt="" loading="lazy" decoding="async" width={640} height={640} class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-						<figcaption class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/90 via-ink/50 to-transparent p-2.5 text-[0.7rem] leading-tight font-medium text-cream">{galleryAlt[i]}</figcaption>
-					</figure>
-				))}
 			</div>
 		</div>
 
@@ -79,18 +32,18 @@ const galleryAlt = [
 			<div class="md:col-span-2">
 				<div class="grid gap-8 sm:grid-cols-2">
 					<div class="rounded-2xl border border-line bg-cream p-6">
-						<h3 class="font-display text-xl font-medium text-ink">{i18n.products}</h3>
-						<p class="mt-3 text-sm leading-relaxed text-ink-soft">{i18n.productsText}</p>
+						<h3 data-i18n="cta.products" class="font-display text-xl font-medium text-ink">Nuestros Productos</h3>
+						<p data-i18n="cta.productsText" class="mt-3 text-sm leading-relaxed text-ink-soft">Platos elaborados con toda nuestra experiencia. Nos esforzamos en conseguir sensaciones deliciosas y agradables.</p>
 					</div>
 					<div class="rounded-2xl border border-line bg-cream p-6">
-						<h3 class="font-display text-xl font-medium text-ink">{i18n.philosophy}</h3>
-						<p class="mt-3 text-sm leading-relaxed text-ink-soft">{i18n.philosophyText}</p>
+						<h3 data-i18n="cta.philosophy" class="font-display text-xl font-medium text-ink">Nuestra Filosofía</h3>
+						<p data-i18n="cta.philosophyText" class="mt-3 text-sm leading-relaxed text-ink-soft">Tomamos muchas decisiones sobre lo que comemos y cada una de nuestras elecciones de alimentos tiene un impacto ético y ambiental.</p>
 					</div>
 				</div>
 
 				{showAllergens ? (
 					<div class="mt-8 rounded-2xl border border-line bg-cream p-6">
-						<h3 class="font-display text-xl font-medium text-ink">{i18n.allergens}</h3>
+						<h3 data-i18n="cta.allergens" class="font-display text-xl font-medium text-ink">Leyenda de alérgenos</h3>
 						<ul class="mt-5 grid grid-cols-2 gap-x-6 gap-y-2 text-xs text-ink-soft sm:grid-cols-3">
 							{allergenCatalog.map((a) => (
 								<li class="flex items-center gap-2">

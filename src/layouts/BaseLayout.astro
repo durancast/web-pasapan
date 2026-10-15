@@ -149,7 +149,9 @@ const schema = {
 	const langButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-lang-btn]'));
 	const langNodes = Array.from(document.querySelectorAll<HTMLElement>('[data-lang]'));
 	const i18nNodes = Array.from(document.querySelectorAll<HTMLElement>('[data-i18n]'));
+	const htmlNodes = Array.from(document.querySelectorAll<HTMLElement>('[data-i18n-html]'));
 	const ariaNodes = Array.from(document.querySelectorAll<HTMLElement>('[data-i18n-aria]'));
+	const placeholderNodes = Array.from(document.querySelectorAll<HTMLElement>('[data-i18n-placeholder]'));
 
 	function applyLang(next: string) {
 		lang = next;
@@ -164,9 +166,17 @@ const schema = {
 			const text = ui[next]?.[node.getAttribute('data-i18n')!];
 			if (text) node.textContent = text;
 		}
+		for (const node of htmlNodes) {
+			const text = ui[next]?.[node.getAttribute('data-i18n-html')!];
+			if (text) node.innerHTML = text;
+		}
 		for (const node of ariaNodes) {
 			const text = ui[next]?.[node.getAttribute('data-i18n-aria')!];
 			if (text) node.setAttribute('aria-label', text);
+		}
+		for (const node of placeholderNodes) {
+			const text = ui[next]?.[node.getAttribute('data-i18n-placeholder')!];
+			if (text) node.setAttribute('placeholder', text);
 		}
 		for (const b of langButtons) {
 			const active = b.getAttribute('data-lang-btn') === next;

@@ -25,6 +25,25 @@ html {
 	scroll-behavior: smooth;
 }
 
+:root {
+	--header-offset: 88px;
+}
+
+@media (min-width: 1024px) {
+	:root {
+		--header-offset: 105px;
+	}
+}
+
+.no-scrollbar {
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+
 body {
 	@apply bg-paper text-ink font-sans antialiased;
 	text-rendering: optimizeLegibility;

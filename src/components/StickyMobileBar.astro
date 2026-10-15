@@ -8,24 +8,60 @@ interface Props {
 
 const { lang = 'es' } = Astro.props;
 const i18n = NAV_I18N[lang];
+
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const hideOn = ['/reservas', '/pedidos'];
+const show = !hideOn.includes(path);
+const autoHide = path === '/';
 ---
-<div class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper/95 px-4 py-2.5 backdrop-blur-md sm:hidden">
-	<div class="grid grid-cols-2 gap-3">
-		<a
-			href="/carta/"
-			data-i18n="carta"
-			class="flex items-center justify-center rounded-full border border-ink/20 bg-cream px-4 py-2.5 text-xs font-semibold tracking-widest text-ink uppercase"
+{
+	show ? (
+		<div
+			data-sticky-mobile-bar
+			data-auto-hide={autoHide ? '' : undefined}
+			class:list={[
+				'fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper/95 px-4 pt-2.5 pb-[max(0.65rem,env(safe-area-inset-bottom))] backdrop-blur-md transition-all duration-300 sm:hidden',
+				autoHide ? 'translate-y-full opacity-0 pointer-events-none' : 'translate-y-0 opacity-100',
+			]}
 		>
-			{i18n.carta}
-		</a>
-		<a
-			href={site.reservationsUrl}
-			target="_blank"
-			rel="noopener noreferrer"
-			data-i18n="reservas"
-			class="flex items-center justify-center rounded-full bg-burdeos px-4 py-2.5 text-xs font-semibold tracking-widest text-cream uppercase"
-		>
-			{i18n.reservas}
-		</a>
-	</div>
-</div>
+			<div class="grid grid-cols-2 gap-3">
+				<a
+					href="/carta/"
+					data-i18n="carta"
+					class="flex items-center justify-center rounded-full border border-ink/20 bg-cream px-4 py-2.5 text-xs font-semibold tracking-widest text-ink uppercase"
+				>
+					{i18n.carta}
+				</a>
+				<a
+					href={site.reservationsUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					data-i18n="reservas"
+					class="flex items-center justify-center rounded-full bg-burdeos px-4 py-2.5 text-xs font-semibold tracking-widest text-cream uppercase"
+				>
+					{i18n.reservas}
+				</a>
+			</div>
+		</div>
+	) : null
+}
+
+<script>
+	const bar = document.querySelector<HTMLElement>('[data-sticky-mobile-bar]');
+	if (bar && bar.hasAttribute('data-auto-hide')) {
+		const showBar = () => {
+			bar.classList.remove('translate-y-full', 'opacity-0', 'pointer-events-none');
+			bar.classList.add('translate-y-0', 'opacity-100');
+		};
+		const hideBar = () => {
+			bar.classList.add('translate-y-full', 'opacity-0', 'pointer-events-none');
+			bar.classList.remove('translate-y-0', 'opacity-100');
+		};
+		const onScroll = () => {
+			if (window.scrollY > 280) showBar();
+			else hideBar();
+		};
+		onScroll();
+		window.addEventListener('scroll', onScroll, { passive: true });
+	}
+</script>

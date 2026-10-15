@@ -2,67 +2,49 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBanner from '../components/CtaBanner.astro';
+import { NAV_I18N } from '../data/i18n';
 import { formatPrice } from '../data/site';
 
-const primeros = [
-	'Ensalada de atún con pimientos del piquillo y aceitunas negras',
-	'Crema de marisco a la Donostiarra con calamares y croutons',
-	'Arroz salteado con verduritas estilo thai',
-];
-const segundos = [
-	'Lubina a la parrilla con verduritas al wok',
-	'Pechuga de pollo a la parrilla con ensalada',
-	'Filetes de lomo de cerdo a la parrilla con mojo picón y patatas fritas',
-];
-const postres = [
-	'Bola de helado de vainilla con tierra de brownie',
-	'Tarta de queso casera con mermelada de frutos rojos',
-	'Brownie de chocolate con mermelada de frutos rojos',
-	'Crema de yogur con frutos del bosque',
-	'Fruta preparada del día',
-];
-const combos = [
-	'Quesadilla de pollo de corral al chilindrón',
-	'Tacos de cochinita pibil con salsa sriracha y guacamole',
-	'Hamburguesa completa 100% segoviana con salsa de Whisky DYC',
-	'Lasaña de ternera con queso de oveja gratinado',
+const es = NAV_I18N.es;
+
+const primeros = ['menu.item.p1', 'menu.item.p2', 'menu.item.p3'];
+const segundos = ['menu.item.s1', 'menu.item.s2', 'menu.item.s3'];
+const postres = ['menu.item.d1', 'menu.item.d2', 'menu.item.d3', 'menu.item.d4', 'menu.item.d5'];
+const combos = ['menu.item.c1', 'menu.item.c2', 'menu.item.c3', 'menu.item.c4'];
+
+const dailyCourses = () => [
+	{ labelKey: 'menu.group.primero', items: primeros },
+	{ labelKey: 'menu.group.segundo', items: segundos },
+	{ labelKey: 'menu.group.postre', items: postres },
 ];
 
 const menus = [
 	{
 		id: 'menu-del-dia',
 		anchor: 'menu-del-dia',
-		title: 'Menú del día',
+		titleKey: 'menu.dia.title',
 		price: 14.95,
-		includes: 'Dos platos a elegir entre primeros y/o segundos + bebida + pan + postre',
-		groups: [
-			{ label: 'Primeros', items: primeros },
-			{ label: 'Segundos', items: segundos },
-			{ label: 'Postres', items: postres },
-		],
+		includesKey: 'menu.dia.includes',
+		groups: dailyCourses(),
 	},
 	{
 		id: 'plato-del-dia',
 		anchor: 'plato-del-dia',
-		title: 'Plato del día',
+		titleKey: 'menu.plato.title',
 		price: 8.95,
-		includes: 'Un plato a elegir entre primeros y segundos + bebida + pan + postre',
-		groups: [
-			{ label: 'Primeros', items: primeros },
-			{ label: 'Segundos', items: segundos },
-			{ label: 'Postres', items: postres },
-		],
+		includesKey: 'menu.plato.includes',
+		groups: dailyCourses(),
 	},
 	{
 		id: 'combo-pasa-naaam',
 		anchor: 'combo-pasa-naaam',
-		title: 'Combo Pasa-Ñaaam',
+		titleKey: 'menu.combo.title',
 		price: 14.95,
-		includes: 'Un plato a elegir + bebida + postre',
-		note: 'Opciones vegetarianas-veganas del Combo Pasa-Ñaaam disponibles',
+		includesKey: 'menu.combo.includes',
+		noteKey: 'menu.combo.note',
 		groups: [
-			{ label: 'Principales', items: combos },
-			{ label: 'Postres', items: postres },
+			{ labelKey: 'menu.group.principal', items: combos },
+			{ labelKey: 'menu.group.postre', items: postres },
 		],
 	},
 ];
@@ -73,16 +55,19 @@ const menus = [
 >
 	<PageHero
 		title="Nuestros Menús de Diario"
+		titleI18n="page.menu.title"
 		eyebrow="De martes a viernes no festivos en horario de comidas"
+		eyebrowI18n="page.menu.eyebrow"
 		description="Sugerencias de nuestra cocina para cada día, pensadas para comer bien sin perder el ritmo."
+		descriptionI18n="page.menu.desc"
 		image="/img/restaurant/platos.jpg"
 	/>
 
-	<nav aria-label="Menús del día" class="sticky top-[105px] z-40 border-b border-line bg-paper/90 backdrop-blur-md">
-		<ul class="mx-auto flex max-w-6xl gap-6 overflow-x-auto px-4 py-3 text-xs font-semibold tracking-[0.14em] text-ink-soft uppercase sm:px-6">
+	<nav aria-label="Menús del día" data-i18n-aria="menu.navAria" class="sticky z-40 border-b border-line bg-paper/90 backdrop-blur-md" style="top: var(--header-offset, 88px)">
+		<ul class="mx-auto flex max-w-6xl gap-6 overflow-x-auto px-4 py-2 text-xs font-semibold tracking-[0.14em] text-ink-soft uppercase sm:px-6 sm:py-3">
 			{menus.map((m) => (
 				<li>
-					<a href={`#${m.anchor}`} class="shrink-0 whitespace-nowrap transition-colors hover:text-burdeos">{m.title}</a>
+					<a href={`#${m.anchor}`} data-i18n={m.titleKey} class="shrink-0 whitespace-nowrap transition-colors hover:text-burdeos">{es[m.titleKey]}</a>
 				</li>
 			))}
 		</ul>
@@ -92,23 +77,23 @@ const menus = [
 		{menus.map((menu) => (
 			<section id={menu.anchor} class="scroll-mt-40">
 				<div class="flex flex-wrap items-end justify-between gap-4 border-b border-line pb-6">
-					<h2 class="font-display text-3xl font-medium text-ink sm:text-4xl">{menu.title}</h2>
+					<h2 data-i18n={menu.titleKey} class="font-display text-3xl font-medium text-ink sm:text-4xl">{es[menu.titleKey]}</h2>
 					<p class="font-display text-3xl font-semibold text-burdeos">{formatPrice(menu.price)}</p>
 				</div>
-				<p class="mt-4 text-sm leading-relaxed text-ink-soft italic">{menu.includes}</p>
-				{menu.note ? <p class="mt-2 inline-block rounded-full bg-olive/15 px-4 py-1 text-xs font-semibold tracking-widest text-olive uppercase">{menu.note}</p> : null}
+				<p data-i18n={menu.includesKey} class="mt-4 text-sm leading-relaxed text-ink-soft italic">{es[menu.includesKey]}</p>
+				{menu.noteKey ? <p data-i18n={menu.noteKey} class="mt-2 inline-block rounded-full bg-olive/15 px-4 py-1 text-xs font-semibold tracking-widest text-olive uppercase">{es[menu.noteKey]}</p> : null}
 
 				{menu.groups.map((group) => (
 					<div class="mt-8">
 						<h3 class="flex items-center gap-3 text-xs font-bold tracking-[0.22em] text-gold uppercase">
 							<span aria-hidden="true">✦</span>
-							{group.label}
+							<span data-i18n={group.labelKey}>{es[group.labelKey]}</span>
 						</h3>
 						<ul class="mt-3 divide-y divide-line/70 rounded-2xl border border-line bg-cream">
 							{group.items.map((item) => (
 								<li class="px-5 py-3 text-sm leading-relaxed text-ink-soft">
 									<span class="mr-2 text-burdeos" aria-hidden="true">•</span>
-									{item}
+									<span data-i18n={item}>{es[item]}</span>
 								</li>
 							))}
 						</ul>

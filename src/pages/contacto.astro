@@ -13,8 +13,11 @@ const mapSrc = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
 >
 	<PageHero
 		title="Encuéntranos"
+		titleI18n="page.contacto.title"
 		eyebrow="Contacto"
+		eyebrowI18n="page.contacto.eyebrow"
 		description="Estamos en el corazón del casco histórico de Segovia, a un paseo del Acueducto."
+		descriptionI18n="page.contacto.desc"
 		image="/img/restaurant/brezo.jpg"
 	/>
 
@@ -32,7 +35,7 @@ const mapSrc = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
 				</div>
 
 				<div class="rounded-2xl border border-line bg-cream p-6">
-					<h2 class="font-display text-xl font-medium text-ink">Teléfono y email</h2>
+					<h2 data-i18n="contacto.phoneTitle" class="font-display text-xl font-medium text-ink">Teléfono y email</h2>
 					<p class="mt-3 text-sm">
 						<a href={`tel:${site.phone.tel}`} class="font-semibold text-burdeos hover:underline">{site.phone.display}</a>
 					</p>
@@ -42,7 +45,7 @@ const mapSrc = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
 				</div>
 
 				<div class="rounded-2xl border border-line bg-cream p-6">
-					<h2 class="font-display text-xl font-medium text-ink">Horario de apertura</h2>
+					<h2 data-i18n="contacto.hoursTitle" class="font-display text-xl font-medium text-ink">Horario de apertura</h2>
 					<ul class="mt-3 space-y-1 text-sm text-ink-soft">
 						<li>
 							<p class="font-semibold text-ink">{site.hours[0].day}</p>
@@ -51,7 +54,7 @@ const mapSrc = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
 							))}
 						</li>
 					</ul>
-					<a href={site.reservationsUrl} target="_blank" rel="noopener noreferrer" class="mt-5 inline-block rounded-full bg-burdeos px-6 py-2.5 text-xs font-semibold tracking-widest text-cream uppercase transition-all hover:-translate-y-0.5 hover:bg-burdeos-deep">
+					<a href={site.reservationsUrl} target="_blank" rel="noopener noreferrer" data-i18n="contacto.reservasOnline" class="mt-5 inline-block rounded-full bg-burdeos px-6 py-2.5 text-xs font-semibold tracking-widest text-cream uppercase transition-all hover:-translate-y-0.5 hover:bg-burdeos-deep">
 						Reservas Online
 					</a>
 				</div>
@@ -62,53 +65,53 @@ const mapSrc = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
 				<div class="flex flex-wrap items-center gap-4">
 					<img src="/img/logo/logo-text.png" alt="Restaurante Pasapán" class="h-8 w-auto" loading="lazy" />
 					<div>
-						<h2 class="font-display text-2xl font-medium text-ink">Ponerse en contacto</h2>
-						<p class="mt-1 text-sm text-ink-soft">Si tienes preguntas o comentarios, rellena el siguiente formulario.</p>
+						<h2 data-i18n="contacto.formTitle" class="font-display text-2xl font-medium text-ink">Ponerse en contacto</h2>
+						<p data-i18n="contacto.formIntro" class="mt-1 text-sm text-ink-soft">Si tienes preguntas o comentarios, rellena el siguiente formulario.</p>
 					</div>
 				</div>
-				<p class="mt-5 text-sm text-ink-soft">
+				<p data-i18n-html="contacto.formCall" class="mt-5 text-sm text-ink-soft">
 					También puedes llamarnos al <a href={`tel:${site.phone.tel}`} class="font-semibold text-burdeos hover:underline">{site.phone.display}</a>. Contactaremos contigo lo antes posible.
 				</p>
 
 				<form id="contact-form" class="mt-8 grid gap-5 sm:grid-cols-2">
 					<div class="sm:col-span-1">
-						<label for="nombre" class="mb-1.5 block text-xs font-semibold tracking-widest text-ink uppercase">Nombre *</label>
-						<input id="nombre" name="nombre" type="text" required autocomplete="given-name" placeholder="Nombre" class="w-full rounded-lg border border-line bg-white px-4 py-2.5 text-sm text-ink placeholder:text-bark/60 focus:border-burdeos focus:outline-none focus:ring-2 focus:ring-burdeos/25" />
+						<label for="nombre" data-i18n="contacto.nombre" class="mb-1.5 block text-xs font-semibold tracking-widest text-ink uppercase">Nombre *</label>
+						<input id="nombre" name="nombre" type="text" required autocomplete="given-name" data-i18n-placeholder="contacto.phNombre" placeholder="Nombre" class="w-full rounded-lg border border-line bg-white px-4 py-2.5 text-sm text-ink placeholder:text-bark/60 focus:border-burdeos focus:outline-none focus:ring-2 focus:ring-burdeos/25" />
 					</div>
 					<div class="sm:col-span-1">
-						<label for="apellidos" class="mb-1.5 block text-xs font-semibold tracking-widest text-ink uppercase">Apellidos</label>
-						<input id="apellidos" name="apellidos" type="text" autocomplete="family-name" placeholder="Apellidos" class="w-full rounded-lg border border-line bg-white px-4 py-2.5 text-sm text-ink placeholder:text-bark/60 focus:border-burdeos focus:outline-none focus:ring-2 focus:ring-burdeos/25" />
+						<label for="apellidos" data-i18n="contacto.apellidos" class="mb-1.5 block text-xs font-semibold tracking-widest text-ink uppercase">Apellidos</label>
+						<input id="apellidos" name="apellidos" type="text" autocomplete="family-name" data-i18n-placeholder="contacto.phApellidos" placeholder="Apellidos" class="w-full rounded-lg border border-line bg-white px-4 py-2.5 text-sm text-ink placeholder:text-bark/60 focus:border-burdeos focus:outline-none focus:ring-2 focus:ring-burdeos/25" />
 					</div>
 					<div class="sm:col-span-2">
-						<label for="email" class="mb-1.5 block text-xs font-semibold tracking-widest text-ink uppercase">Correo electrónico *</label>
-						<input id="email" name="email" type="email" required autocomplete="email" placeholder="tucorreo@ejemplo.com" class="w-full rounded-lg border border-line bg-white px-4 py-2.5 text-sm text-ink placeholder:text-bark/60 focus:border-burdeos focus:outline-none focus:ring-2 focus:ring-burdeos/25" />
+						<label for="email" data-i18n="contacto.email" class="mb-1.5 block text-xs font-semibold tracking-widest text-ink uppercase">Correo electrónico *</label>
+						<input id="email" name="email" type="email" required autocomplete="email" data-i18n-placeholder="contacto.phEmail" placeholder="tucorreo@ejemplo.com" class="w-full rounded-lg border border-line bg-white px-4 py-2.5 text-sm text-ink placeholder:text-bark/60 focus:border-burdeos focus:outline-none focus:ring-2 focus:ring-burdeos/25" />
 					</div>
 					<div class="sm:col-span-2">
-						<label for="conocen" class="mb-1.5 block text-xs font-semibold tracking-widest text-ink uppercase">¿Cómo nos has conocido? *</label>
+						<label for="conocen" data-i18n="contacto.conocen" class="mb-1.5 block text-xs font-semibold tracking-widest text-ink uppercase">¿Cómo nos has conocido? *</label>
 						<select id="conocen" name="conocen" required class="w-full rounded-lg border border-line bg-white px-4 py-2.5 text-sm text-ink focus:border-burdeos focus:outline-none focus:ring-2 focus:ring-burdeos/25">
-							<option value="">Selecciona una opción</option>
-							<option value="Tripadvisor">Desde Tripadvisor</option>
-							<option value="Navegando">Navegando</option>
-							<option value="Un amigo">Por un amigo</option>
+							<option value="" data-i18n="contacto.select">Selecciona una opción</option>
+							<option value="Tripadvisor" data-i18n="contacto.optTripadvisor">Desde Tripadvisor</option>
+							<option value="Navegando" data-i18n="contacto.optNavegando">Navegando</option>
+							<option value="Un amigo" data-i18n="contacto.optAmigo">Por un amigo</option>
 						</select>
 					</div>
 					<div class="sm:col-span-2">
-						<label for="mensaje" class="mb-1.5 block text-xs font-semibold tracking-widest text-ink uppercase">Comentario o mensaje *</label>
-						<textarea id="mensaje" name="mensaje" required rows={5} placeholder="Escribe aquí tu mensaje…" class="w-full resize-y rounded-lg border border-line bg-white px-4 py-2.5 text-sm text-ink placeholder:text-bark/60 focus:border-burdeos focus:outline-none focus:ring-2 focus:ring-burdeos/25"></textarea>
+						<label for="mensaje" data-i18n="contacto.mensaje" class="mb-1.5 block text-xs font-semibold tracking-widest text-ink uppercase">Comentario o mensaje *</label>
+						<textarea id="mensaje" name="mensaje" required rows={5} data-i18n-placeholder="contacto.phMensaje" placeholder="Escribe aquí tu mensaje…" class="w-full resize-y rounded-lg border border-line bg-white px-4 py-2.5 text-sm text-ink placeholder:text-bark/60 focus:border-burdeos focus:outline-none focus:ring-2 focus:ring-burdeos/25"></textarea>
 					</div>
 					<div class="sm:col-span-2">
-						<label for="phone" class="mb-1.5 block text-xs font-semibold tracking-widest text-ink uppercase">Teléfono (opcional)</label>
-						<input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+34…" class="w-full rounded-lg border border-line bg-white px-4 py-2.5 text-sm text-ink placeholder:text-bark/60 focus:border-burdeos focus:outline-none focus:ring-2 focus:ring-burdeos/25" />
+						<label for="phone" data-i18n="contacto.phoneOptional" class="mb-1.5 block text-xs font-semibold tracking-widest text-ink uppercase">Teléfono (opcional)</label>
+						<input id="phone" name="phone" type="tel" autocomplete="tel" data-i18n-placeholder="contacto.phPhone" placeholder="+34…" class="w-full rounded-lg border border-line bg-white px-4 py-2.5 text-sm text-ink placeholder:text-bark/60 focus:border-burdeos focus:outline-none focus:ring-2 focus:ring-burdeos/25" />
 					</div>
 					<fieldset class="sm:col-span-2">
-						<legend class="mb-1.5 text-xs font-semibold tracking-widest text-ink uppercase">Confirme la protección de datos para enviar el formulario: *</legend>
+						<legend data-i18n="contacto.consentLegend" class="mb-1.5 text-xs font-semibold tracking-widest text-ink uppercase">Confirme la protección de datos para enviar el formulario: *</legend>
 						<label class="flex cursor-pointer items-start gap-3 rounded-lg border border-line bg-paper p-3 text-sm text-ink-soft">
 							<input id="consentimiento" name="consentimiento" type="checkbox" required class="mt-0.5 h-4 w-4 shrink-0 accent-burdeos" />
-							<span>Acepto el tratamiento de mis datos conforme a la Política de Privacidad.</span>
+							<span data-i18n="contacto.consentLabel">Acepto el tratamiento de mis datos conforme a la Política de Privacidad.</span>
 						</label>
 					</fieldset>
 					<div class="sm:col-span-2">
-						<button type="submit" class="inline-flex items-center gap-2 rounded-full bg-burdeos px-8 py-3 text-xs font-semibold tracking-widest text-cream uppercase shadow-md shadow-burdeos/20 transition-all hover:-translate-y-0.5 hover:bg-burdeos-deep">
+						<button type="submit" data-i18n="contacto.enviar" class="inline-flex items-center gap-2 rounded-full bg-burdeos px-8 py-3 text-xs font-semibold tracking-widest text-cream uppercase shadow-md shadow-burdeos/20 transition-all hover:-translate-y-0.5 hover:bg-burdeos-deep">
 							Enviar
 							<span aria-hidden="true">→</span>
 						</button>
@@ -116,7 +119,7 @@ const mapSrc = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
 					<p id="contact-status" hidden role="status" aria-live="polite" class="sm:col-span-2 rounded-lg border border-olive/40 bg-olive/10 px-4 py-3 text-sm leading-relaxed text-ink-soft"></p>
 				</form>
 
-				<p class="mt-6 border-t border-line pt-5 text-[0.7rem] leading-relaxed text-bark">
+				<p data-i18n-html="contacto.legal" class="mt-6 border-t border-line pt-5 text-[0.7rem] leading-relaxed text-bark">
 					Los datos facilitados a través de este formulario serán tratados por BALANDRINO GASTRONÓMICA, S.L. de acuerdo a lo establecido en nuestra{' '}
 					<a href="/privacidad/" class="text-burdeos hover:underline">Política de Privacidad</a> con la finalidad de poder enviarle información sobre nuestros productos y servicios. Tiene derecho al acceso, rectificación, supresión, portabilidad y oposición dirigiendo su petición a {site.email}.
 				</p>

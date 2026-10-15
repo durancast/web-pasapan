@@ -5,7 +5,7 @@ import LegendStory from '../components/LegendStory.astro';
 import MenuCard from '../components/MenuCard.astro';
 import DrinkSection from '../components/DrinkSection.astro';
 import { allergenCatalog } from '../data/allergens';
-import { drinkCatalog } from '../data/drinks';
+import { beers, juices, wines } from '../data/drinks';
 import menu from '../data/menu.json';
 
 interface MenuDish {
@@ -26,6 +26,16 @@ const langs: string[] = menu.langs;
 const sections = ['entrantes', 'principales', 'postres'];
 const categories = ['general', 'veggie', 'sin-gluten'];
 
+const drinkTabs = [
+	{ id: 'vinos', labelKey: 'filters.vinos' },
+	{ id: 'bebidas', labelKey: 'filters.bebidas' },
+];
+
+const drinkPanels = [
+	{ id: 'vinos', categories: wines },
+	{ id: 'bebidas', categories: [...beers, ...juices] },
+];
+
 const ui: Record<string, Record<string, string>> = {};
 for (const lang of langs) {
 	const u = menu.ui[lang as keyof typeof menu.ui];
@@ -34,6 +44,8 @@ for (const lang of langs) {
 		'filters.general': u.filters.general,
 		'filters.veggie': u.filters.veggie,
 		'filters.sin-gluten': u.filters['sin-gluten'],
+		'filters.vinos': u.filters.vinos,
+		'filters.bebidas': u.filters.bebidas,
 		'sections.entrantes': u.sections.entrantes,
 		'sections.principales': u.sections.principales,
 		'sections.postres': u.sections.postres,
@@ -54,28 +66,38 @@ const dishes = menu.dishes as unknown as MenuDish[];
 >
 	<PageHero
 		title="Carta Pasapán"
+		titleI18n="page.carta.title"
 		eyebrow="Cocina tradicional del siglo XXI"
+		eyebrowI18n="page.carta.eyebrow"
 		description="Platos elaborados con producto de la tierra de Segovia: de la parrilla al plato más creativo, en versión general, veggie o sin gluten."
+		descriptionI18n="page.carta.desc"
 		image="/img/hero/carta-header.jpg"
 	/>
 
 	<section class="mx-auto max-w-6xl px-4 sm:px-6">
-		<!-- Barra de control: secciones + filtros -->
-		<div class="sticky top-[105px] z-40 -mx-4 border-b border-line bg-paper/90 px-4 py-3 backdrop-blur-md sm:-mx-6 sm:px-6">
-			<div class="nav flex items-center gap-5 overflow-x-auto text-xs font-semibold tracking-[0.14em] text-ink-soft uppercase">
-				{sections.map((s) => (
-					<a href={`#${s}`} data-i18n={`sections.${s}`} class="whitespace-nowrap transition-colors hover:text-burdeos">{ui.es[`sections.${s}`]}</a>
-				))}
-				<a href="#bebidas" data-i18n="carta.bebidas" class="whitespace-nowrap transition-colors hover:text-burdeos">Bodega y Bebidas</a>
-			</div>
-			<div role="group" aria-label="Elegir carta" data-i18n-aria="categoriesLabel" class="mt-3 flex flex-wrap gap-2">
+		<!-- Barra de control: categorías -->
+		<div class="sticky z-40 -mx-4 border-b border-line bg-paper/90 px-4 py-2 backdrop-blur-md sm:-mx-6 sm:px-6 sm:py-3" style="top: var(--header-offset, 88px)">
+			<div role="group" aria-label="Elegir carta" data-i18n-aria="categoriesLabel" class="flex flex-nowrap gap-2 overflow-x-auto no-scrollbar">
 				{categories.map((c) => (
 					<button
 						type="button"
 						data-category-btn={c}
-						class="inline-flex items-center gap-2 rounded-full border border-line bg-paper px-4 py-1.5 text-xs font-semibold tracking-widest text-ink-soft uppercase transition-all"
+						class="inline-flex shrink-0 items-center gap-2 rounded-full border border-line bg-paper px-3 py-1.5 text-[0.7rem] font-semibold tracking-widest text-ink-soft uppercase transition-all sm:px-4 sm:text-xs"
 					>
 						<span data-i18n={`filters.${c}`}>{ui.es[`filters.${c}`]}</span>
+					</button>
+				))}
+				{drinkTabs.map((tab, i) => (
+					<button
+						type="button"
+						role="tab"
+						id={`tab-${tab.id}`}
+						data-drink-tab={tab.id}
+						aria-controls={`panel-${tab.id}`}
+						aria-selected={i === 0 ? 'true' : 'false'}
+						class="inline-flex shrink-0 items-center gap-2 rounded-full border border-line bg-paper px-3 py-1.5 text-[0.7rem] font-semibold tracking-widest whitespace-nowrap text-ink-soft uppercase transition-all sm:px-4 sm:text-xs"
+					>
+						<span data-i18n={tab.labelKey}>{ui.es[tab.labelKey]}</span>
 					</button>
 				))}
 			</div>
@@ -108,9 +130,17 @@ const dishes = menu.dishes as unknown as MenuDish[];
 
 		<!-- Bodega y bebidas -->
 		<section id="bebidas" class="mt-16 scroll-mt-44">
-			{drinkCatalog.map((cat) => (
-				<div id={cat.anchor} class="scroll-mt-44">
-					<DrinkSection title={cat.title} categories={cat.categories} />
+			{drinkPanels.map((panel, i) => (
+				<div
+					id={`panel-${panel.id}`}
+					data-drink-panel={panel.id}
+					role="tabpanel"
+					aria-labelledby={`tab-${panel.id}`}
+					hidden={i !== 0}
+					inert={i !== 0 ? true : undefined}
+					class="mt-10"
+				>
+					<DrinkSection categories={panel.categories} />
 				</div>
 			))}
 		</section>
@@ -197,5 +227,62 @@ const dishes = menu.dishes as unknown as MenuDish[];
 
 	if (scrollTarget) {
 		requestAnimationFrame(() => scrollTarget?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+	}
+
+	const drinkTabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-drink-tab]'));
+	const drinkPanels = Array.from(document.querySelectorAll<HTMLElement>('[data-drink-panel]'));
+
+	const DRINK_TAB_BY_CATEGORY: Record<string, string> = {
+		tintos: 'vinos',
+		blancos: 'vinos',
+		rosados: 'vinos',
+		espumosos: 'vinos',
+		industriales: 'bebidas',
+		artesanas: 'bebidas',
+		zumos: 'bebidas',
+		kombuchas: 'bebidas',
+		limonada: 'bebidas',
+	};
+
+	function applyDrinkTab(id: string) {
+		for (const panel of drinkPanels) {
+			const on = panel.getAttribute('data-drink-panel') === id;
+			panel.hidden = !on;
+			panel.toggleAttribute('inert', !on);
+		}
+		for (const t of drinkTabs) {
+			const active = t.getAttribute('data-drink-tab') === id;
+			t.setAttribute('aria-selected', String(active));
+			t.classList.toggle('bg-burdeos', active);
+			t.classList.toggle('text-cream', active);
+			t.classList.toggle('border-burdeos', active);
+			t.classList.toggle('border-line', !active);
+			t.classList.toggle('text-ink-soft', !active);
+			t.classList.toggle('bg-paper', !active);
+		}
+	}
+
+	if (drinkTabs.length) {
+		for (const t of drinkTabs) {
+			t.addEventListener('click', () => {
+				applyDrinkTab(t.getAttribute('data-drink-tab')!);
+				const drinks = document.getElementById('bebidas');
+				if (drinks) {
+					const rect = drinks.getBoundingClientRect();
+					if (!(rect.top < window.innerHeight && rect.bottom > 0)) {
+						drinks.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					}
+				}
+			});
+		}
+		const drinkAnchors = drinkPanels.map((p) => p.getAttribute('data-drink-panel'));
+		const hashCategoryTab = DRINK_TAB_BY_CATEGORY[fromHash];
+		let initialDrink = drinkAnchors[0] ?? '';
+		if (drinkAnchors.includes(fromHash)) initialDrink = fromHash;
+		else if (hashCategoryTab) initialDrink = hashCategoryTab;
+		applyDrinkTab(initialDrink);
+		if (hashCategoryTab) {
+			requestAnimationFrame(() => document.getElementById(fromHash)?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+		}
 	}
 </script>

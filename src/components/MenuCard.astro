@@ -31,7 +31,7 @@ const badge = dish.badge;
 	class="group flex flex-col overflow-hidden rounded-2xl border border-line bg-cream shadow-sm shadow-ink/5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-ink/10 sm:flex-row"
 >
 	<div class="relative shrink-0 sm:w-64">
-		<figure class="aspect-[4/3] w-full overflow-hidden bg-paper-deep sm:h-full sm:aspect-auto">
+		<figure class="aspect-[16/10] w-full overflow-hidden bg-paper-deep sm:h-full sm:aspect-auto">
 			<img
 				src={dish.image}
 				alt={dish.name.es}
@@ -51,7 +51,7 @@ const badge = dish.badge;
 		) : null}
 	</div>
 
-	<div class="flex flex-1 flex-col justify-between gap-3 p-5">
+	<div class="flex flex-1 flex-col justify-between gap-3 p-4 sm:p-5">
 		<div>
 			{langs.map((l) => (
 				<h3 lang={l} data-lang={l} hidden={l !== 'es'} inert={l !== 'es' ? true : undefined} class="font-display text-lg leading-snug font-medium text-ink md:text-xl">
