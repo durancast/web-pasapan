@@ -48,7 +48,7 @@ const { showAllergens = false } = Astro.props;
 							{allergenCatalog.map((a) => (
 								<li class="flex items-center gap-2">
 									<img src={a.icon} alt="" width={18} height={18} class="h-[18px] w-[18px] rounded" loading="lazy" />
-									{a.label}
+									<span data-i18n={`allergen.${a.key}`}>{a.label}</span>
 								</li>
 							))}
 						</ul>

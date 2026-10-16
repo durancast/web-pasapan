@@ -11,25 +11,22 @@ const i18n = NAV_I18N[lang];
 
 const menuLinks = [
 	{ href: '/carta/', label: i18n.carta, key: 'carta' },
-	{ href: '/carta/#veggie', label: i18n['carta.veggie'], key: 'carta.veggie' },
-	{ href: '/carta/#sin-gluten', label: i18n['carta.sin-gluten'], key: 'carta.sin-gluten' },
-	{ href: '/carta/#bebidas', label: i18n['carta.bebidas'], key: 'carta.bebidas' },
 	{ href: '/menudeldia/', label: i18n.menudeldia, key: 'menudeldia' },
 ];
 ---
 <header class="sticky top-0 z-50">
 	<div class="bg-ink text-paper">
 		<p class="mx-auto max-w-6xl px-4 py-2 text-center text-[0.72rem] tracking-[0.14em] uppercase sm:text-xs">
-			<span class="block whitespace-nowrap font-medium md:hidden">Mar–Dom · 12:00–16:00 y 20:00–00:00</span>
-			<span class="hidden font-medium md:inline">{announcement.text}</span>
+			<span class="block whitespace-nowrap font-medium md:hidden" data-i18n="topBar.mobile">Mar–Dom · 12:00–16:00 y 20:00–00:00</span>
+			<span class="hidden font-medium md:inline" data-i18n="topBar.welcome">{announcement.text}</span>
 			<span class="hidden text-gold md:inline" aria-hidden="true"> · </span>
-			<span class="hidden whitespace-nowrap text-paper/70 md:inline">{announcement.hours}</span>
+			<span class="hidden whitespace-nowrap text-paper/70 md:inline" data-i18n="topBar.hours">{announcement.hours}</span>
 		</p>
 	</div>
 	<div class="border-b border-line bg-paper/90 backdrop-blur-md">
-		<nav aria-label="Principal" class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3 sm:px-6">
+		<nav aria-label="Principal" class="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-3 sm:gap-6 sm:px-6">
 			<a href="/" class="flex items-center gap-3" aria-label="Restaurante Pasapán — Inicio">
-				<img src="/img/logo/header-logo.png" alt="Restaurante Pasapán" width={160} height={40} class="h-9 w-auto sm:h-10" loading="eager" />
+				<img src="/img/logo/header-logo.png" alt="Restaurante Pasapán" width={160} height={40} class="h-7 w-auto sm:h-10" loading="eager" />
 			</a>
 
 			<ul class="hidden items-center gap-7 text-[0.82rem] font-medium tracking-wide text-ink-soft lg:flex">
@@ -64,7 +61,7 @@ const menuLinks = [
 			</ul>
 
 			<div class="flex items-center gap-3">
-				<div role="group" aria-label={i18n.languageAria} class="hidden items-center gap-1 rounded-full border border-line bg-paper p-1 sm:flex">
+				<div role="group" aria-label={i18n.languageAria} class="flex items-center gap-0.5 rounded-full border border-line bg-paper p-1 sm:gap-1">
 					{LANGS.map((code) => (
 						<button
 							type="button"
@@ -72,9 +69,9 @@ const menuLinks = [
 							lang={code}
 							aria-pressed="false"
 							title={LANG_NAMES[code]}
-							class="flex h-8 w-8 items-center justify-center rounded-full opacity-60 transition-all hover:opacity-100 focus-visible:ring-0"
+							class="flex h-7 w-7 items-center justify-center rounded-full opacity-60 transition-all hover:opacity-100 focus-visible:ring-0 sm:h-8 sm:w-8"
 						>
-							<span aria-hidden="true" class="block h-5 w-7 overflow-hidden rounded-[4px] shadow-sm" set:html={FLAG_SVGS[code]} />
+							<span aria-hidden="true" class="block h-4 w-5.5 overflow-hidden rounded-[4px] shadow-sm sm:h-5 sm:w-7" set:html={FLAG_SVGS[code]} />
 							<span class="sr-only">{LANG_NAMES[code]}</span>
 						</button>
 					))}
@@ -127,24 +124,6 @@ const menuLinks = [
 				</li>
 				<li><a href="/contacto/" data-i18n="contacto" class="block rounded-md px-3 py-2 hover:bg-paper-deep">{i18n.contacto}</a></li>
 			</ul>
-			<div class="mx-auto max-w-6xl px-4 pb-5 sm:px-6">
-				<p data-i18n="languageAria" class="mb-2 border-t border-line pt-4 text-xs font-semibold tracking-widest text-burdeos uppercase">{i18n.languageAria}</p>
-				<div role="group" aria-label={i18n.languageAria} class="flex items-center gap-2">
-					{LANGS.map((code) => (
-						<button
-							type="button"
-							data-lang-btn={code}
-							lang={code}
-							aria-pressed="false"
-							title={LANG_NAMES[code]}
-							class="flex h-8 w-8 items-center justify-center rounded-full opacity-60 transition-all hover:opacity-100 focus-visible:ring-0"
-						>
-							<span aria-hidden="true" class="block h-5 w-7 overflow-hidden rounded-[4px] shadow-sm" set:html={FLAG_SVGS[code]} />
-							<span class="sr-only">{LANG_NAMES[code]}</span>
-						</button>
-					))}
-				</div>
-			</div>
 		</div>
 	</div>
 </header>

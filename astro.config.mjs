@@ -11,13 +11,13 @@ export default defineConfig({
 	output: 'static',
 	adapter: cloudflare(),
 	redirects: {
-		'/carta-pasapan': '/carta',
-		'/carta-veggie': '/carta',
-		'/carta-sin-gluten': '/carta',
-		'/restaurant-menu': '/carta',
-		'/aviso-legal-y-terminos-de-uso-de-la-web': '/aviso-legal',
-		'/politica-de-privacidad': '/privacidad',
-		'/politica-de-cookies': '/cookies',
+		'/carta-pasapan': '/carta/',
+		'/carta-veggie': '/carta/',
+		'/carta-sin-gluten': '/carta/',
+		'/restaurant-menu': '/carta/',
+		'/aviso-legal-y-terminos-de-uso-de-la-web': '/aviso-legal/',
+		'/politica-de-privacidad': '/privacidad/',
+		'/politica-de-cookies': '/cookies/',
 	},
 	integrations: [
 		sitemap({

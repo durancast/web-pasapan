@@ -13,6 +13,7 @@ const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const hideOn = ['/reservas', '/pedidos'];
 const show = !hideOn.includes(path);
 const autoHide = path === '/';
+const onMenuPage = path === '/carta' || path === '/menudeldia';
 ---
 {
 	show ? (
@@ -25,13 +26,25 @@ const autoHide = path === '/';
 			]}
 		>
 			<div class="grid grid-cols-2 gap-3">
-				<a
-					href="/carta/"
-					data-i18n="carta"
-					class="flex items-center justify-center rounded-full border border-ink/20 bg-cream px-4 py-2.5 text-xs font-semibold tracking-widest text-ink uppercase"
-				>
-					{i18n.carta}
-				</a>
+				{onMenuPage ? (
+					<a
+						href={site.ordersUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						data-i18n="pedidos"
+						class="flex items-center justify-center rounded-full border border-ink/20 bg-cream px-4 py-2.5 text-xs font-semibold tracking-widest text-ink uppercase"
+					>
+						{i18n.pedidos}
+					</a>
+				) : (
+					<a
+						href="/carta/"
+						data-i18n="carta"
+						class="flex items-center justify-center rounded-full border border-ink/20 bg-cream px-4 py-2.5 text-xs font-semibold tracking-widest text-ink uppercase"
+					>
+						{i18n.carta}
+					</a>
+				)}
 				<a
 					href={site.reservationsUrl}
 					target="_blank"

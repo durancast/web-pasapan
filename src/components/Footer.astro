@@ -9,6 +9,14 @@ interface Props {
 const { lang = 'es' } = Astro.props;
 const i18n = NAV_I18N[lang];
 
+const legalKeys: Record<string, string> = {
+	'/aviso-legal/': 'legal.avisoLegal',
+	'/privacidad/': 'legal.privacidad',
+	'/condiciones-de-uso-de-las-reservas/': 'legal.reservas',
+	'/terminos-condiciones-compra/': 'legal.compra',
+	'/cookies/': 'legal.cookies',
+};
+
 const year = new Date().getFullYear();
 ---
 <footer class="mt-auto border-t border-line bg-paper-deep/60 pb-20 sm:pb-0">
@@ -41,7 +49,7 @@ const year = new Date().getFullYear();
 				<ul class="mt-4 space-y-2 text-sm text-ink-soft">
 					{site.legal.map((link) => (
 						<li>
-							<a href={link.url} class="transition-colors hover:text-burdeos">{link.label}</a>
+							<a href={link.url} data-i18n={legalKeys[link.url]} class="transition-colors hover:text-burdeos">{link.label}</a>
 						</li>
 					))}
 				</ul>

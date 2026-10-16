@@ -9,12 +9,27 @@ const { categories } = Astro.props;
 
 const GROUP_KEYS: Record<string, string> = {
 	'Vino ecológico': 'drinks.ecoWine',
-	'Hechas en Segovia': 'drinks.madeInSegovia',
+	'Vinos de la Tierra de Castilla y León': 'drinks.castillaLeon',
+	'Cervezas Industriales': 'drinks.industriales',
+	'Cervezas Artesanas · Hechas en Segovia': 'drinks.cervezasArtesanas',
+	'Zumos Naturales y Limonada': 'drinks.zumosLimonada',
+	Kombuchas: 'drinks.kombuchas',
+};
+
+const ITEM_KEYS: Record<string, string> = {
+	'Creatividad (naranja, zanahoria y jengibre)': 'drinks.juice.creatividad',
+	'Atracción (fresa, frambuesa y arándanos)': 'drinks.juice.atraccion',
+	'Confianza (fresa, naranja y hierbabuena)': 'drinks.juice.confianza',
+	Original: 'drinks.kombucha.original',
+	'Cítricos & Albahaca': 'drinks.kombucha.citricos',
+	'Frambuesa & Hibisco': 'drinks.kombucha.frambuesa',
+	'Piña & Hierbabuena': 'drinks.kombucha.pina',
+	'Limonada natural': 'drinks.limonadaNatural',
 };
 ---
 {categories.map((category) => (
 	<section id={category.id} class="mb-14 scroll-mt-44">
-		<h3 data-i18n={category.id === 'espumosos' ? undefined : `drinks.${category.id}`} class="font-display text-2xl font-medium text-ink sm:text-3xl">{category.title}</h3>
+		<h3 data-i18n={`drinks.${category.id}`} class="font-display text-2xl font-medium text-ink sm:text-3xl">{category.title}</h3>
 		<div class="rule-gold mt-4 w-16"></div>
 
 		<div class="mt-8 grid gap-6 md:grid-cols-2">
@@ -25,7 +40,7 @@ const GROUP_KEYS: Record<string, string> = {
 						{group.items.map((item) => (
 							<li class="flex items-baseline justify-between gap-4 text-sm">
 								<div class="flex-1">
-									<span class="font-medium text-ink">{item.name}</span>
+									<span class="font-medium text-ink" data-i18n={ITEM_KEYS[item.name]}>{item.name}</span>
 									{item.note ? <span class="block text-xs italic text-bark sm:ml-1.5 sm:inline">({item.note})</span> : null}
 								</div>
 								<span class="mx-2 hidden flex-1 border-b border-dotted border-sand sm:block" aria-hidden="true"></span>

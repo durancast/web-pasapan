@@ -74,29 +74,41 @@ const dishes = menu.dishes as unknown as MenuDish[];
 		image="/img/hero/carta-header.jpg"
 	/>
 
-	<section class="mx-auto max-w-6xl px-4 sm:px-6">
+	<section id="carta-content" class="mx-auto max-w-6xl scroll-mt-40 px-4 sm:px-6">
 		<!-- Barra de control: categorías -->
 		<div class="sticky z-40 -mx-4 border-b border-line bg-paper/90 px-4 py-2 backdrop-blur-md sm:-mx-6 sm:px-6 sm:py-3" style="top: var(--header-offset, 88px)">
-			<div role="group" aria-label="Elegir carta" data-i18n-aria="categoriesLabel" class="flex flex-nowrap gap-2 overflow-x-auto no-scrollbar">
+			<div role="group" aria-label="Elegir carta" data-i18n-aria="categoriesLabel" class="flex flex-nowrap items-center gap-2 overflow-x-auto no-scrollbar">
 				{categories.map((c) => (
 					<button
 						type="button"
-						data-category-btn={c}
+						data-tab-btn={c}
+						aria-pressed="false"
 						class="inline-flex shrink-0 items-center gap-2 rounded-full border border-line bg-paper px-3 py-1.5 text-[0.7rem] font-semibold tracking-widest text-ink-soft uppercase transition-all sm:px-4 sm:text-xs"
 					>
 						<span data-i18n={`filters.${c}`}>{ui.es[`filters.${c}`]}</span>
 					</button>
 				))}
-				{drinkTabs.map((tab, i) => (
+				<span aria-hidden="true" class="mx-1 h-5 w-px shrink-0 self-center bg-sand"></span>
+				{drinkTabs.map((tab) => (
 					<button
 						type="button"
-						role="tab"
-						id={`tab-${tab.id}`}
-						data-drink-tab={tab.id}
-						aria-controls={`panel-${tab.id}`}
-						aria-selected={i === 0 ? 'true' : 'false'}
-						class="inline-flex shrink-0 items-center gap-2 rounded-full border border-line bg-paper px-3 py-1.5 text-[0.7rem] font-semibold tracking-widest whitespace-nowrap text-ink-soft uppercase transition-all sm:px-4 sm:text-xs"
+						data-tab-btn={tab.id}
+						aria-pressed="false"
+						class="inline-flex shrink-0 items-center gap-2 rounded-full border border-gold/60 bg-cream px-3 py-1.5 text-[0.7rem] font-semibold tracking-widest whitespace-nowrap text-gold-deep uppercase transition-all hover:border-gold-deep sm:px-4 sm:text-xs"
 					>
+						{tab.id === 'vinos' ? (
+							<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 shrink-0">
+								<path d="M8 3h8l-.7 5.2a3.4 3.4 0 0 1-6.6 0L8 3Z" />
+								<path d="M12 13.4V20" />
+								<path d="M8.5 20.5h7" />
+							</svg>
+						) : (
+							<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 shrink-0">
+								<path d="M6 7h9v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" />
+								<path d="M15 10h2.5A1.5 1.5 0 0 1 19 11.5v4a1.5 1.5 0 0 1-1.5 1.5H15" />
+								<path d="M6 7c0-1.7 1.3-2.5 3-2.5h3C13.7 4.5 15 5.3 15 7" />
+							</svg>
+						)}
 						<span data-i18n={tab.labelKey}>{ui.es[tab.labelKey]}</span>
 					</button>
 				))}
@@ -124,29 +136,21 @@ const dishes = menu.dishes as unknown as MenuDish[];
 		))}
 
 		<!-- Aviso sin gluten -->
-		<p data-cat-note="sin-gluten" hidden class="mt-12 rounded-xl border border-dashed border-olive/50 bg-olive/10 px-5 py-4 text-sm leading-relaxed text-ink-soft italic" data-i18n="glutenNote">
+		<p data-cat-note="sin-gluten" hidden inert class="mt-12 rounded-xl border border-dashed border-olive/50 bg-olive/10 px-5 py-4 text-sm leading-relaxed text-ink-soft italic" data-i18n="glutenNote">
 			{ui.es.glutenNote}
 		</p>
 
 		<!-- Bodega y bebidas -->
-		<section id="bebidas" class="mt-16 scroll-mt-44">
-			{drinkPanels.map((panel, i) => (
-				<div
-					id={`panel-${panel.id}`}
-					data-drink-panel={panel.id}
-					role="tabpanel"
-					aria-labelledby={`tab-${panel.id}`}
-					hidden={i !== 0}
-					inert={i !== 0 ? true : undefined}
-					class="mt-10"
-				>
+		<section id="bebidas" class="mt-10 scroll-mt-44" hidden inert>
+			{drinkPanels.map((panel) => (
+				<div id={`panel-${panel.id}`} data-drink-panel={panel.id} hidden inert>
 					<DrinkSection categories={panel.categories} />
 				</div>
 			))}
 		</section>
 
 		<!-- Leyenda de alérgenos -->
-		<div class="mt-14 rounded-3xl border border-line bg-cream p-6 sm:p-8">
+		<div id="allergen-legend" class="mt-14 rounded-3xl border border-line bg-cream p-6 sm:p-8">
 			<h2 class="font-display text-xl font-medium text-ink">
 				<span aria-hidden="true" class="mr-2 text-gold">✦</span>
 				<span data-i18n="allergenLegend">{ui.es.allergenLegend}</span>
@@ -155,7 +159,7 @@ const dishes = menu.dishes as unknown as MenuDish[];
 				{allergenCatalog.map((a) => (
 					<li class="flex items-center gap-2 text-sm text-ink-soft">
 						<img src={a.icon} alt="" width={22} height={22} loading="lazy" decoding="async" class="h-[22px] w-[22px] rounded-[4px] border border-line/70" />
-						{a.label}
+						<span data-i18n={`allergen.${a.key}`}>{a.label}</span>
 					</li>
 				))}
 			</ul>
@@ -167,37 +171,65 @@ const dishes = menu.dishes as unknown as MenuDish[];
 </script>
 
 <script>
-	const DEFAULT_CATEGORY = 'general';
-	const categories = ['general', 'veggie', 'sin-gluten'];
+	const DEFAULT_TAB = 'general';
+	const foodCategories = ['general', 'veggie', 'sin-gluten'];
+	const drinkTabIds = ['vinos', 'bebidas'];
+	const allCategories = [...foodCategories, ...drinkTabIds];
 
-	let category = localStorage.getItem('pasapan.category') ?? DEFAULT_CATEGORY;
-	if (!categories.includes(category)) category = DEFAULT_CATEGORY;
+	const DRINK_TAB_BY_CATEGORY: Record<string, string> = {
+		tintos: 'vinos',
+		blancos: 'vinos',
+		rosados: 'vinos',
+		espumosos: 'vinos',
+		cervezas: 'bebidas',
+		zumos: 'bebidas',
+	};
+
+	const isDrinkTab = (tab: string) => drinkTabIds.includes(tab);
+
+	let activeTab = localStorage.getItem('pasapan.category') ?? DEFAULT_TAB;
+	if (!allCategories.includes(activeTab)) activeTab = DEFAULT_TAB;
 
 	const fromHash = location.hash.replace('#', '');
 	let scrollTarget: HTMLElement | null = null;
 	if (fromHash) {
-		if (categories.includes(fromHash)) {
-			category = fromHash;
+		if (allCategories.includes(fromHash)) {
+			activeTab = fromHash;
 			history.replaceState(null, '', `${location.pathname}${location.search}`);
 		} else {
 			const target = document.getElementById(fromHash);
 			if (target?.hasAttribute('data-category')) {
-				category = target.getAttribute('data-category') ?? category;
+				const tab = target.getAttribute('data-category') ?? activeTab;
+				activeTab = allCategories.includes(tab) ? tab : DEFAULT_TAB;
 				scrollTarget = target;
+			} else if (DRINK_TAB_BY_CATEGORY[fromHash]) {
+				activeTab = DRINK_TAB_BY_CATEGORY[fromHash];
 			}
 		}
 	}
 
-	const categoryButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-category-btn]'));
+	const tabButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-tab-btn]'));
 	const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-category]'));
 	const sectionBlocks = Array.from(document.querySelectorAll<HTMLElement>('[data-section-block]'));
 	const catNotes = Array.from(document.querySelectorAll<HTMLElement>('[data-cat-note]'));
+	const drinksSection = document.getElementById('bebidas');
+	const drinkPanels = Array.from(document.querySelectorAll<HTMLElement>('[data-drink-panel]'));
+	const allergenLegend = document.getElementById('allergen-legend');
 
-	function applyCategory(next: string) {
-		category = next;
+	function setHidden(el: Element | null, hidden: boolean) {
+		if (!el) return;
+		(el as HTMLElement).hidden = hidden;
+		el.toggleAttribute('inert', hidden);
+	}
+
+	function applyTab(next: string) {
+		activeTab = next;
 		localStorage.setItem('pasapan.category', next);
+		const drinkMode = isDrinkTab(next);
+
+		// Platos (comida)
 		for (const card of cards) {
-			const on = card.getAttribute('data-category') === next;
+			const on = !drinkMode && card.getAttribute('data-category') === next;
 			card.hidden = !on;
 			card.toggleAttribute('inert', !on);
 		}
@@ -206,83 +238,69 @@ const dishes = menu.dishes as unknown as MenuDish[];
 			block.hidden = !visible;
 			block.toggleAttribute('inert', !visible);
 		}
-		for (const note of catNotes) note.hidden = note.getAttribute('data-cat-note') !== next;
-		for (const b of categoryButtons) {
-			const active = b.getAttribute('data-category-btn') === next;
+		for (const note of catNotes) {
+			const on = !drinkMode && note.getAttribute('data-cat-note') === next;
+			note.hidden = !on;
+			note.toggleAttribute('inert', !on);
+		}
+		setHidden(allergenLegend, drinkMode);
+
+		// Bodega y bebidas
+		setHidden(drinksSection, !drinkMode);
+		for (const panel of drinkPanels) {
+			const on = drinkMode && panel.getAttribute('data-drink-panel') === next;
+			panel.hidden = !on;
+			panel.toggleAttribute('inert', !on);
+		}
+
+		// Botones de la barra sticky
+		for (const b of tabButtons) {
+			const id = b.getAttribute('data-tab-btn') ?? '';
+			const active = id === next;
+			const drinkBtn = isDrinkTab(id);
 			b.setAttribute('aria-pressed', String(active));
-			b.classList.toggle('bg-burdeos', active);
-			b.classList.toggle('text-cream', active);
-			b.classList.toggle('border-burdeos', active);
-			b.classList.toggle('border-line', !active);
-			b.classList.toggle('text-ink-soft', !active);
-			b.classList.toggle('bg-paper', !active);
+			if (drinkBtn) {
+				b.classList.toggle('bg-ink', active);
+				b.classList.toggle('text-cream', active);
+				b.classList.toggle('border-ink', active);
+				b.classList.toggle('shadow-sm', active);
+				b.classList.toggle('border-gold/60', !active);
+				b.classList.toggle('bg-cream', !active);
+				b.classList.toggle('text-gold-deep', !active);
+				b.classList.toggle('hover:border-gold-deep', !active);
+			} else {
+				b.classList.toggle('bg-burdeos', active);
+				b.classList.toggle('text-cream', active);
+				b.classList.toggle('border-burdeos', active);
+				b.classList.toggle('border-line', !active);
+				b.classList.toggle('text-ink-soft', !active);
+				b.classList.toggle('bg-paper', !active);
+			}
 		}
 	}
 
-	for (const b of categoryButtons) {
-		b.addEventListener('click', () => applyCategory(b.getAttribute('data-category-btn')!));
+	function scrollToCartaTop() {
+		const container = document.getElementById('carta-content');
+		if (!container) return;
+		if (container.getBoundingClientRect().top >= 0) return;
+		const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		container.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
 	}
 
-	applyCategory(category);
+	for (const b of tabButtons) {
+		b.addEventListener('click', () => {
+			for (const d of document.querySelectorAll<HTMLDetailsElement>('[data-section-block] details[open]')) d.open = false;
+			applyTab(b.getAttribute('data-tab-btn')!);
+			scrollToCartaTop();
+		});
+	}
+
+	applyTab(activeTab);
 
 	if (scrollTarget) {
 		requestAnimationFrame(() => scrollTarget?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
 	}
-
-	const drinkTabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-drink-tab]'));
-	const drinkPanels = Array.from(document.querySelectorAll<HTMLElement>('[data-drink-panel]'));
-
-	const DRINK_TAB_BY_CATEGORY: Record<string, string> = {
-		tintos: 'vinos',
-		blancos: 'vinos',
-		rosados: 'vinos',
-		espumosos: 'vinos',
-		industriales: 'bebidas',
-		artesanas: 'bebidas',
-		zumos: 'bebidas',
-		kombuchas: 'bebidas',
-		limonada: 'bebidas',
-	};
-
-	function applyDrinkTab(id: string) {
-		for (const panel of drinkPanels) {
-			const on = panel.getAttribute('data-drink-panel') === id;
-			panel.hidden = !on;
-			panel.toggleAttribute('inert', !on);
-		}
-		for (const t of drinkTabs) {
-			const active = t.getAttribute('data-drink-tab') === id;
-			t.setAttribute('aria-selected', String(active));
-			t.classList.toggle('bg-burdeos', active);
-			t.classList.toggle('text-cream', active);
-			t.classList.toggle('border-burdeos', active);
-			t.classList.toggle('border-line', !active);
-			t.classList.toggle('text-ink-soft', !active);
-			t.classList.toggle('bg-paper', !active);
-		}
-	}
-
-	if (drinkTabs.length) {
-		for (const t of drinkTabs) {
-			t.addEventListener('click', () => {
-				applyDrinkTab(t.getAttribute('data-drink-tab')!);
-				const drinks = document.getElementById('bebidas');
-				if (drinks) {
-					const rect = drinks.getBoundingClientRect();
-					if (!(rect.top < window.innerHeight && rect.bottom > 0)) {
-						drinks.scrollIntoView({ behavior: 'smooth', block: 'start' });
-					}
-				}
-			});
-		}
-		const drinkAnchors = drinkPanels.map((p) => p.getAttribute('data-drink-panel'));
-		const hashCategoryTab = DRINK_TAB_BY_CATEGORY[fromHash];
-		let initialDrink = drinkAnchors[0] ?? '';
-		if (drinkAnchors.includes(fromHash)) initialDrink = fromHash;
-		else if (hashCategoryTab) initialDrink = hashCategoryTab;
-		applyDrinkTab(initialDrink);
-		if (hashCategoryTab) {
-			requestAnimationFrame(() => document.getElementById(fromHash)?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
-		}
+	if (fromHash && (drinkTabIds.includes(fromHash) || DRINK_TAB_BY_CATEGORY[fromHash])) {
+		requestAnimationFrame(() => document.getElementById(fromHash)?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
 	}
 </script>

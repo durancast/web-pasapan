@@ -25,7 +25,7 @@ import { site } from '../data/site';
 					<h2 data-i18n="reservas.hoursTitle" class="text-xs font-semibold tracking-[0.18em] text-burdeos uppercase">Horario de apertura</h2>
 					<ul class="mt-4 space-y-2 text-sm text-ink-soft">
 						<li>
-							<p class="font-semibold text-ink">{site.hours[0].day}</p>
+							<p class="font-semibold text-ink" data-i18n="days">{site.hours[0].day}</p>
 							{site.hours.map((h) => (
 								<p>{h.label}</p>
 							))}

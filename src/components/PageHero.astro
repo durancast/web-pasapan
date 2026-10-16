@@ -14,7 +14,7 @@ const { title, eyebrow, description, image = '/img/hero/carta-header.jpg', title
 	<img src={image} alt="" class="absolute inset-0 h-full w-full object-cover opacity-40" loading="eager" decoding="async" />
 	<div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/30" aria-hidden="true"></div>
 	<div class="relative mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 sm:py-28">
-		{eyebrow ? <p data-i18n={eyebrowI18n} class="text-xs font-semibold tracking-[0.3em] text-gold-deep uppercase">{eyebrow}</p> : null}
+		{eyebrow ? <p data-i18n={eyebrowI18n} class="text-xs font-semibold tracking-[0.3em] text-gold-light uppercase drop-shadow-sm">{eyebrow}</p> : null}
 		<h1 data-i18n={titleI18n} class="mt-4 font-display text-4xl leading-tight font-medium sm:text-6xl">{title}</h1>
 		{description ? <p data-i18n={descriptionI18n} class="mx-auto mt-5 max-w-2xl leading-relaxed text-paper/80">{description}</p> : null}
 		<div class="rule-gold mx-auto mt-8 w-28"></div>

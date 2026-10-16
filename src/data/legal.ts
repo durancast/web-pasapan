@@ -94,7 +94,7 @@ export const politicaPrivacidad: LegalDoc = {
 		{
 			heading: '¿Qué datos personales vamos a tratar?',
 			paras: [
-				'Para el acceso y uso de la web y de nuestros servicios de gestión de reservas y pedidos online, RESTAURANTE PASAPAN tratará los siguientes datos personales: dirección de correo electrónico, nombre, apellidos, país y región de residencia, fecha de nacimiento, dirección IP, imagen del rostro, dirección postal, teléfono de contacto, sexo y DNI, según el servicio solicitado.',
+				'Para el acceso y uso de la web y de nuestros servicios de gestión de reservas y pedidos online, RESTAURANTE PASAPAN tratará los siguientes datos personales: dirección de correo electrónico, nombre, apellidos, país y región de residencia, fecha de nacimiento, dirección IP, dirección postal, teléfono de contacto, sexo y DNI, según el servicio solicitado.',
 			],
 		},
 		{
@@ -153,7 +153,7 @@ export const politicaPrivacidad: LegalDoc = {
 			heading: 'Decisiones automatizadas y transferencias internacionales',
 			paras: [
 				'RESTAURANTE PASAPAN podrá llevar a cabo la toma de decisiones automatizadas, incluida la elaboración de perfiles basados en su comportamiento, siempre con su consentimiento expreso. El Usuario puede oponerse en todo momento a la aparición y envío de publicidad adaptada solicitándolo en info@restaurantepasapan.es.',
-				'En caso de transferencias internacionales de datos, estas solo se realizarán a entidades bajo la habilitación del acuerdo Estados Unidos–Unión Europea Privacy Shield.',
+				'En caso de transferencias internacionales de datos, estas solo se realizarán al amparo del Marco de Privacidad de Datos UE-EE. UU. (EU-US Data Privacy Framework) o de cláusulas contractuales tipo aprobadas por la Comisión Europea.',
 			],
 		},
 		{
@@ -169,7 +169,7 @@ export const condicionesReservas: LegalDoc = {
 	slug: 'condiciones-de-uso-de-las-reservas',
 	title: 'Términos y Condiciones de Uso de las Reservas',
 	intro:
-		'Titular del servicio: Balandrino Gastronómica, S.L. (Restaurante Pasapán). CIF B02993129. C/ Valdeláguila, 7, Bajo, Segovia (Segovia). 40001, España. Email: info@restaurantepasapan.es.',
+		'Titular del servicio: Balandrino Gastronómica, S.L. (Restaurante Pasapán). CIF B02993129. C/ Colón, 5, 40001 de Segovia, España. Email: info@restaurantepasapan.es.',
 	sections: [
 		{
 			heading: 'Condiciones de uso',
@@ -196,7 +196,7 @@ export const condicionesReservas: LegalDoc = {
 		{
 			heading: 'Exclusión de usuarios',
 			paras: [
-				'Balandrino Gastronómica, S.L. (Restaurante Pasapán) se reserva el derecho a impedir el uso del Servicio, de forma temporal o definitiva, a cualquier Usuario que infrinja las normas establecidas. La relación entre el titular y el Usuario se regirá por la normativa española vigente y cualquier controversia se someterá a los Juzgados y Tribunales de Madrid.',
+				'Balandrino Gastronómica, S.L. (Restaurante Pasapán) se reserva el derecho a impedir el uso del Servicio, de forma temporal o definitiva, a cualquier Usuario que infrinja las normas establecidas. La relación entre el titular y el Usuario se regirá por la normativa española vigente y cualquier controversia se someterá a los Juzgados y Tribunales de Segovia capital.',
 			],
 		},
 		{
