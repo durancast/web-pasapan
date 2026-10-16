@@ -1,6 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 import { site } from '../data/site';
 import { allergenCatalog } from '../data/allergens';
+import { responsiveWidths, toAsset } from '../data/images';
+import rincon from '../assets/images/restaurant/rincon.jpg';
+
+const rinconAsset = toAsset(rincon);
 
 interface Props {
 	showAllergens?: boolean;
@@ -57,7 +62,7 @@ const { showAllergens = false } = Astro.props;
 			</div>
 
 			<div class="flex flex-col gap-6">
-				<img src="/img/restaurant/rincon.jpg" alt="Rincón del restaurante con mesa junto a la ventana" loading="lazy" decoding="async" width={640} height={480} class="h-72 w-full rounded-2xl border border-line object-cover" />
+				<Image src={rinconAsset.image} widths={responsiveWidths(rinconAsset.width, [320, 480, 640, 800])} sizes="(min-width: 768px) 340px, 100vw" quality={72} alt="Rincón del restaurante con mesa junto a la ventana" loading="lazy" decoding="async" class="h-72 w-full rounded-2xl border border-line object-cover" />
 			</div>
 		</div>
 	</div>

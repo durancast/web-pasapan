@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import StickyMobileBar from '../components/StickyMobileBar.astro';
 import { site } from '../data/site';
 import { LANGS, NAV_I18N, type Lang } from '../data/i18n';
+import homeHero from '../assets/images/hero/home-hero.jpg';
 import '../styles/global.css';
 
 interface Props {
@@ -17,7 +18,7 @@ interface Props {
 const {
 	title = site.title,
 	description = site.description,
-	image = '/img/hero/home-hero.jpg',
+	image = homeHero.src,
 	lang = 'es',
 	ogType = 'website',
 } = Astro.props;
@@ -44,7 +45,7 @@ const schema = {
 	'@context': 'https://schema.org',
 	'@type': 'Restaurant',
 	name: site.name,
-	image: new URL('/img/hero/home-hero.jpg', site.url),
+	image: new URL(homeHero.src, site.url),
 	url: site.url,
 	telephone: site.phone.tel,
 	email: site.email,

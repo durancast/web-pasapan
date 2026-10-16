@@ -1,7 +1,9 @@
 ---
+import { Picture } from 'astro:assets';
 import { formatPrice } from '../data/site';
 import AllergenBadges from './AllergenBadges.astro';
 import type { AllergenKey } from '../data/allergens';
+import { CARD_WIDTHS, getImage, responsiveWidths } from '../data/images';
 
 interface Props {
 	dish: {
@@ -22,6 +24,8 @@ interface Props {
 const { dish, langs } = Astro.props;
 const note = dish.note;
 const badge = dish.badge;
+const asset = getImage(dish.image);
+const imgWidths = asset ? responsiveWidths(asset.width, CARD_WIDTHS) : [];
 ---
 
 <article
@@ -32,15 +36,31 @@ const badge = dish.badge;
 >
 	<div class="relative shrink-0 sm:w-64">
 		<figure class="aspect-[16/10] w-full overflow-hidden bg-paper-deep sm:h-full sm:aspect-auto">
-			<img
-				src={dish.image}
-				alt={dish.name.es}
-				loading="lazy"
-				decoding="async"
-				width={720}
-				height={540}
-				class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-			/>
+			{asset ? (
+				<Picture
+					src={asset.image}
+					formats={['avif', 'webp']}
+					fallbackFormat="webp"
+					widths={imgWidths}
+					sizes="(min-width: 640px) 256px, 100vw"
+					quality={72}
+					alt={dish.name.es}
+					loading="lazy"
+					decoding="async"
+					class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+					pictureAttributes={{ class: 'block h-full w-full' }}
+				/>
+			) : (
+				<img
+					src={dish.image}
+					alt={dish.name.es}
+					loading="lazy"
+					decoding="async"
+					width={720}
+					height={540}
+					class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+				/>
+			)}
 		</figure>
 		{badge ? (
 			<div class="absolute top-3 left-3 rounded-full bg-burdeos px-3 py-1 text-[0.62rem] font-semibold tracking-[0.12em] text-cream uppercase shadow-md">

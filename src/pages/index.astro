@@ -1,7 +1,20 @@
 ---
+import { Image, Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import { site } from '../data/site';
+import { HERO_WIDTHS, responsiveWidths, toAsset } from '../data/images';
+import homeHero from '../assets/images/hero/home-hero.jpg';
+import logoPared from '../assets/images/restaurant/logo-pared.jpg';
+import mesaCuadrada from '../assets/images/restaurant/mesa-cuadrada.jpg';
+import interior from '../assets/images/restaurant/interior.jpg';
+import platos from '../assets/images/restaurant/platos.jpg';
+
+const homeHeroAsset = toAsset(homeHero);
+const logoParedAsset = toAsset(logoPared);
+const mesaCuadradaAsset = toAsset(mesaCuadrada);
+const interiorAsset = toAsset(interior);
+const platosAsset = toAsset(platos);
 ---
 <BaseLayout
 	title="Restaurante Pasapán · Cocina Tradicional del Siglo XXI · Segovia"
@@ -9,7 +22,20 @@ import { site } from '../data/site';
 >
 	<!-- Hero -->
 	<section class="relative flex min-h-[88svh] items-end overflow-hidden bg-ink text-paper">
-		<img src="/img/hero/home-hero.jpg" alt="Interior del Restaurante Pasapán en Segovia" class="absolute inset-0 h-full w-full object-cover" fetchpriority="high" width={1920} height={1080} loading="eager" decoding="async" />
+		<Picture
+			src={homeHeroAsset.image}
+			formats={['avif', 'webp']}
+			fallbackFormat="webp"
+			widths={responsiveWidths(homeHeroAsset.width, HERO_WIDTHS)}
+			sizes="100vw"
+			quality={70}
+			alt="Interior del Restaurante Pasapán en Segovia"
+			loading="eager"
+			fetchpriority="high"
+			decoding="async"
+			class="h-full w-full object-cover"
+			pictureAttributes={{ class: 'absolute inset-0 h-full w-full' }}
+		/>
 		<div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-ink/20" aria-hidden="true"></div>
 		<div class="relative mx-auto w-full max-w-6xl px-4 pt-24 pb-20 sm:px-6 sm:pb-24">
 			<p data-i18n="home.heroEyebrow" class="reveal text-xs font-semibold tracking-[0.32em] text-gold-light uppercase drop-shadow" style="animation-delay:0ms">Cocina tradicional del siglo XXI</p>
@@ -49,8 +75,8 @@ import { site } from '../data/site';
 				</a>
 			</div>
 			<div class="reveal relative" style="animation-delay:200ms">
-				<img src="/img/restaurant/logo-pared.jpg" alt="Logotipo de Pasapán sobre la pared del restaurante" loading="lazy" decoding="async" width={800} height={600} class="aspect-[4/5] w-full rounded-2xl border border-line object-cover shadow-xl shadow-ink/10" />
-				<img src="/img/restaurant/mesa-cuadrada.jpg" alt="Mesa del restaurante con mantel y vajilla" loading="lazy" decoding="async" width={700} height={500} class="absolute -bottom-10 -left-6 hidden aspect-[4/3] w-1/2 rounded-2xl border-4 border-paper object-cover shadow-2xl sm:block" />
+				<Image src={logoParedAsset.image} widths={responsiveWidths(logoParedAsset.width, [280, 360, 440, 560, 680])} sizes="(min-width: 1024px) 440px, 100vw" quality={72} alt="Logotipo de Pasapán sobre la pared del restaurante" loading="lazy" decoding="async" class="aspect-[4/5] w-full rounded-2xl border border-line object-cover shadow-xl shadow-ink/10" />
+				<Image src={mesaCuadradaAsset.image} widths={responsiveWidths(mesaCuadradaAsset.width, [160, 220, 320, 440])} sizes="(min-width: 1024px) 220px, 50vw" quality={72} alt="Mesa del restaurante con mantel y vajilla" loading="lazy" decoding="async" class="absolute -bottom-10 -left-6 hidden aspect-[4/3] w-1/2 rounded-2xl border-4 border-paper object-cover shadow-2xl sm:block" />
 			</div>
 		</div>
 	</section>
@@ -59,7 +85,7 @@ import { site } from '../data/site';
 	<section class="bg-paper-deep/50">
 		<div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
 			<div class="grid items-center gap-12 lg:grid-cols-2">
-				<img src="/img/restaurant/interior.jpg" alt="Interior acogedor del restaurante Pasapán" loading="lazy" decoding="async" width={900} height={640} class="order-2 aspect-[4/3] w-full rounded-2xl border border-line object-cover shadow-lg lg:order-1" />
+				<Image src={interiorAsset.image} widths={responsiveWidths(interiorAsset.width, [320, 420, 560, 720, 900])} sizes="(min-width: 1024px) 560px, 100vw" quality={72} alt="Interior acogedor del restaurante Pasapán" loading="lazy" decoding="async" class="order-2 aspect-[4/3] w-full rounded-2xl border border-line object-cover shadow-lg lg:order-1" />
 				<div class="order-1 text-center lg:order-2 lg:text-left">
 					<div class="text-center lg:text-left">
 						<p data-i18n="home.saboreaEyebrow" class="text-xs font-semibold tracking-[0.28em] text-gold-deep uppercase">Con buen gusto</p>
@@ -104,7 +130,7 @@ import { site } from '../data/site';
 					</div>
 				</div>
 				<div class="flex flex-col gap-6">
-					<img src="/img/restaurant/platos.jpg" alt="Platos elaborados del Restaurante Pasapán" loading="lazy" decoding="async" width={800} height={600} class="aspect-[4/3] w-full rounded-2xl border border-paper/10 object-cover shadow-2xl" />
+					<Image src={platosAsset.image} widths={responsiveWidths(platosAsset.width, [280, 360, 440, 560, 680])} sizes="(min-width: 1024px) 440px, 100vw" quality={72} alt="Platos elaborados del Restaurante Pasapán" loading="lazy" decoding="async" class="aspect-[4/3] w-full rounded-2xl border border-paper/10 object-cover shadow-2xl" />
 					<img src="/img/logo/alimentos-de-segovia.png" alt="Alimentos de Segovia" loading="lazy" decoding="async" width={600} height={200} class="mx-auto h-20 w-auto drop-shadow-lg" />
 				</div>
 			</div>
